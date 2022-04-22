@@ -1,3 +1,4 @@
+You can reach the demo [here.](https://altogic-nextjs-email-auth.vercel.app)
 ## Preview
 
 ![picture alt](./public/preview.png "Preview image of email authentication demo app using Altogic and Next.JS")
@@ -12,7 +13,6 @@ By default email verification is enabled in your App settings → Authentication
 
 You can find the written tutorial of this demo app on [our Medium blog.](https://medium.com/altogic/altogic-email-authentication-with-next-js-and-altogic-4c036c36ea8f)
 
-You can also check the deployed version [here.](https://altogic-nextjs-email-auth.vercel.app)
 
 ### What is the email authentication flow in Altogic?
 
