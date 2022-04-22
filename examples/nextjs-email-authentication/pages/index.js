@@ -32,7 +32,10 @@ export default function Home() {
         <div className="grid lg:grid-cols-2 mx-auto  gap-16">
           {" "}
           <div className="text-center">
-            <a className="text-gray-500 text-base" href="https://github.com/">
+            <a
+              className="text-gray-500 text-base"
+              href="https://github.com/altogic/altogic/tree/main/examples/nextjs-email-authentication"
+            >
               <div className="max-w-sm rounded overflow-hidden shadow-md my-5 h-48  hover:text-white text-[#1976d2] hover:bg-[#1976d2]">
                 <div className="my-4  w-full overflow-hidden">
                   <div className="px-6 py-4">
@@ -52,7 +55,10 @@ export default function Home() {
             </a>
           </div>
           <div className="text-center">
-            <a className="text-gray-500 text-base" href="https://github.com/">
+            <a
+              className="text-gray-500 text-base"
+              href="https://medium.com/altogic/altogic-email-authentication-with-next-js-and-altogic-4c036c36ea8f"
+            >
               <div className="max-w-sm rounded overflow-hidden shadow-md my-5 h-48 hover:text-white text-[#1976d2] hover:bg-[#1976d2]">
                 <div className="my-4  w-full overflow-hidden">
                   <div className="px-6 py-4">
@@ -91,7 +97,10 @@ export default function Home() {
             </a>
           </div>{" "}
           <div className="text-center">
-            <a className="text-gray-500 text-base" href="https://github.com/">
+            <a
+              className="text-gray-500 text-base"
+              href="https://clientapi.altogic.com/v1.2.2/modules.html"
+            >
               <div className="max-w-sm rounded overflow-hidden shadow-md my-5 h-48 hover:text-white text-[#1976d2] hover:bg-[#1976d2]">
                 <div className="my-4 w-full overflow-hidden">
                   <div className="px-6 py-4">
@@ -101,7 +110,7 @@ export default function Home() {
                       className="pb-4"
                     ></FontAwesomeIcon>{" "}
                     <div className="font-bold text-xl mb-2 ">
-                      Altogic Client Library Documentation
+                      Altogic Client API Reference
                     </div>
                     Learn more about Altogic Client Library
                   </div>

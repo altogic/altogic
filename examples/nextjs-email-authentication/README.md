@@ -1,8 +1,4 @@
-## Youtube Promo Video
-
-[![Watch the video](https://img.youtube.com/vi/rlOTW_NuJzc/0.jpg)](https://www.youtube.com/watch?v=rlOTW_NuJzc)
-
-## Preview Images
+## Preview
 
 ![picture alt](./public/preview.png "Preview image of email authentication demo app using Altogic and Next.JS")
 
@@ -47,6 +43,8 @@ We can create an app with the Altogic Designer really fast. To create an app via
 
 ![picture alt](./public/createApp.png "Create an app in Altogic Designer")
 
+---
+
 We need `envUrl` and `clientKey` to access our environment via Altogic Client Library. `envUrl` is specific to each environment, and Altogic initially creates one environment for you when you create your app. To get the `envUrl` via the Designer:
 
 1. Launch the Designer.
@@ -57,9 +55,13 @@ We need `envUrl` and `clientKey` to access our environment via Altogic Client Li
 
 ![picture alt](./public/getEnvUrl.png "Get the environment URL in Altogic Designer")
 
+---
+
 We can get the `clientKey` by clicking on the App Settings button in the left-bottom corner of the Designer and clicking on the Client library keys section.
 
 ![picture alt](./public/clientKey.png "Get the client key in Altogic Designer")
+
+---
 
 Now you have got both `clientKey`and `envUrl`. Now you have to create a `.env.local` file in your root directory of the project to complete the Altogic configuration with your app:
 
@@ -113,3 +115,5 @@ To learn more about Altogic and Next.js, you can take a look at the following re
 Your feedback and contributions are welcome! Please open a pull request for contributions.
 
 ## Youtube Video
+
+[![Watch the video](https://img.youtube.com/vi/rlOTW_NuJzc/0.jpg)](https://www.youtube.com/watch?v=rlOTW_NuJzc)
