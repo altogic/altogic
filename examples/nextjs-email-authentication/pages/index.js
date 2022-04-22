@@ -35,6 +35,8 @@ export default function Home() {
             <a
               className="text-gray-500 text-base"
               href="https://github.com/altogic/altogic/tree/main/examples/nextjs-email-authentication"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <div className="max-w-sm rounded overflow-hidden shadow-md my-5 h-48  hover:text-white text-[#1976d2] hover:bg-[#1976d2]">
                 <div className="my-4  w-full overflow-hidden">
@@ -58,6 +60,8 @@ export default function Home() {
             <a
               className="text-gray-500 text-base"
               href="https://medium.com/altogic/altogic-email-authentication-with-next-js-and-altogic-4c036c36ea8f"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <div className="max-w-sm rounded overflow-hidden shadow-md my-5 h-48 hover:text-white text-[#1976d2] hover:bg-[#1976d2]">
                 <div className="my-4  w-full overflow-hidden">
@@ -80,6 +84,8 @@ export default function Home() {
             <a
               className="text-gray-500 text-base"
               href="https://youtu.be/rlOTW_NuJzc"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <div className="max-w-sm rounded overflow-hidden shadow-md my-5 h-48 hover:text-white text-[#1976d2] hover:bg-[#1976d2]">
                 <div className="my-4  w-full overflow-hidden">
@@ -90,7 +96,7 @@ export default function Home() {
                       className="pb-4"
                     ></FontAwesomeIcon>{" "}
                     <div className="font-bold text-xl mb-2 ">Youtube Video</div>
-                    Check out the youtube tutorial video of development process
+                    Check out the youtube showcase video of the app
                   </div>
                 </div>
               </div>
@@ -100,6 +106,8 @@ export default function Home() {
             <a
               className="text-gray-500 text-base"
               href="https://clientapi.altogic.com/v1.2.2/modules.html"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <div className="max-w-sm rounded overflow-hidden shadow-md my-5 h-48 hover:text-white text-[#1976d2] hover:bg-[#1976d2]">
                 <div className="my-4 w-full overflow-hidden">

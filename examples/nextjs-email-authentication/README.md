@@ -10,6 +10,8 @@ This authentication method requires users to specify their email and passwords. 
 
 By default email verification is enabled in your App settings → Authentication view of Designer. If you would like to change this, you can disable "Confirm email addresses" in the Authentication view of Designer.
 
+You can find the written tutorial of this demo app on [our Medium blog.](https://medium.com/altogic/altogic-email-authentication-with-next-js-and-altogic-4c036c36ea8f)
+
 ### What is the email authentication flow in Altogic?
 
 1. Users sign up with their email and password.
