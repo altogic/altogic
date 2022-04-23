@@ -1,4 +1,5 @@
 You can reach the demo [here.](https://altogic-nextjs-email-auth.vercel.app)
+
 ## Preview
 
 ![picture alt](./public/preview.png "Preview image of email authentication demo app using Altogic and Next.JS")
@@ -12,7 +13,6 @@ This authentication method requires users to specify their email and passwords. 
 By default email verification is enabled in your App settings → Authentication view of Designer. If you would like to change this, you can disable "Confirm email addresses" in the Authentication view of Designer.
 
 You can find the written tutorial of this demo app on [our Medium blog.](https://medium.com/altogic/altogic-email-authentication-with-next-js-and-altogic-4c036c36ea8f)
-
 
 ### What is the email authentication flow in Altogic?
 
@@ -86,11 +86,7 @@ Before you start to use the npx command, make sure you have NodeJS installed in 
 
 💡 You can visit https://nodejs.org/en/download/ to download.
 
-To get started, clone this project:
-
-```bash
-git clone https://github.com/myerekapan/altogic-email-auth-template.git
-```
+To get started, clone this project and proceed to the installation.
 
 Install the packages:
 
