@@ -1,3 +1,5 @@
+You can reach the demo [here](https://altogic-react-phone-auth.vercel.app/)
+
 ## Preview
 
 ![Alt text](./src/images/product_review.svg "Product Review")
@@ -9,6 +11,8 @@ This is a phone number-based authentication app using [React](https://reactjs.or
 With phone number authentication, the application will send an SMS code to the user through **Twilio**. After users receive the SMS message from the provider, they can use this code to verify their phone number.
 
 It is also possible to further set up the authentication system through other providers such as **MessageBird** and **Vonage**.
+
+You can find the written tutorial of this demo app on our [Medium blog.](https://medium.com/altogic/how-to-build-phone-number-based-authentication-with-react-altogic-and-twilio-4776fc0c7613)
 
 ## Features
 
@@ -32,10 +36,6 @@ Even though our application is a phone number authentication app, it has powerfu
 Before installing the application, be sure you have already installed NodeJS and git in your development environment.
 
 First, you have to clone the repository.
-
-```powershell
-git clone https://github.com/yasinkuyuk/altogic-phone-authentication-react.git
-```
 
 ### Creating App in Altogic
 
@@ -115,3 +115,5 @@ Take a look at the following resources:
 Your feedback and contributions are welcome! Please open a pull request for contributions.
 
 ## Youtube Video
+
+[![Watch the video](https://img.youtube.com/vi/J4c4DOr39Qg/0.jpg)](https://www.youtube.com/watch?v=J4c4DOr39Qg)

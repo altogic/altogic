@@ -23,7 +23,7 @@ function Home() {
         <div className="text-center">
           <a
             className="text-gray-500 text-base"
-            href="https://github.com/altogic/altogic/tree/main/examples/nextjs-email-authentication"
+            href="https://github.com/altogic/altogic/tree/main/examples/react-phone-authentication"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -48,7 +48,7 @@ function Home() {
         <div className="text-center">
           <a
             className="text-gray-500 text-base"
-            href="https://medium.com/altogic/altogic-email-authentication-with-next-js-and-altogic-4c036c36ea8f"
+            href="https://medium.com/altogic/how-to-build-phone-number-based-authentication-with-react-altogic-and-twilio-4776fc0c7613"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -72,7 +72,7 @@ function Home() {
         <div className="text-center">
           <a
             className="text-gray-500 text-base"
-            href="https://youtu.be/rlOTW_NuJzc"
+            href="https://www.youtube.com/watch?v=J4c4DOr39Qg"
             target="_blank"
             rel="noopener noreferrer"
           >
