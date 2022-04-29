@@ -23,7 +23,7 @@ export default function Home() {
           <div className="text-center">
             <a
               className="text-gray-500 text-base"
-              href="https://github.com/altogic/altogic/tree/main/examples/nextjs-email-authentication"
+              href="https://github.com/altogic/altogic/tree/main/examples/nextjs-magic-link-authentication"
               target="_blank"
               rel="noopener noreferrer"
             >
