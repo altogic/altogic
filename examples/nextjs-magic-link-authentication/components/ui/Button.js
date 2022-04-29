@@ -12,6 +12,7 @@ const CustomButton = (props) => {
       >
         {props.buttonValue}
         {props.loading && (
+          // If loading, show the spin icon.
           <FontAwesomeIcon
             className="ml-2"
             icon={faSpinner}
