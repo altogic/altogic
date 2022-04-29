@@ -1,6 +1,6 @@
 ## Demo App
 
-Magic link authentication built with Next.js and Altogic.
+[Magic link authentication built with Next.js and Altogic.](https://altogic-nextjs-magic-link-auth.vercel.app/)
 
 ## Preview
 

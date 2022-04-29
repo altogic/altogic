@@ -48,7 +48,7 @@ export default function Home() {
           <div className="text-center">
             <a
               className="text-gray-500 text-base"
-              href="https://medium.com/altogic/altogic-email-authentication-with-next-js-and-altogic-4c036c36ea8f"
+              href="https://medium.com/@mertyerekapan/39791dbb0304"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -72,7 +72,7 @@ export default function Home() {
           <div className="text-center">
             <a
               className="text-gray-500 text-base"
-              href="https://youtu.be/rlOTW_NuJzc"
+              href="https://www.youtube.com/watch?v=k4UEqFp9jFk"
               target="_blank"
               rel="noopener noreferrer"
             >
