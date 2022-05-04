@@ -10,7 +10,7 @@ This is an oAuth provider authentication app using [React](https://reactjs.org/)
 
 The term OAuth stands for Open Authorization with 3rd party application such as social providers. Users can sign in to the application using their **Google**, **Facebook**, **Twitter**, **Discord**, **Github** accounts.
 
-You can find the written tutorial of this demo app on our [Medium blog.](https://medium.com/altogic/how-to-build-phone-number-based-authentication-with-react-altogic-and-twilio-4776fc0c7613)
+You can find the written tutorial of this demo app on our [Medium blog.](https://medium.com/altogic/how-to-build-oauth-provider-authentication-with-react-and-altogic-9282feed0c33)
 
 ## Features
 

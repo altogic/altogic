@@ -22,7 +22,7 @@ function Home() {
         <div className="text-center">
           <a
             className="text-gray-500 text-base"
-            href="https://github.com/altogic/altogic/tree/main/examples/react-phone-authentication"
+            href="https://github.com/altogic/altogic/tree/main/examples/react-oauth-provider-authentication"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -47,7 +47,7 @@ function Home() {
         <div className="text-center">
           <a
             className="text-gray-500 text-base"
-            href="https://medium.com/altogic/how-to-build-phone-number-based-authentication-with-react-altogic-and-twilio-4776fc0c7613"
+            href="https://medium.com/altogic/how-to-build-oauth-provider-authentication-with-react-and-altogic-9282feed0c33"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -71,7 +71,7 @@ function Home() {
         <div className="text-center">
           <a
             className="text-gray-500 text-base"
-            href="https://www.youtube.com/watch?v=J4c4DOr39Qg"
+            href="https://youtu.be/tQJoT8bybMU"
             target="_blank"
             rel="noopener noreferrer"
           >
