@@ -35,7 +35,7 @@ export default function Home() {
           <div className="text-center">
             <a
               className="text-gray-500 text-base"
-              href=""
+              href="https://github.com/altogic/altogic/tree/main/examples/nextjs-two-factor-authentication"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -60,7 +60,7 @@ export default function Home() {
           <div className="text-center">
             <a
               className="text-gray-500 text-base"
-              href=""
+              href="https://medium.com/@mertyerekapan/42770195ba5"
               target="_blank"
               rel="noopener noreferrer"
             >
