@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fixes the focus border on the phone input */
+
+input[type="tel"],
+input[type="PhoneInputInput"] {
+  outline: none;
+}
