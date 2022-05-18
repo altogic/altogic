@@ -1,6 +1,6 @@
 ## Demo App
 
-[Complete Task Management Tool built with Next.js, and Altogic.](https://altogic-nextjs-two-factor-auth.vercel.app/)
+[Complete Task Management Tool built with Next.js, and Altogic.](https://altogic-nextjs-task-management.vercel.app/)
 
 ## Preview
 
@@ -106,4 +106,4 @@ Your feedback and contributions are welcome! Please open a pull request for cont
 
 ## Youtube Showcase Video
 
-[![Watch the video](https://img.youtube.com/vi/rlOTW_NuJzc/0.jpg)](https://www.youtube.com/watch?v=rlOTW_NuJzc)
+[![Watch the video](https://img.youtube.com/vi/BsRWLwo0YWk/0.jpg)](https://www.youtube.com/watch?v=BsRWLwo0YWk)
