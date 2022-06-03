@@ -1,6 +1,6 @@
 ## Demo App
 
-[Quickstart Blog App built with React, and Altogic.](https://altogic-react-react-quickstart-blog.vercel.app/)
+[Quickstart Blog App built with React, and Altogic.](https://altogic-react-blog-app-quickstart.vercel.app/)
 
 ## Preview
 
@@ -10,7 +10,7 @@
 
 This is a quickstart [React](https://reactjs.org/) blog app built with [Altogic](https://www.altogic.com), backend-as-a-service platform as the backend using its client library.
 
-You can find the written tutorial of this demo app on [our Medium blog.](https://medium.com/@yasinkuyuk/how-to-build-a-basic-blog-app-using-react-altogic-d89c190994cd)
+You can find the written tutorial of this demo app on [our Medium blog.](https://medium.com/altogic/how-to-build-a-quickstart-blog-app-using-react-altogic-d89c190994cd)
 
 ## Features
 
@@ -105,4 +105,4 @@ Your feedback and contributions are welcome! Please open a pull request for cont
 
 ## Youtube Development Video
 
-[![Watch the video](https://img.youtube.com/vi/BsRWLwo0YWk/0.jpg)](https://www.youtube.com/watch?v=BsRWLwo0YWk)
+[![Watch the video](https://img.youtube.com/vi/HBREz4_RHqs/0.jpg)](https://www.youtube.com/watch?v=HBREz4_RHqs)
