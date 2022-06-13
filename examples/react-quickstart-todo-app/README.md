@@ -10,7 +10,7 @@
 
 This is a quickstart [React](https://reactjs.org/) to-do app built with [Altogic](https://www.altogic.com), backend-as-a-service platform as the backend using its client library.
 
-You can find the written tutorial of this demo app on [our Medium blog.](https://medium.com/altogic/how-to-build-a-quickstart-blog-app-using-react-altogic-d89c190994cd)
+You can find the written tutorial of this demo app on [our Medium blog.](https://medium.com/altogic/quickstart-how-to-build-to-do-app-using-react-altogic-8ba222981791)
 
 ## Features
 
