@@ -10,7 +10,7 @@
 
 This is a quickstart [Next.js](https://nextjs.org/) to-do app built with [Altogic](https://www.altogic.com), backend-as-a-service platform as the backend using its client library.
 
-You can find the written tutorial of this demo app on [our Medium blog.](https://medium.com/altogic/quickstart-how-to-build-to-do-app-using-react-altogic-8ba222981791)
+You can find the written tutorial of this demo app on [our Medium blog.](https://medium.com/altogic/quickstart-how-to-build-to-do-app-using-next-js-altogic-9c908d34177a)
 
 ## Features
 
