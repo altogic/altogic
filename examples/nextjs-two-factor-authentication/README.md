@@ -1,7 +1,3 @@
-## Demo App
-
-[Two-Factor Authentication built with Next.js, Twilio and Altogic.](https://altogic-nextjs-two-factor-auth.vercel.app/)
-
 ## Preview
 
 ![picture alt](./public/preview.png "Preview image of two-factor authentication demo app using Altogic, Twilio, and Next.JS")
