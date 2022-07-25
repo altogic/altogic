@@ -1,5 +1,3 @@
-You can reach the demo [here](https://altogic-react-phone-auth.vercel.app/)
-
 ## Preview
 
 ![Alt text](./src/images/product_review.svg "Product Review")
