@@ -6,7 +6,7 @@
 
 This article will cover **two-factor authentication** basics using [Next.js](https://nextjs.org/), [Twilio](https://twilio.com), and [Altogic](https://www.altogic.com), a backend-as-a-service platform using its client library. This authentication method allows users to add one more security layer to their application. Many people enable their two-factor authentication settings to increase their security using their phone numbers or authentication apps for security purposes.
 
-You can find the written tutorial of this demo app on [our Medium blog.](https://medium.com/@mertyerekapan/42770195ba5)
+You can find the written tutorial of this app on [our Medium blog.](https://medium.com/@mertyerekapan/42770195ba5)
 
 ### How is the two-factor authentication flow in Altogic?
 
