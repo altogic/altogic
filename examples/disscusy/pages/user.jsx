@@ -17,8 +17,6 @@ export default function ProfileDetail() {
   const { user } = useAuth({
     redirectTo: '/login',
   })
-
-  const userId = router.query.userId
   const {
     profile,
     getProfile,
@@ -44,6 +42,7 @@ export default function ProfileDetail() {
   const [repliesForum, setRepliesForum] = useState([])
 
   useEffect(() => {
+    const userId = router.query.userId
     if (userId == user?._id) {
       router.push('/my-profile')
     }
@@ -56,7 +55,7 @@ export default function ProfileDetail() {
       getVotesReceived(userId)
       getFollowConnection(user?._id, userId)
     }
-  }, [userId])
+  }, [router.isReady])
   useEffect(() => {
     setRepliesForum([])
     topReplies?.forEach((reply) => {

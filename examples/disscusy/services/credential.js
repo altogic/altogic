@@ -29,7 +29,7 @@ const credentialService = {
   },
 
   deleteUser: async () => {
-    Promise.all([
+    await Promise.all([
       db
         .model('follower_connection')
         .filter(`followingUser == '${auth.getUser()._id}'`)
@@ -49,13 +49,11 @@ const credentialService = {
         .model('forum')
         .filter(`user == '${auth.getUser()._id}'`)
         .update({ userProfilePicture: '', username: 'anonymous' }),
-      db
-        .model('reply')
-        .filter(`user == '${auth.getUser()._id}'`), 
+      db.model('reply').filter(`user == '${auth.getUser()._id}'`),
       db
         .model('reply.lastComments')
         .filter(`user == '${auth.getUser()._id}'`)
-        .update({username: 'anonymous' }),
+        .update({ username: 'anonymous' }),
       db
         .model('reply_comments')
         .filter(`user == '${auth.getUser()._id}'`)

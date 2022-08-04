@@ -30,9 +30,9 @@ const ProfileProvider = ({ children }) => {
     }
   }
 
-  const getVotesGiven = async () => {
-    const replyResult = await profileService.getVotesGivenToReply(user?._id)
-    const forumResult = await profileService.getVotesGivenToForum(user?._id)
+  const getVotesGiven = async (userId) => {
+    const replyResult = await profileService.getVotesGivenToReply(userId ?? user?._id)
+    const forumResult = await profileService.getVotesGivenToForum(userId ?? user?._id)
 
     if (!replyResult.errors && !forumResult.errors) {
       const result = (forumResult.data[0]?.count ?? 0) + (replyResult.data[0]?.count ?? 0)
@@ -47,8 +47,8 @@ const ProfileProvider = ({ children }) => {
       })
     }
   }
-  const getForumCount = async () => {
-    const { data, errors } = await profileService.getForumCount(user?._id)
+  const getForumCount = async (userId) => {
+    const { data, errors } = await profileService.getForumCount(userId ?? user?._id)
     if (!errors) {
       dispatch({
         type: 'GET_FORUM_COUNT_SUCCESS',
@@ -61,8 +61,8 @@ const ProfileProvider = ({ children }) => {
       })
     }
   }
-  const getReplyCount = async () => {
-    const { data, errors } = await profileService.getReplyCount(user?._id)
+  const getReplyCount = async (userId) => {
+    const { data, errors } = await profileService.getReplyCount(userId ?? user?._id)
 
     if (!errors) {
       dispatch({
@@ -76,8 +76,8 @@ const ProfileProvider = ({ children }) => {
       })
     }
   }
-  const getVotesReceived = async () => {
-    const { forum, reply } = await profileService.getVotesReceived(user?._id)
+  const getVotesReceived = async (userId) => {
+    const { forum, reply } = await profileService.getVotesReceived(userId ?? user?._id)
     if (!forum.errors && !reply.errors) {
       const result = (forum.data[0]?.count ?? 0) + (reply.data[0]?.count ?? 0)
       dispatch({
@@ -94,7 +94,7 @@ const ProfileProvider = ({ children }) => {
 
   const getAllStats = async () => {
     dispatch({ type: 'REQUESTED' })
-    Promise.all([
+    await Promise.all([
       getVisitCount(),
       getTotalView(),
       getVotesGiven(),
