@@ -4,7 +4,7 @@
 
 ## Preview
 
-![picture alt](./public/preview.png 'Preview image of Discussy')
+![picture alt](./public/preview.png 'Preview image of Disscusy')
 
 ## Introduction
 
@@ -12,15 +12,15 @@ This is a [Next.js](https://nextjs.org/) forum application [Altogic](https://www
 
 ## Features
 
-1. Create forum.
+1. Create a forum.
 2. Send replies.
 3. Send comments.
 4. Share forums/replies.
 5. Follow each other.
 6. Bookmark forums and replies.
-7. Category and Tag based filters.
+7. Category and Tag-based filters.
 8. Search forums.
-9. Sorting by replies,views and activity.
+9. Sorting by replies, views, and activity.
 10. Notifications.
 11. User profile.
 12. User Settings.
