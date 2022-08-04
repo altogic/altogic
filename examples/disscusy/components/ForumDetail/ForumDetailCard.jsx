@@ -374,7 +374,7 @@ export default function ForumDetailCard({
           }
         >
           {card?.tags && (
-            <div className='w-max flex items-center'>
+            <div className='flex items-center'>
               <span className='inline-flex items-center justify-center w-8 h-8 bg-gray-100 text-slate-400 rounded-full ring-8 ring-white'>
                 <svg
                   width='20'
