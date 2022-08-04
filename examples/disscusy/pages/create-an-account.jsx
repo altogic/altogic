@@ -73,9 +73,9 @@ export default function CreateAnAccount() {
           <div className='flex flex-col justify-center px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24'>
             <div className='mx-auto w-full max-w-lg lg:w-[489px]'>
               <div>
-                <img src='/logo.png' alt='Discussy' className='w-48 h-16 object-contain mb-2' />
+                <img src='/logo.png' alt='Disscusy' className='w-48 h-16 object-contain mb-2' />
                 <p className='text-2xl text-slate-800 tracking-[-0.8px]'>Start using</p>
-                <h2 className='text-4xl font-bold text-slate-800'>Discussy</h2>
+                <h2 className='text-4xl font-bold text-slate-800'>Disscusy</h2>
                 <p className='mt-4 text-2xl text-slate-600 tracking-[-0.8px]'>
                   Let’s create your account
                 </p>
