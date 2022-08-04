@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
         <title>Disscusy - Open discussion and communication</title>
         <meta
           name='description'
-          content='Disscusy is a forum app where people can share their thoughts and ideas, follow each others and have fun..'
+          content='Disscusy is a forum app where people can share their thoughts and ideas, follow each others and have fun.'
         />
 
         <meta charset='utf-8'></meta>

@@ -369,7 +369,7 @@ export default function ForumDetailCard({
         <div
           id={card?.forum && card?._id}
           className={
-            'w-10/12 flex flex-col xl:flex-row xl:items-center gap-4 ' +
+            'flex flex-col xl:flex-row xl:items-center gap-4 ' +
             (card?.forum ? 'justify-end' : 'justify-between')
           }
         >
