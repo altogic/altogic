@@ -116,7 +116,10 @@ export default function Header() {
             {isNotificationModal && (
               <MobileNotification
                 isOpen={isNotificationModal}
-                onClose={() => setIsNotificationModal(false)}
+                onClose={() => {
+                  markAsRead(user?._id)
+                  setIsNotificationModal(false)
+                }}
                 notifications={notifications}
                 markAsRead={markAsRead}
                 setIsNotificationModal={setIsNotificationModal}

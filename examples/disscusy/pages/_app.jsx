@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }) {
           content='Disscusy is a forum app where people can share their thoughts and ideas, follow each others and have fun.'
         />
 
-        <meta charset='utf-8'></meta>
+        <meta charSet='utf-8'></meta>
         <meta
           name='viewport'
           content='width=device-width, initial-scale=1, viewport-fit=cover'

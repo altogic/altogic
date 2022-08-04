@@ -115,7 +115,7 @@ export default function ForumDetail() {
             margin: 'auto',
             position: 'absolute',
             top: '50%',
-            left: '50%',
+            left: '40%',
             transform: 'translate(-50%, -50%)',
           }}
         />

@@ -23,7 +23,7 @@ function NotificationItem({ item, setIsNotificationModal }) {
   function setAvatar() {
     if (item?.sentUserProfilePicture) {
       return (
-        <button onClick={() => Router.push('user?userId=' + item?.sentUser)}>
+        <button onClick={() => handleUserProfileRoute(item?.sentUser)}>
           <Image
             className='h-10 w-10 rounded-full'
             src={item?.sentUserProfilePicture}
@@ -35,7 +35,7 @@ function NotificationItem({ item, setIsNotificationModal }) {
       )
     } else {
       return (
-        <button onClick={() => Router.push('user?userId=' + item?.sentUser)}>
+        <button onClick={() => handleUserProfileRoute(item?.sentUser)}>
           <DefaultAvatar name={item?.sentUsername} className='h-10 w-10' />
         </button>
       )
@@ -53,19 +53,19 @@ function NotificationItem({ item, setIsNotificationModal }) {
       setIsNotificationModal(false)
     }
   }
+  const handleUserProfileRoute = (sentUser) => {
+    Router.push('user?userId=' + sentUser)
+    if (setIsNotificationModal) {
+      setIsNotificationModal(false)
+    }
+  }
+
   return (
     <div className='p-4 bg-white rounded-lg'>
       <div className='flex items-start justify-center'>
         <div className='flex-shrink-0'>{setAvatar()}</div>
         <div className='ml-3 w-0 flex-1'>
-          <button
-            onClick={() => {
-              Router.push('user?userId=' + item?.sentUser)
-              if (setIsNotificationModal) {
-                setIsNotificationModal(false)
-              }
-            }}
-          >
+          <button onClick={() => handleUserProfileRoute(item?.sentUser)}>
             {item.sentUsername}
           </button>{' '}
           <div className='text-sm leading-5 tracking-[-0.4px] text-slate-600 mt-2'>

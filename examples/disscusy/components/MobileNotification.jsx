@@ -1,11 +1,13 @@
 import React, { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import NotificationItem from '@/components/NotificationItem'
+import { XIcon } from '@heroicons/react/outline'
+import Button from './Button'
 
 function MobileNotification({ isOpen, onClose, notifications, setIsNotificationModal }) {
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog as='div' className='relative z-10' onClose={() => onClose()}>
+      <Dialog as='div' className='relative z-10' onClose={onClose}>
         <Transition.Child
           as={Fragment}
           enter='ease-out duration-300'
@@ -30,6 +32,12 @@ function MobileNotification({ isOpen, onClose, notifications, setIsNotificationM
               leaveTo='opacity-0 scale-95'
             >
               <Dialog.Panel className='w-full max-w-md transform overflow-hidden rounded-2xl bg-slate-100 p-6 text-left align-middle shadow-xl transition-all'>
+                <Button
+                  className='absolute top-2 right-2'
+                  onClick={() => setIsNotificationModal(false)}
+                >
+                  <XIcon className='h-4 w-4' />
+                </Button>
                 <div className='space-y-4'>
                   <div className='p-4 bg-white rounded-lg'>
                     {notifications.length > 0 ? (

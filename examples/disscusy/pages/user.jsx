@@ -68,15 +68,15 @@ export default function ProfileDetail() {
     <>
       {loading ? (
         <ClipLoader
-          size={150}
           color={'#4338CA'}
           loading={loading}
+          size={100}
           cssOverride={{
             display: 'block',
             margin: 'auto',
             position: 'absolute',
             top: '50%',
-            left: '50%',
+            left: '40%',
             transform: 'translate(-50%, -50%)',
           }}
         />
