@@ -40,16 +40,18 @@ export default function FollowButton({ profile, rounded, followed }) {
     <button
       type='button'
       className={
-        'flex-1 flex items-center justify-center w-full sm:w-auto px-[45px] py-4 border border-transparent shadow-sm text-base font-medium text-slate-50 bg-indigo-700 hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' +
+        'flex-1 flex items-center justify-center w-full px-[45px] py-4 border border-transparent shadow-sm text-base font-medium text-slate-50 bg-indigo-700 hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' +
         (rounded && ' rounded-md ')
       }
       onClick={!isFollowed ? handleFollow : handleUnfollow}
     >
-      {isFollowed ? (
-        <UserRemoveIcon className='mr-3 h-6 w-6' aria-hidden='true' />
-      ) : (
-        <UserAddIcon className='mr-3 h-6 w-6' aria-hidden='true' />
-      )}
+      <div>
+        {isFollowed ? (
+          <UserRemoveIcon className='mr-3 h-6 w-6' aria-hidden='true' />
+        ) : (
+          <UserAddIcon className='mr-3 h-6 w-6' aria-hidden='true' />
+        )}
+      </div>
 
       {isFollowed ? 'Unfollow' : 'Follow'}
     </button>

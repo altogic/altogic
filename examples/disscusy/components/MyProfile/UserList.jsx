@@ -2,7 +2,7 @@ import useProfile from '@/hooks/useProfile'
 import React, { useEffect, useState } from 'react'
 import useAuth from '@/hooks/useAuth'
 import Link from 'next/link'
-import FollowButon from '../FollowButton'
+import FollowButton from '../FollowButton'
 import DefaultAvatar from './DefaultAvatar'
 import { usePagination } from '@/hooks/usePagination'
 import { useRouter } from 'next/router'
@@ -62,15 +62,22 @@ const UserList = ({ type }) => {
               <div className='relative'>
                 {(type == 'followers' && item.followerUserProfilePicture) ||
                 (type === 'followings' && item.followingUserProfilePicture) ? (
-                  <img
-                    className='w-10 h-10 rounded-full object-cover'
-                    src={
-                      type == 'followers'
-                        ? item.followerUserProfilePicture
-                        : item.followingUserProfilePicture
+                  <Link
+                    href={
+                      'user?userId=' +
+                      (type == 'followers' ? item?.followerUser : item?.followingUser)
                     }
-                    alt=''
-                  />
+                  >
+                    <img
+                      className='w-10 h-10 rounded-full object-cover'
+                      src={
+                        type == 'followers'
+                          ? item.followerUserProfilePicture
+                          : item.followingUserProfilePicture
+                      }
+                      alt=''
+                    />
+                  </Link>
                 ) : (
                   <DefaultAvatar
                     name={type == 'followers' ? item.followerUsername : item.followingUsername}
@@ -154,7 +161,7 @@ const UserList = ({ type }) => {
                         </>
                       </div>
                       <div className='-ml-px w-0 flex-1 flex'>
-                        <FollowButon
+                        <FollowButton
                           profile={
                             type == 'followers'
                               ? {

@@ -6,7 +6,7 @@ import useForum from '@/hooks/useForum'
 import useReply from '@/hooks/useReply'
 import ForumTable from '@/components/Forum/ForumTable'
 import useProfile from '@/hooks/useProfile'
-import FollowButon from '@/components/FollowButton'
+import FollowButton from '@/components/FollowButton'
 import DefaultAvatar from '@/components/MyProfile/DefaultAvatar'
 import useAuth from '@/hooks/useAuth'
 import ClipLoader from 'react-spinners/ClipLoader'
@@ -122,7 +122,7 @@ export default function ProfileDetail() {
                         </p>
                       </div>
                       <div className='flex items-center justify-between w-full sm:w-auto sm:justify-center gap-1 sm:gap-3'>
-                        <FollowButon
+                        <FollowButton
                           rounded={true}
                           profile={profile}
                           followed={followings.length}

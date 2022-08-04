@@ -13,7 +13,7 @@ import InteractionButton from './InteractionButton'
 import DefaultAvatar from '../MyProfile/DefaultAvatar'
 import useBookmark from '@/hooks/useBookmark'
 import useAuth from '@/hooks/useAuth'
-import FollowButon from '../FollowButton'
+import FollowButton from '../FollowButton'
 import useReply from '@/hooks/useReply'
 import useForum from '@/hooks/useForum'
 import useVote from '@/hooks/useVote'
@@ -52,6 +52,7 @@ export default function ForumDetailCard({
   const [isDownVoted, setIsDownVoted] = useState()
   const [isFollowed, setIsFollowed] = useState()
   const [_user, set_user] = useState()
+
   const [currentButton, setCurrentButton] = useState()
   const bookmarkCategorySchema = yup.object().shape({
     name: yup.string().required('Category name is required'),
@@ -301,7 +302,11 @@ export default function ForumDetailCard({
                 </div>
                 {_user?._id != card?.user?._id && (
                   <div className='-ml-px w-0 flex-1 flex'>
-                    <FollowButon profile={card?.user} followed={isFollowed} />
+                    <FollowButton
+                      profile={card?.user}
+                      followed={isFollowed}
+                      setIsFollowedProps={setIsFollowed}
+                    />
                   </div>
                 )}
               </div>
@@ -618,7 +623,11 @@ export default function ForumDetailCard({
                   </div>
                   {_user?._id != card?.user?._id && (
                     <div className='-ml-px w-0 flex-1 flex'>
-                      <FollowButon profile={card?.user} followed={isFollowed} />
+                      <FollowButton
+                        profile={card?.user}
+                        followed={isFollowed}
+                        setIsFollowedProps={setIsFollowed}
+                      />
                     </div>
                   )}
                 </div>

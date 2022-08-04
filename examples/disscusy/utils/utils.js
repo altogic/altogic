@@ -16,7 +16,7 @@ export function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
 export function getUniqueListBy(arr) {
-  return [...new Map(arr.map((item) => [item['_id'], item])).values()]
+  return [...new Map(arr.map((item) => [item?._id, item])).values()]
 }
 export function notificationQueryBuilder(notificationPreferences) {
   let query = ''
