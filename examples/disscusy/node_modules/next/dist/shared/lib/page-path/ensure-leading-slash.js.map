@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../shared/lib/page-path/ensure-leading-slash.ts"],"names":["ensureLeadingSlash","path","startsWith"],"mappings":"Y;;;E;QAIgBA,kBAAkB,GAAlBA,kBAAkB,A;SAAlBA,kBAAkB,CAACC,IAAY,EAAE,CAAC;IAChD,MAAM,CAACA,IAAI,CAACC,UAAU,CAAC,CAAG,MAAID,IAAI,IAAI,CAAC,EAAEA,IAAI;AAC/C,CAAC"}

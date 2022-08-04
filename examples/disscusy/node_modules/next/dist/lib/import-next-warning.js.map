@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../lib/import-next-warning.ts"],"names":["Log","module","warn","parent","filename"],"mappings":"Y;AAAYA,GAAG,CAAHA,GAAG;;;;;;;;;;;gE;;8C;;;;;4B;;;;IAG0CC,GAAa;AADtED,GAAG,CAACE,IAAI,EACL,oDAAoD,GAAED,GAAa,GAAbA,MAAM,CAACE,MAAM,cAAbF,GAAa,cAAbA,IAAI,CAAJA,CAAuB,GAAvBA,GAAa,CAAEG,QAAQ,CAAC,kEAAkE,E"}

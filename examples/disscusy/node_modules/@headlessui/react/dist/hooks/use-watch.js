@@ -1,0 +1,1 @@
+import{useEffect as l,useRef as a}from"react";import{useEvent as c}from"./use-event.js";function m(o,t){let r=a([]),e=c(o);l(()=>{for(let[u,f]of t.entries())if(r.current[u]!==f){let i=e(t);return r.current=t,i}},[e,...t])}export{m as useWatch};
