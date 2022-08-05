@@ -11,6 +11,16 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', ...fontFamily.sans],
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            p: {
+              marginBottom: '0',
+              marginTop: '0',
+            },
+          },
+        },
+      },
     },
   },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],

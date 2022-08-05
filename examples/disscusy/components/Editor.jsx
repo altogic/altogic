@@ -1,6 +1,5 @@
 import dynamic from 'next/dynamic'
 import React, { useState, useEffect } from 'react'
-
 // import ReactQuill from "react-quill";
 import EditorToolbar, { modules, formats } from './EditorToolbar'
 import 'react-quill/dist/quill.snow.css'
@@ -15,6 +14,17 @@ export const Editor = ({ errors, name, control, onEditorStateChange }) => {
   useEffect(() => {
     onEditorStateChange(value)
   }, [value])
+  if (typeof window !== 'undefined') {
+    const Quill = require('quill')
+    const Link = Quill.import('formats/link')
+    Link.sanitize = function (url) {
+      // quill by default creates relative links if scheme is missing.
+      if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        return `http://${url}`
+      }
+      return url
+    }
+  }
 
   return (
     <div className='text-editor'>

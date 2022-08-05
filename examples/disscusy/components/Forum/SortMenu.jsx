@@ -94,39 +94,37 @@ const SortMenu = () => {
         >
           <Menu.Items className='origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50'>
             <div className='p-4'>
-              {sortingMethods.map((method, index) => {
-                return (
-                  <>
-                    <Menu.Item key={method.id} onClick={() => handleChange(index)}>
-                      {({ active }) => (
-                        <span
-                          className={classNames(
-                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                            ' px-4 py-2 text-sm cursor-pointer flex',
-                          )}
-                          onClick={() => {
-                            setButtonText(method.text)
-                          }}
-                        >
-                          {method.method === 'ascending' ? (
-                            <SortAscendingIcon
-                              className='-ml-1 mr-2 h-4 w-4 text-gray-400'
-                              aria-hidden='true'
-                            />
-                          ) : (
-                            <SortDescendingIcon
-                              className='-ml-1 mr-2 h-4 w-4 text-gray-400'
-                              aria-hidden='true'
-                            />
-                          )}{' '}
-                          {method.text}
-                        </span>
-                      )}
-                    </Menu.Item>
-                    <hr />
-                  </>
-                )
-              })}
+              {sortingMethods.map((method, index) => (
+                <>
+                  <Menu.Item key={method.id} onClick={() => handleChange(index)}>
+                    {({ active }) => (
+                      <span
+                        className={classNames(
+                          active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                          ' px-4 py-2 text-sm cursor-pointer flex',
+                        )}
+                        onClick={() => {
+                          setButtonText(method.text)
+                        }}
+                      >
+                        {method.method === 'ascending' ? (
+                          <SortAscendingIcon
+                            className='-ml-1 mr-2 h-4 w-4 text-gray-400'
+                            aria-hidden='true'
+                          />
+                        ) : (
+                          <SortDescendingIcon
+                            className='-ml-1 mr-2 h-4 w-4 text-gray-400'
+                            aria-hidden='true'
+                          />
+                        )}{' '}
+                        {method.text}
+                      </span>
+                    )}
+                  </Menu.Item>
+                  {index !== sortingMethods.length - 1 && <hr />}
+                </>
+              ))}
             </div>
           </Menu.Items>
         </Transition>

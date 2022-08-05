@@ -637,7 +637,7 @@ export default function ForumDetailCard({
         </div>
         <hr className='my-6' />
         <div
-          className='content grid prose prose-h3:text-slate-700 prose-h3:text-base prose-h3:leading-6 prose-h3:tracking-[-0.4px] prose-h3:my-6 prose-a:text-indigo-700 prose-a:no-underline prose-a:font-normal prose-p:text-slate-600 prose-p:my-6 prose-p:text-sm prose-p:leading-5 prose-p:tracking-[-0.4px] max-w-full'
+          className='content grid prose prose-h3:text-slate-700 prose-h3:text-base prose-h3:leading-6 prose-h3:tracking-[-0.4px] prose-h3:my-6 prose-a:text-indigo-700 prose-a:no-underline prose-a:font-normal prose-p:text-slate-600 prose-p:text-sm prose-p:leading-5 prose-p:tracking-[-0.4px] max-w-full'
           dangerouslySetInnerHTML={{ __html: card?.content }}
         ></div>
 
