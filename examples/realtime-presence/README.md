@@ -1,70 +1,92 @@
-# Getting Started with Create React App
+# Realtime presence sample app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Click [here](https://realtime-ten.vercel.app/) to access the live demo!
 
-## Available Scripts
+## Preview
 
-In the project directory, you can run:
+![Preview](./public/preview.gif)
 
-### `npm start`
+## Introduction
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The realtime presence app is a react application that is using Altogic's realtime features to emit mouse movements of users joined in a channel. Each user first joins to a channel called **presence** with a username and an automatically assigned mouse color. Following the channel join the mouse movements of the user is emitted to the **presence** channel and all users that are a member of this channel receive each other's mouse movements. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+When joined to the channel, the users can change their mouse color and leave the channel.
 
-### `npm test`
+#### Joining the channel
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```javascript
+//Joining the presence channel
+altogic.realtime.join('presence');
+```
 
-### `npm run build`
+#### Leaving the channel
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```javascript
+//Leaving the presence channel
+altogic.realtime.leave('presence');
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Updating mouse color
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```javascript
+let newColor = colors[Math.floor(Math.random() * colors.length)];
+//You can assign any custom data to a user profile, in this case we assign username, color and id
+altogic.realtime.updateProfile({
+  username: username,
+  color: newColor,
+  id: altogic.realtime.getSocketId(),
+});
+```
 
-### `npm run eject`
+#### Sending the mouse coordinates
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+We emit an event called **track** to the **presence** channel which provides the current location of the user's mouse.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```javascript
+//Socket id is a unique identifier and assigned automatically when a realtime connection is 
+//established with the realtime server
+altogic.realtime.send('presence', 'track', {
+  username: username,
+  color: color,
+  x: x,
+  y: y,
+  id: altogic.realtime.getSocketId(),
+});
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### Listening to users join, leave and update events
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```javascript
+//Triggered when a new user joins the channel, calls the joinMember method
+altogic.realtime.onJoin(this.joinMember);
+//Triggered when a user leaves the channel, calls the leaveMember method
+altogic.realtime.onLeave(this.leaveMember);
+//Triggered when one of the channel users update the profile info, calls the updateMember method
+altogic.realtime.onUpdate(this.updateMember);
+```
 
-## Learn More
+#### Listening to mouse movement events of users
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```javascript
+//Triggered when a move movement is received, calls the trackMember method
+altogic.realtime.on('track', this.trackMember);
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Prerequisites
 
-### Code Splitting
+To run your own version of this app, after cloning this repository to your local development environment, you need to create a new app in [Altogic](https://www.altogic.com) and get your client key from the home view. **Please make sure that the client key does not enforce any sessions, meaning that your users will not be asked to sign up for an account to this simple realtime app.**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![clientkey](./public/clientkey.png)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Learn more
 
-### Making a Progressive Web App
+- [Altogic Client API Reference](https://clientapi.altogic.com/v2.0.0/modules.html) - learn about Altogic Client Library features
+- [Altogic Docs](https://docs.altogic.com/) - learn about how to design your backend in Altogic
+- [Discord community](https://discord.gg/ERK2ssumh8) - meet with fellow Altogic developers
+- [Forum discussions](https://community.altogic.com) - ask questions and get answers from the community
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Contribution
 
-### Advanced Configuration
+Your feedback and contributions are welcome! Please open a pull request for contributions.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
