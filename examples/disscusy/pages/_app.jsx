@@ -48,18 +48,28 @@ function MyApp({ Component, pageProps }) {
         <meta name='msapplication-TileImage' content='/mstile-144x144.png'></meta>
         <meta name='theme-color' content='#ffffff' />
         <link rel='canonical' href='http://disscusy.com'></link>
-        <meta property='og:type' content='Disscusy - Open discussion and communication' />
-        <meta property='og:url' content='http://disscusy.com' />
         <meta property='og:title' content='Disscusy - Open discussion and communication' />
-        <meta property='og:image' content='https://www.disscusy.com/logo.png' />
+        <meta property='og:site_name' content='Disscusy - Open discussion and communication' />
+        <meta property='og:url' content='https://www.disscusy.com/' />
         <meta
           property='og:description'
-          content='Disscusy is a forum app where people can share their thoughts and ideas, follow each others and have fun..'
+          content='Disscusy is a forum app where people can share their thoughts and ideas, follow each others and have fun.'
         />
-        <meta property='og:site_name' content='Disscusy - Open discussion and communication' />
-        <meta property='og:locale' content='en_US' />
-        <meta property='og:image:width' content='1200' />
-        <meta property='og:image:height' content='630' />
+        <meta property='og:type' content='article' />
+        <meta property='og:image' content='https://www.disscusy.com/logo.png' />
+        <meta
+          name='twitter:card'
+          content='Disscusy is a forum app where people can share their thoughts and ideas, follow each others and have fun.'
+        />
+        <meta name='twitter:site' content='@altogic' />
+        <meta name='twitter:creator' content='@altogic' />
+        <meta name='twitter:url' content='https://twitter.com/Altogic' />
+        <meta name='twitter:title' content='Disscusy - Open discussion and communication' />
+        <meta
+          name='twitter:description'
+          content='Disscusy is a forum app where people can share their thoughts and ideas, follow each others and have fun.'
+        />
+        <meta name='twitter:image' content='https://www.disscusy.com/logo.png' />
       </Head>
       <PoweredByAltogic />
       <CredentialProvider>
