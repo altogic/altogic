@@ -61,6 +61,8 @@ function MyApp({ Component, pageProps }) {
           name='twitter:card'
           content='Disscusy is a forum app where people can share their thoughts and ideas, follow each others and have fun.'
         />
+        <meta property='og:image:width' content='1445' />
+        <meta property='og:image:height' content='384' />
         <meta name='twitter:site' content='@altogic' />
         <meta name='twitter:creator' content='@altogic' />
         <meta name='twitter:url' content='https://twitter.com/Altogic' />
