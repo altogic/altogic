@@ -56,7 +56,8 @@ function MyApp({ Component, pageProps }) {
           content='Disscusy is a forum app where people can share their thoughts and ideas, follow each others and have fun.'
         />
         <meta property='og:type' content='article' />
-        <meta property='og:image' content='/og-meta-alpha.png' />
+        <meta property='og:image' content='https://www.disscusy.com/og-meta-alpha.png' />
+
         <meta
           name='twitter:card'
           content='Disscusy is a forum app where people can share their thoughts and ideas, follow each others and have fun.'
@@ -69,7 +70,7 @@ function MyApp({ Component, pageProps }) {
           name='twitter:description'
           content='Disscusy is a forum app where people can share their thoughts and ideas, follow each others and have fun.'
         />
-        <meta name='twitter:image' content='/og-meta-alpha.png' />
+        <meta name='twitter:image' content='https://www.disscusy.com/og-meta-alpha.png' />
       </Head>
       <PoweredByAltogic />
       <CredentialProvider>
