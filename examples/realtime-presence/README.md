@@ -8,9 +8,9 @@ Click [here](https://realtime-ten.vercel.app/) to access the live demo!
 
 ## Introduction
 
-The realtime presence app is a react application that is using Altogic's realtime features to emit mouse movements of users joined in a channel. Each user first joins to a channel called **presence** with a username and an automatically assigned mouse color. Following the channel join the mouse movements of the user is emitted to the **presence** channel and all users that are a member of this channel receive each other's mouse movements. 
+The realtime presence app is a react application that is using Altogic's realtime features to emit mouse movements of users joined in a channel. Each user first joins to a channel called **presence** with a username and an automatically assigned mouse color. Following the channel join, the mouse movements of the user is emitted to the **presence** channel and all users that are a member of this channel start receiving each other's mouse movements. 
 
-When joined to the channel, the users can change their mouse color and leave the channel.
+When joined to the channel, the users can also change their mouse color and leave the channel.
 
 #### Joining the channel
 
@@ -74,7 +74,7 @@ altogic.realtime.on('track', this.trackMember);
 
 ## Prerequisites
 
-To run your own version of this app, after cloning this repository to your local development environment, you need to create a new app in [Altogic](https://www.altogic.com) and get your client key from the home view. **Please make sure that the client key does not enforce any sessions, meaning that your users will not be asked to sign up for an account to this simple realtime app.**
+To run your own version of this app, after cloning this repository to your local development environment, you need to create a new app in [Altogic](https://www.altogic.com) and get your client key from the home view. **Please make sure that the client key does not enforce any sessions, meaning that your users will not be asked to sign up for an account.**
 
 ![clientkey](./public/clientkey.png)
 
@@ -88,5 +88,5 @@ To run your own version of this app, after cloning this repository to your local
 
 ## Contribution
 
-Your feedback and contributions are welcome! Please open a pull request for contributions.
+Your feedback and contributions are welcome! Please open a pull request to contribute.
 

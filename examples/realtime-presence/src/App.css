@@ -17,8 +17,42 @@ body {
 .channel {
   display: flex;
   background-color: white;
-  height: 100px;
+  height: 130px;
   justify-content: center;
+}
+
+.inputArea {  
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.membersArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.membersHolder {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+}
+
+.member {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid black; 
+}
+
+.member:nth-of-type(n+2) {
+  margin-left: -10px;
 }
 
 .presence {
@@ -30,10 +64,41 @@ body {
 }
 
 .marginTop {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .cursor {
   width: 30px;
   transition: all ease;
+}
+
+.button {
+  border: 1px solid #0066cc;
+  background-color: #0099cc;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+
+.button:hover {
+  border: 1px solid #0099cc;
+  background-color: #00aacc;
+  color: #ffffff;
+}
+
+.button:disabled,
+.button[disabled]{
+  border: 1px solid #999999;
+  background-color: #e7e7e7;
+  color: #a3a2a2;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 8px 20px;
+  margin: 0 0;
+  display: inline-block;
+  border: 1px solid #0066cc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }

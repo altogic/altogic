@@ -177,20 +177,16 @@ class App extends React.PureComponent {
 	}
 
 	renderChannel() {
-		const { joined, username, color, members, infoColor, channelInfo } =
-			this.state;
+		const { joined, username, color, infoColor, channelInfo } = this.state;
 
 		if (joined) {
 			return (
 				<div className="channel">
 					<div className="marginTop">
-						Username:&nbsp;
-						<strong>
-							<span style={{ color: `${color}` }}>{username}</span>
-						</strong>
 						<input
 							type="button"
 							value="Leave"
+							className="button"
 							disabled={!username || username.length <= 2}
 							onClick={() => {
 								altogic.realtime.leave('presence');
@@ -207,6 +203,7 @@ class App extends React.PureComponent {
 						<input
 							type="button"
 							value="Update member data"
+							className="button"
 							onClick={() => {
 								let newColor =
 									colors[Math.floor(Math.random() * colors.length)];
@@ -221,33 +218,35 @@ class App extends React.PureComponent {
 								this.setState({ color: newColor });
 							}}
 						/>
-						<div style={{ display: 'flex' }}>
-							<div style={{ flexGrow: 1 }}>
-								<strong>Total members: {members.length}</strong>
+						<div className="membersArea marginTop">{this.renderMembers()}</div>
+						{channelInfo && (
+							<div
+								className="membersArea marginTop"
+								style={{ color: infoColor }}
+							>
+								{channelInfo}
 							</div>
-							<div style={{ flexGrow: 1 }}>
-								<strong style={{ color: infoColor }}>{channelInfo}</strong>
-							</div>
-						</div>
+						)}
 					</div>
 				</div>
 			);
 		} else {
 			return (
 				<div className="channel">
-					<div className="marginTop">
-						Username:&nbsp;
+					<div className="inputArea marginTop">
 						<input
 							type="text"
 							value={username}
 							onChange={(event) => {
-								this.setState({ username: event.target.value });
+								this.setState({ username: event.target.value.trim() });
 							}}
 							style={{ marginRight: '10px' }}
+							placeholder="Username"
 						/>
 						<input
 							type="button"
 							value="Join"
+							className="button"
 							disabled={!username || username.length <= 2}
 							onClick={async () => {
 								altogic.realtime.updateProfile({
@@ -279,6 +278,37 @@ class App extends React.PureComponent {
 				</div>
 			);
 		}
+	}
+
+	renderMembers() {
+		const { members } = this.state;
+
+		return (
+			<div className="membersHolder">
+				{members.map((entry) => {
+					return (
+						<div
+							className="member"
+							style={{
+								backgroundColor: `${entry.color}`,
+								color: `${this.getContrastYIQ(entry.color)}`,
+							}}
+						>
+							{entry.username.substring(0, 2).toUpperCase()}
+						</div>
+					);
+				})}
+			</div>
+		);
+	}
+
+	getContrastYIQ(hexcolor) {
+		hexcolor = hexcolor.replace('#', '');
+		var r = parseInt(hexcolor.substr(0, 2), 16);
+		var g = parseInt(hexcolor.substr(2, 2), 16);
+		var b = parseInt(hexcolor.substr(4, 2), 16);
+		var yiq = (r * 299 + g * 587 + b * 114) / 1000;
+		return yiq >= 128 ? 'black' : 'white';
 	}
 
 	renderPresence() {
