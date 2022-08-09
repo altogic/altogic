@@ -9,13 +9,13 @@ const Provider = () => {
       <div>
         <p className='text-sm font-medium text-slate-700 tracking-[-0.4px]'>Sign in with</p>
 
-        <div className='mt-1 grid grid-cols-2 gap-3'>
-          {/* <SocialLoginButton
+        <div className='mt-1 grid grid-cols-3 gap-3'>
+          <SocialLoginButton
             Icon='Facebook'
             onClick={() => {
               authenticateWithProvider('facebook')
             }}
-          ></SocialLoginButton> */}
+          ></SocialLoginButton>
 
           <SocialLoginButton
             Icon='Google'

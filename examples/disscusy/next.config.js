@@ -13,6 +13,7 @@ const nextConfig = {
       'scontent-ord5-1.xx.fbcdn.net',
       'scontent-ord5-1.xx.fbcdn.net',
       'avatars.githubusercontent.com',
+      'platform-lookaside.fbsbx.com',
     ],
   },
 }
