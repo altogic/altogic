@@ -1,7 +1,5 @@
 # React Saas starter with Altogic and Stripe
 
-React Saas start with Altogic and Stripe
-
 ### Introduction
 
 In this part of the tutorial, we will build the front end with React and develop the pricing, subscriptions, invoices, account, payment success, and cancel pages to ensure an easy, fast, and best way of payment processing.
@@ -44,4 +42,6 @@ We will also use the same project structure as in the **Altogic + React Authenti
 
 ### Contribution
 
-All the feedback and contributions are welcome! Feel free to open a pull request to contribute.
+All the feedback and contributions are welcome!
+
+Feel free to open a pull request to contribute.
