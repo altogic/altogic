@@ -194,6 +194,27 @@ export function Signup() {
                   </div>
                 </form>
               </div>
+              <div className="mt-6">
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center ">
+                    <div className="w-full border-gray-300 justify-around flex">
+                      {" "}
+                      <span>
+                        <span className="relative bg-white px-2 text-sm text-gray-500">
+                          Already have an account?
+                          <a
+                            className="text-gray-800 hover:text-gray-900 cursor-pointer"
+                            href="/login"
+                          >
+                            {" "}
+                            Sign in
+                          </a>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

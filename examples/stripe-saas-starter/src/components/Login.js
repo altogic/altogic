@@ -43,13 +43,7 @@ export function Login() {
                 Sign in to your account
               </h2>
               <p className="mt-2 text-sm text-gray-600">
-                Or{" "}
-                <a
-                  href="#/githubsssss"
-                  className="font-medium text-gray-700 hover:text-gray-900"
-                >
-                  start your 14-day free trial
-                </a>
+                Welcome to Saas starter kit
               </p>
             </div>
             {errors && ( // If errors is not null or undefined
@@ -188,6 +182,27 @@ export function Login() {
                     </button>
                   </div>
                 </form>
+              </div>
+              <div className="mt-6">
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center ">
+                    <div className="w-full border-gray-300 justify-around flex">
+                      {" "}
+                      <span>
+                        <span className="relative bg-white px-2 text-sm text-gray-500">
+                          Don't you have an account?
+                          <a
+                            className="text-gray-800 hover:text-gray-900 cursor-pointer"
+                            href="/signup"
+                          >
+                            {" "}
+                            Sign up
+                          </a>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
