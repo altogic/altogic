@@ -34,7 +34,7 @@ We will also use the same project structure as in the **Altogic + React Authenti
 
 ### Learn more
 
-- [Written documentation](http://www.altogic.com/blog/build-your-react-saas-starter-with-altogic-and-stripe) - learn more about Stripe integration and Altogic.
+- [Written tutorial](http://www.altogic.com/blog/build-your-react-saas-starter-with-altogic-and-stripe) - learn more about Stripe integration and Altogic.
 - [Altogic Client API Reference](https://clientapi.altogic.com/v2.0.0/modules.html) - learn about Altogic Client Library features
 - [Altogic Docs](https://docs.altogic.com/) - learn about how to design your backend in Altogic
 - [Discord community](https://discord.gg/ERK2ssumh8) - meet with fellow Altogic developers
@@ -42,6 +42,4 @@ We will also use the same project structure as in the **Altogic + React Authenti
 
 ### Contribution
 
-All the feedback and contributions are welcome!
-
-Feel free to open a pull request to contribute.
+All the feedback and contributions are welcome! Feel free to open a pull request to contribute.
