@@ -27,8 +27,8 @@ We will also use the same project structure as in the **Altogic + React Authenti
 
 ### Preview
 
-![Home page](/screenshots/home.png)
-![Pricing page](/screenshots/pricing.png)
+![Home page](./screenshots/home.png)
+![Pricing page](./screenshots/pricing.png)
 
 ### Learn more
 
