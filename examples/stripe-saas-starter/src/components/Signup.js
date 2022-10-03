@@ -34,7 +34,7 @@ export function Signup() {
       console.log("Email verification status:", user.emailVerified);
       navigate("/verification");
     } else {
-      navigate("/account");
+      navigate("/");
     }
   }
 

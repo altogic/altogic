@@ -31,7 +31,7 @@ export function Login() {
     setUser(user ?? null);
     setSession(session ?? null);
 
-    navigate("/account");
+    navigate("/");
   }
   return (
     <div>

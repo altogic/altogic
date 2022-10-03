@@ -1,10 +1,12 @@
 import React from "react";
 import { altogic } from "../helpers/altogic";
 import { useAuth } from "../contexts/Auth";
+import { useNavigate } from "react-router-dom";
 
 export function Subscriptions() {
   const [subscriptions, setSubscriptions] = React.useState([]);
   const { setUser } = useAuth();
+  const navigate = useNavigate();
 
   async function getSubscriptions() {
     const response = await altogic.endpoint.get("subscription/list");
@@ -17,6 +19,9 @@ export function Subscriptions() {
   async function handleCancelSubscription(subscriptionId) {
     const response = await altogic.endpoint.delete("subscription");
     setUser(response);
+    getSubscriptions();
+    // navigate to pricing page
+    navigate("/pricing");
   }
 
   // call getSubscriptions function on component mount
