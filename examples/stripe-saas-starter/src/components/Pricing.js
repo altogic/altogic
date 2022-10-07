@@ -23,13 +23,13 @@ export function Pricing() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div className="bg-gradient-to-bl from-indigo-500 via-purple-500 to-pink-500">
+    <div className="bg-white">
       <div className="max-w-7xl mx-auto py-24 px-4 sm:px-6 lg:px-8">
         <div className="sm:flex sm:flex-col sm:align-center">
-          <h1 className="text-5xl font-extrabold text-white sm:text-center">
+          <h1 className="text-5xl font-extrabold text-gray-900 sm:text-center">
             Choose your plan
           </h1>
-          <p className="mt-5 text-xl text-white sm:text-center">
+          <p className="mt-5 text-xl text-gray-500 sm:text-center">
             We've got the right plan for you. Choose from our monthly or daily
             plan and get started today.
           </p>
@@ -41,17 +41,17 @@ export function Pricing() {
               className="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200"
             >
               <div className="p-6">
-                <h2 className="text-lg leading-6 font-medium text-white">
+                <h2 className="text-lg leading-6 font-medium text-gray-900">
                   {plan.nickname}
                 </h2>
-                <p className="mt-4 text-sm text-white">
+                <p className="mt-4 text-sm text-gray-500">
                   Start small and grow your business with our daily plan.
                 </p>
                 <p className="mt-8">
-                  <span className="text-4xl font-extrabold text-white">
+                  <span className="text-4xl font-extrabold text-gray-900">
                     ${plan.unit_amount / 100}
                   </span>{" "}
-                  <span className="text-base font-medium text-white">
+                  <span className="text-base font-medium text-gray-500">
                     / {plan.recurring.interval}
                   </span>
                 </p>
@@ -62,7 +62,7 @@ export function Pricing() {
                   onClick={() => {
                     subscription(plan.id);
                   }}
-                  className="flex justify-center mt-8 w-full bg-indigo-800 border border-indigo-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900 hover:cursor-pointer"
+                  className="flex justify-center mt-8 w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900 hover:cursor-pointer"
                 >
                   Buy {plan.nickname}
                 </a>
@@ -77,7 +77,7 @@ export function Pricing() {
           <h1 className="text-5xl font-extrabold text-gray-900 sm:text-center">
             Test Credit Card
           </h1>
-          <p className="mt-5 text-xl text-white sm:text-center">
+          <p className="mt-5 text-xl text-gray-500 sm:text-center">
             Use this test credit card to test your payment integration.
           </p>
           <div className="mt-8">
