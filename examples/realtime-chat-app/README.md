@@ -2,7 +2,7 @@
 
 ## Previews
 
-You can see the preview of the app here: [https://altogic.github.io/whatsapp/](https://altogic.github.io/whatsapp/)
+You can see the preview of the app here: [https://realtime-chat-bay.vercel.app](https://realtime-chat-bay.vercel.app)
 
 ### Home Page
 
