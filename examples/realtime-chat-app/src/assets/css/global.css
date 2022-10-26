@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html, body {
+		@apply h-full;
+	}
+	body {
+		@apply bg-app-background-light dark:bg-app-background-dark text-primary-light dark:text-primary-dark;
+		@apply after:fixed after:-z-10 after:top-0 after:w-full after:bg-app-background-stripe-light after:dark:bg-app-background-stripe-dark after:h-[127px];
+	}
+	body:has(.modal.open) {
+		@apply overflow-hidden;
+	}
+	#root {
+		@apply fixed inset-0 grid;
+	}
+	#ReactSimpleImageViewer {
+		@apply bg-media-viewer-background-light dark:bg-media-viewer-background-dark;
+	}
+	#ReactSimpleImageViewer span {
+		@apply text-chevron-button-background-light dark:text-chevron-button-background-dark;
+	}
+	::-webkit-scrollbar {
+		height: 6px;
+		width: 6px;
+	}
+	/*    */
+	::-webkit-scrollbar-thumb {
+		@apply dark:bg-gray-800 bg-gray-300;
+	}
+	::-webkit-scrollbar-track {
+		@apply dark:bg-gray-700 bg-gray-50;
+	}
+	.dropdown, .my-shadow {
+		box-shadow: 0 2px 5px 0 rgba(11,20,26,.26),0 2px 10px 0 rgba(11,20,26,.16);
+	}
+	.modal-shadow {
+		box-shadow: 0 17px 50px 0 rgba(11,20,26,.19),0 12px 15px 0 rgba(11,20,26,.24);
+	}
+}

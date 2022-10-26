@@ -1,0 +1,15 @@
+export { default as MessageIcon } from './MessageIcon';
+export { default as SearchIcon } from './SearchIcon';
+export { default as LeftArrow } from './LeftArrow';
+export { default as VerticalDotsIcon } from './VerticalDotsIcon';
+export { default as SendIcon } from './SendIcon';
+export { default as EmojiIcon } from './EmojiIcon';
+export { default as ImageIcon } from './ImageIcon';
+export { default as CameraIcon } from './CameraIcon';
+export { default as PersonIcon } from './PersonIcon';
+export { default as PenIcon } from './PenIcon';
+export { default as CheckIcon } from './CheckIcon';
+export { default as WelcomeIcon } from './WelcomeIcon';
+export { default as CloseIcon } from './CloseIcon';
+export { default as ArrowDownIcon } from './ArrowDownIcon';
+export { default as PersonWithPlusIcon } from './PersonWithPlusIcon';
