@@ -1,6 +1,6 @@
 # Social Card APP with React & Altogic
 
-You can see the preview of the app here: [https://linktree-alpha.vercel.app](https://linktree-alpha.vercel.app)
+You can see the preview of the app here: [https://linktree-app-zeta.vercel.app/](https://linktree-app-zeta.vercel.app/)
 
 ## Previews
 ![picture alt](public/github/preview.png 'Preview image of the app')
