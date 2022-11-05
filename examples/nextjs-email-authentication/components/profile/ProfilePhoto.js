@@ -50,6 +50,7 @@ function ProfilePhoto(props) {
           .bucket("profilePictures")
           .upload(fileName, image, {
             createBucket: true,
+            isPublic: true
           });
       }
       if (resultOfUpload.data) {
