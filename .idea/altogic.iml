@@ -1,12 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="WEB_MODULE" version="4">
-  <component name="NewModuleRootManager">
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/temp" />
-      <excludeFolder url="file://$MODULE_DIR$/.tmp" />
-      <excludeFolder url="file://$MODULE_DIR$/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/ios/.symlinks/plugins/shared_preferences_ios/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/ios/.symlinks/plugins/shared_preferences_ios/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/ios/.symlinks/plugins/shared_preferences_ios/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/ios/.symlinks/plugins/uni_links/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/ios/.symlinks/plugins/uni_links/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/ios/.symlinks/plugins/uni_links/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/flutter_auth_example/ios/.symlinks/plugins/url_launcher_ios/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/flutter_auth_example/ios/.symlinks/plugins/url_launcher_ios/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/flutter_auth_example/ios/.symlinks/plugins/url_launcher_ios/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/macos/Flutter/ephemeral/.symlinks/plugins/path_provider_macos/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/macos/Flutter/ephemeral/.symlinks/plugins/path_provider_macos/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/macos/Flutter/ephemeral/.symlinks/plugins/path_provider_macos/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/macos/Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/macos/Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/macos/Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/macos/Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/macos/Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/macos/Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/macos/Flutter/ephemeral/.symlinks/plugins/shared_preferences_macos/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/macos/Flutter/ephemeral/.symlinks/plugins/shared_preferences_macos/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/macos/Flutter/ephemeral/.symlinks/plugins/shared_preferences_macos/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/flutter_auth_example/ios/.symlinks/plugins/app_links/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/flutter_auth_example/ios/.symlinks/plugins/app_links/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/flutter_auth_example/ios/.symlinks/plugins/app_links/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/windows/flutter/ephemeral/.plugin_symlinks/app_links_windows/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/windows/flutter/ephemeral/.plugin_symlinks/app_links_windows/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/windows/flutter/ephemeral/.plugin_symlinks/app_links_windows/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/ios/.symlinks/plugins/url_launcher_ios/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/ios/.symlinks/plugins/url_launcher_ios/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/ios/.symlinks/plugins/url_launcher_ios/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/windows/flutter/ephemeral/.plugin_symlinks/shared_preferences_windows/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/windows/flutter/ephemeral/.plugin_symlinks/shared_preferences_windows/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/windows/flutter/ephemeral/.plugin_symlinks/shared_preferences_windows/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/macos/Flutter/ephemeral/.symlinks/plugins/shared_preferences_macos/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/macos/Flutter/ephemeral/.symlinks/plugins/shared_preferences_macos/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/macos/Flutter/ephemeral/.symlinks/plugins/shared_preferences_macos/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/flutter_auth_example/ios/.symlinks/plugins/shared_preferences_ios/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/flutter_auth_example/ios/.symlinks/plugins/shared_preferences_ios/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/flutter_auth_example/ios/.symlinks/plugins/shared_preferences_ios/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/ios/.symlinks/plugins/uni_links/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/ios/.symlinks/plugins/uni_links/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/ios/.symlinks/plugins/uni_links/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/linux/flutter/ephemeral/.plugin_symlinks/shared_preferences_linux/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/linux/flutter/ephemeral/.plugin_symlinks/shared_preferences_linux/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/linux/flutter/ephemeral/.plugin_symlinks/shared_preferences_linux/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/ios/.symlinks/plugins/url_launcher_ios/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/ios/.symlinks/plugins/url_launcher_ios/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/ios/.symlinks/plugins/url_launcher_ios/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/flutter_auth_example/ios/.symlinks/plugins/shared_preferences_ios/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/flutter_auth_example/ios/.symlinks/plugins/shared_preferences_ios/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/flutter_auth_example/ios/.symlinks/plugins/shared_preferences_ios/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/macos/Flutter/ephemeral/.symlinks/plugins/path_provider_macos/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/macos/Flutter/ephemeral/.symlinks/plugins/path_provider_macos/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/macos/Flutter/ephemeral/.symlinks/plugins/path_provider_macos/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/windows/flutter/ephemeral/.plugin_symlinks/shared_preferences_windows/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/windows/flutter/ephemeral/.plugin_symlinks/shared_preferences_windows/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/windows/flutter/ephemeral/.plugin_symlinks/shared_preferences_windows/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/flutter_auth_example/ios/.symlinks/plugins/url_launcher_ios/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/flutter_auth_example/ios/.symlinks/plugins/url_launcher_ios/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/flutter_auth_example/ios/.symlinks/plugins/url_launcher_ios/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/flutter_auth_example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/flutter_auth_example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/flutter_auth_example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/linux/flutter/ephemeral/.plugin_symlinks/shared_preferences_linux/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/linux/flutter/ephemeral/.plugin_symlinks/shared_preferences_linux/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/linux/flutter/ephemeral/.plugin_symlinks/shared_preferences_linux/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/ios/.symlinks/plugins/shared_preferences_ios/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/ios/.symlinks/plugins/shared_preferences_ios/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/ios/.symlinks/plugins/shared_preferences_ios/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/flutter_auth_example/ios/.symlinks/plugins/app_links/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/flutter_auth_example/ios/.symlinks/plugins/app_links/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/flutter_auth_example/ios/.symlinks/plugins/app_links/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_examples/altogic_flutter_example/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/.dart_tool" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Dart SDK" level="project" />
+    <orderEntry type="library" name="Dart Packages" level="project" />
   </component>
 </module>

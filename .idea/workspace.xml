@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8ef627bc-6f01-4b5e-a7a1-ff9b2d38dbff" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/utils/lorem.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/redirect/change_email.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dart_examples/flutter_auth_example/github/auth-flow.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/altogic.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/altogic.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/controller/response_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/controller/response_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/controller/user_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/controller/user_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/models/altogic_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/models/altogic_user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/models/market.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/models/market.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/service/auth_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/service/auth_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/service/cache_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/service/cache_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/service/db_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/service/db_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/service/endpoints_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/service/endpoints_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/service/file_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/service/file_manager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/service/queue_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/service/queue_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/service/realtime.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/service/realtime.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/service/storage_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/service/storage_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/service/task_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/service/task_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/authorization/cases.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/authorization/cases.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/cache.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/cache.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/database/cases.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/database/cases.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/database/database.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/database/database.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/endpoint.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/endpoint.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/main_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/main_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/realtime/relatime_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/realtime/relatime_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/redirect/magic_link_redirect.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/redirect/magic_link_redirect.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/redirect/password_reset_redirect.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/redirect/password_reset_redirect.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/redirect/provider_redirect.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/redirect/provider_redirect.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/redirect/verify_mail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/redirect/verify_mail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/storage/bucket_cases.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/storage/bucket_cases.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/storage/bucket_manager_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/storage/bucket_manager_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/storage/file_cases.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/storage/file_cases.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/storage/file_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/storage/file_manager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/storage/storage_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/pages/storage/storage_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/widgets/base_viewer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/widgets/base_viewer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/widgets/case.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/widgets/case.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/widgets/documentation/base.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/widgets/documentation/base.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/widgets/input.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/lib/src/view/widgets/input.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dart_examples/altogic_flutter_example/test/widget_test.dart" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/dart_examples/altogic_flutter_example" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="449203d5-b170-4a04-a4c7-32897740d59d" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="main" />
+      </list>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2HG8FuDQ8pElQuYSsyiRuW8XiiL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "io.flutter.reload.alreadyRun": "true",
+    "last_opened_file_path": "/Users/altogic/altogic/altogic",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "show.migrate.to.gradle.popup": "false"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8ef627bc-6f01-4b5e-a7a1-ff9b2d38dbff" name="Changes" comment="" />
+      <created>1667899959670</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1667899959670</updated>
+      <workItem from="1667899960922" duration="1828000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
