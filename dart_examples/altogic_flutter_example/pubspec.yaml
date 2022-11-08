@@ -1,0 +1,44 @@
+name: altogic_flutter_example
+description: Altogic example, test and documentation application. This app shows usage of all methods interactively and shows example codes.
+
+publish_to: 'none'
+
+version: 1.0.1+2
+
+environment:
+  sdk: '>=2.18.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  string_scanner: ^1.2.0
+  path_provider: ^2.0.11
+  altogic: ^0.0.9+1
+  url_strategy: ^0.2.0
+  file_picker: ^5.2.2
+  url_launcher: ^6.1.6
+
+dev_dependencies:
+
+  flutter_lints: ^2.0.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/gh.png
+    - assets/pub.png
+    - assets/pr.png
+  fonts:
+    - family: Code
+      fonts:
+        - asset: assets/fonts/code/SourceCodePro-Regular.ttf
+    - family: WorkSans
+      fonts:
+        - asset: assets/fonts/work_sans/WorkSans-Bold.ttf
+          style: normal
+          weight: 700
+        - asset: assets/fonts/work_sans/WorkSans-Italic.ttf
+          style: italic
+        - asset: assets/fonts/work_sans/WorkSans-Regular.ttf
+          style: normal
