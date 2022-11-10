@@ -1,6 +1,5 @@
 import 'package:altogic/altogic.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_auth_example/pages/email_verification_redirect.dart';
 import 'package:flutter_auth_example/pages/home_page.dart';
 import 'package:flutter_auth_example/pages/magic_link.dart';
 
@@ -14,7 +13,8 @@ void main() async {
   altogic.auth.authStateChanges.listen((event) {
     debugPrint("Auth State : $event");
   });
-  await altogic.restoreLocalAuthSession();
+
+  await altogic.restoreAuthSession();
   runApp(const AltogicAuthExampleApp());
 }
 
@@ -25,34 +25,19 @@ class AltogicAuthExampleApp extends StatefulWidget {
   State<AltogicAuthExampleApp> createState() => _AltogicAuthExampleAppState();
 }
 
+
 class _AltogicAuthExampleAppState extends AltogicState<AltogicAuthExampleApp> {
   @override
-  void onEmailVerificationLink(
-      BuildContext? context, EmailVerificationRedirect redirect) {
-    if (context != null) {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (c) =>
-                  EmailVerificationRedirectPage(redirect: redirect)));
-    }
-  }
-
-  @override
   void onMagicLink(BuildContext? context, MagicLinkRedirect redirect) {
+
     if (context != null) {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (c) => MagicLinkRedirectPage(redirect: redirect)));
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (c) => MagicLinkRedirectPage(redirect: redirect)));
     }
   }
 
   @override
-  void onOauthProviderLink(
-      BuildContext? context, OauthRedirect redirect) async {
-    await altogic.auth.getAuthGrant(redirect.token);
-  }
+  void onEmailChangeLink(BuildContext? context, ChangeEmailRedirect redirect) {}
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +49,31 @@ class _AltogicAuthExampleAppState extends AltogicState<AltogicAuthExampleApp> {
         '/homepage': (c) => const HomePage(),
         '/sign-in': (c) => const SignInPage(),
         '/sign-up': (c) => const SignUpPage(),
+      },
+      onGenerateInitialRoutes: (String initialRoute) {
+        var uri = Uri.parse(initialRoute);
+
+        if (uri.path == "/homepage") {
+          if (altogic.auth.currentState.isLoggedIn) {
+            return [
+              MaterialPageRoute(
+                  builder: (c) => const HomePage(),
+                  settings: const RouteSettings(name: "/homepage"))
+            ];
+          } else {
+            return [
+              MaterialPageRoute(
+                  builder: (c) => const SignInPage(),
+                  settings: const RouteSettings(name: "/sign-in"))
+            ];
+          }
+        }
+
+        return [
+          MaterialPageRoute(
+            builder: (context) => const SplashScreen(),
+          ),
+        ];
       },
     );
   }

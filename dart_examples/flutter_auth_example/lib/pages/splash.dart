@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:altogic/altogic.dart';
 import 'package:flutter/material.dart';
 
 import '../altogic.dart';
@@ -13,10 +14,18 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   Future<void> init() async {
-    await Future.delayed(const Duration(milliseconds: 500));
+    if (mounted) {
+      var openedRedirect = await AltogicState.applicationInitialRedirect;
+      if (openedRedirect != null) {
+        return;
+      }
+    }
     final user = altogic.auth.currentState.user;
+
     if (user != null) {
-      if (mounted) Navigator.pushReplacementNamed(context, '/homepage');
+      if (mounted) {
+        Navigator.pushReplacementNamed(context, '/homepage');
+      }
     } else {
       if (mounted) Navigator.pushReplacementNamed(context, '/sign-in');
     }
@@ -24,13 +33,16 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    init();
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      init();
+    });
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
+
     return const Scaffold(
       body: Center(
         child: CircularProgressIndicator(),

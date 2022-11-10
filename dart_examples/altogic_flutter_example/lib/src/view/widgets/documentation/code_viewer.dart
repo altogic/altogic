@@ -304,7 +304,7 @@ class DartCodeViewer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final codeTextStyle = Theme.of(context).textTheme.bodyText1;
+    final codeTextStyle = Theme.of(context).textTheme.bodyLarge;
 
     final lightModeOn = Theme.of(context).brightness == Brightness.light;
 

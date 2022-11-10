@@ -62,7 +62,7 @@ Click + New app and follow the instructions;
 3. Choose the deployment location.
 4. And select your free execution environment pricing plan.
 
-![Create App](./github/2-create-app.png)
+![Create App](./github/create_app.png)
 
 Then click Next and select Basic Authentication template. This template is creates a default user model for your app
 which is required by [Altogic Client Library](https://github.com/altogic/altogic-js) to store user data and manage
@@ -71,7 +71,7 @@ authentication.
 Then click Next and select Basic Authentication template. This template is based on session authentication and highly
 recommended to secure your apps.
 
-![Choose Template](./github/3-choose-template.png)
+![Choose Template](./github/select_template.png)
 
 Then click Next to confirm and create an app.
 
@@ -94,9 +94,9 @@ Now, we can install the Altogic client library to our Flutter project to connect
 ```sh
 flutter create altogic_auth
 
-cd altogic auth
+cd altogic_auth
 
-flutter pub add altogic_flutter
+flutter pub add altogic
 ```
 
 Let’s create a altogic.dart file inside of the lib/ directory.
@@ -120,7 +120,7 @@ AltogicClient altogic = createClient(envUrl, clientKey);
 
 ### Storing Session
 
-`altogic_flutter` package provider a session storage implementation that uses `shared_preferences`.
+`altogic` package provider a session storage implementation that uses `shared_preferences`.
 
 If you want to use own local storage methods yo have to create your own `ClientStorage` implementation. You can specify
 client storage with the third parameter of `createClient`, `ClientOptions` options'.
@@ -132,7 +132,9 @@ to check this:
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await altogic.restoreLocalAuthSession();
+  // Restores the session from the local storage.
+  // And restores the session if apps opened with redirect url.
+  await altogic.restoreAuthSession();
 
   runApp(const AltogicAuthExampleApp());
 }
@@ -211,10 +213,9 @@ We can get the current auth session with `altogic.auth.currentState`.
 `````dart
 Future<void> init() async {
   await Future.delayed(const Duration(milliseconds: 500));
+  
 
-  final session = altogic.auth.currentState.session;
-
-  if (session != null) {
+  if (altogic.auth.currentState.isLoggedIn) {
     // Navigate to Home page.
     if (mounted) Navigator.pushNamed(context, '/home');
   } else {
@@ -317,8 +318,7 @@ For example, if you want to use `altogic://` as your schema, you should define `
 URL in
 Altogic Designer.
 
-![Redirect URL](
-https://raw.githubusercontent.com/altogic/altogic-flutter/master/assets/redirect-url.png)
+![Redirect URL](./github/redirect.png)
 
 ### iOS
 

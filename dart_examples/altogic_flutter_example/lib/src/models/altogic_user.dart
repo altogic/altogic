@@ -35,8 +35,8 @@ class AltogicUser extends User {
       providerId: user.providerUserId,
       signUpAt: user.signUpAt,
       addresses:
-          ((user.otherFields['addresses'] as List?) ?? []).cast<String>(),
-      market: user.otherFields['market'] as String?,
+          ((user['addresses'] as List?) ?? []).cast<String>(),
+      market: user['market'] as String?,
       name: user.name,
       password: user.password,
       profilePicture: user.profilePicture,

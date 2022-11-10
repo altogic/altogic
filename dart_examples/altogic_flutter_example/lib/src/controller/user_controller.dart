@@ -31,7 +31,7 @@ class CurrentUserController with ChangeNotifier {
   }
 
   Future<void> setUser() async {
-    await altogic.restoreLocalAuthSession();
+    await altogic.restoreAuthSession();
     var s = await altogic.auth.getSession();
     if (s != null) {
       var u = await altogic.auth.getUserFromDB();

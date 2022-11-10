@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:altogic/altogic.dart';
 import 'package:altogic_flutter_example/main.dart';
 import 'package:altogic_flutter_example/src/controller/user_controller.dart';
@@ -111,7 +113,9 @@ class AuthService extends ServiceBase {
 
   Future<void> signInWithProvider(String provider) async {
     response.loading();
-    var res = await altogic.auth.signInWithProviderFlutter(provider);
+    var completer = Completer<bool>();
+    altogic.auth.signInWithProvider(provider, completer);
+    var res = await completer.future;
     response.success('$provider opened : $res');
   }
 

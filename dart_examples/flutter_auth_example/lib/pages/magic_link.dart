@@ -11,9 +11,9 @@ import '../altogic.dart';
 ///     --- 1.2 error get auth grant
 ///  --- 2 error link
 
-
 class MagicLinkRedirectPage extends StatefulWidget {
-  const MagicLinkRedirectPage({Key? key, required this.redirect}) : super(key: key);
+  const MagicLinkRedirectPage({Key? key, required this.redirect})
+      : super(key: key);
 
   final MagicLinkRedirect redirect;
 
@@ -31,6 +31,11 @@ class _MagicLinkRedirectState extends State<MagicLinkRedirectPage> {
         setState(() {
           userState = value;
         });
+      });
+      Timer(const Duration(seconds: 3), () {
+        if (mounted) {
+          Navigator.pushNamed(context, '/homepage');
+        }
       });
     }
     super.initState();
@@ -52,9 +57,6 @@ class _MagicLinkRedirectState extends State<MagicLinkRedirectPage> {
                             child: Text(userState!.errors!.toString())),
                       if (userState!.user != null)
                         Builder(builder: (context) {
-                          Timer(const Duration(seconds: 3), () {
-                            Navigator.pushNamed(context, '/home');
-                          });
                           return SingleChildScrollView(
                             child: Text(
                                 "Routing home...\n\nYour Data:\n\n${userState!.user!.toJson()}"),
