@@ -118,35 +118,12 @@ AltogicClient altogic = createClient(envUrl, clientKey);
 > Replace envUrl and clientKey which is shown in the <strong>Home</strong> view
 > of [Altogic Designer](https://designer.altogic.com/).
 
-### Storing Session
-
-`altogic` package provider a session storage implementation that uses `shared_preferences`.
-
-If you want to use own local storage methods yo have to create your own `ClientStorage` implementation. You can specify
-client storage with the third parameter of `createClient`, `ClientOptions` options'.
-
-If the session is held in the local (the user is logged in before), you need to restore the auth session from the local
-to check this:
-
-```dart
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  // Restores the session from the local storage.
-  // And restores the session if apps opened with redirect url.
-  await altogic.restoreAuthSession();
-
-  runApp(const AltogicAuthExampleApp());
-}
-
-```
-
 ### Create an Application
 
 We should use a stateful widget and `AltogicState` when creating the application to take advantage of the various
 conveniences Altogic provides.
 
-`AltogicState` listens deep links and provides deep linking actions with methods that can be overriden.
+`AltogicState` listens deep links and provides deep linking actions with methods that can be override.
 
 ```dart
 
@@ -211,19 +188,121 @@ class _SplashScreenState extends State<SplashScreen> {
 We can get the current auth session with `altogic.auth.currentState`.
 
 `````dart
-Future<void> init() async {
-  await Future.delayed(const Duration(milliseconds: 500));
-  
+class _SplashScreenState extends State<SplashScreen> {
 
-  if (altogic.auth.currentState.isLoggedIn) {
-    // Navigate to Home page.
-    if (mounted) Navigator.pushNamed(context, '/home');
-  } else {
-    // Navigate to Login page.
-    if (mounted) Navigator.pushNamed(context, '/sign-up');
+
+  Future<void> init() async {
+    // If you want to show some beautiful things, show your splash screen for a while.
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    if (altogic.auth.currentState.isLoggedIn) {
+      // Navigate to Home page.
+      if (mounted) Navigator.pushNamed(context, '/profile');
+    } else {
+      // Navigate to Login page.
+      if (mounted) Navigator.pushNamed(context, '/sign-up');
+    }
+  }
+
+  @override
+  void initState() {
+    init();
+    super.initState();
   }
 }
 `````
+
+> If you don't want to show splash screen when if your user is logged in, getting `context` throws an error in this
+> case.
+> Because the ``context`` not available before the first build. You can ensure that the context is available by using
+> ``WidgetsBinding.instance.addPostFrameCallback((_) {})``.
+
+### Creating Sign-Up Page
+
+```dart
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({Key? key}) : super(key: key);
+
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AltogicInput(hint: 'Email Address', editingController: emailController),
+              AltogicInput(hint: 'Password', editingController: passwordController),
+              AltogicInput(hint: 'Name', editingController: nameController),
+              AltogicButton(body: 'Sign Up', onPressed: _signUp),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/sign-in');
+                },
+                child: const Text('Already have an account?'),
+              )
+            ]
+        ));
+  }
+
+
+  Future<void> _signUp() async {
+    // TODO: Implement sign up with altogic
+  }
+}
+```
+
+#### Implement Sign-Up
+
+```dart
+Future<void> _signUp() async {
+  var result = await altogic
+      .signUp(
+      emailController.text,
+      passwordController.text,
+      nameController.text);
+
+  if (result.errors != null) {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(
+        SnackBar(content: Text(result.errors.toJson().toString()))
+    );
+  } else {
+    // Now your user should have received an email. The email contains a verification link.
+    // We can show a dialog to say the user have to verify their email address.
+    showDialog(
+        context: context,
+        builder: (context) =>
+            AlertDialog(
+              title: const Text('Verify your email address'),
+              content: const Text('We have sent a verification email to your email address.'
+                  ' Please verify your email address.'),
+              actions: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text('OK'))
+              ],
+            ));
+  }
+}
+```
+
+> If "Confirm email addresses" is turned on in Altogic designer's
+> Authentication settings, ``result.user``  will not be null,
+> but ``result.session`` will be null. In other words, our user is not yet
+> ready to perform operations that require an auth session.
+> For this, the email verification process must be successful.
 
 ### Add routes to the application
 
@@ -241,93 +320,68 @@ Widget build(BuildContext context) {
     routes: {
       '/': (context) => const SplashScreen(),
       '/sign-up': (context) => const SignUpPage(),
-      '/home': (context) => const HomePage(),
     },
   );
 }
 ```
 
-### Creating Sign-Up Page
+**Now, we can run the application.**
+
+### Running Application
+
+If the session is held in the local (the user is logged in before), you need to restore the auth session from the local
+to check this:
 
 ```dart
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-  @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  // Restores the session from the local storage.
+  await altogic.restoreAuthSession();
+
+  // Run application
+  runApp(const AltogicAuthExampleApp());
 }
 
-class _SignUpPageState extends State<SignUpPage> {
-
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              AltogicInput(hint: 'Email Address', editingController: emailController),
-              AltogicInput(hint: 'Password', editingController: passwordController),
-              AltogicButton(body: 'Sign Up', onPressed: _signUp)
-            ]
-        ));
-  }
-
-
-  Future<void> _signUp() async {
-    // TODO: Implement sign up with altogic
-  }
-}
 ```
 
-#### Implement Sign-Up
+Run the application:
 
-```dart
-Future<void> _signUp() async {
-  var result = await altogic.signUp(emailController.text, passwordController.text);
-
-  if (result.errors != null) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(result.errors.toJson().toString())));
-  } else {
-    // Now your user should have received an email. The email contains a verification link.
-    // We can show a dialog to say the user have to verify their email address.
-
-  }
-}
+```bash
+flutter run
 ```
 
-> If "Confirm email addresses" is turned on in Altogic designer's
-> Authentication settings, ``result.user``  will not be null,
-> but ``result.session`` will be null. In other words, our user is not yet
-> ready to perform operations that require an auth session.
-> For this, the email verification process must be successful.
+## Deep Linking
 
-## Configure Deep Linking
+Altogic redirects the user to the **redirect url** in many authentication flow.
 
-### Define redirect URL
+For example, when the user clicks the "Verify Email" in the mail, Altogic redirects the user to the **redirect url**.
 
-We need to define a redirect URL in Altogic Designer. This URL will be used to redirect the user after the email
-verification link is opened.
+We can handle the redirection in the application by using deep linking.
 
-For the deep link used to open the application with links on Android and iOS, your links should have a custom schema.
+### Configure Deep Linking
+
+#### Define redirect URL
+
+We need to define a redirect URL in Altogic Designer. Altogic will redirect the user to the URL after the open email
+verification link.
+
+Your links should have a custom schema for the deep link used to open the application with Android and iOS.
 
 For example, if you want to use `altogic://` as your schema, you should define `altogic://host/path` as your redirect
-URL in
-Altogic Designer.
+URL in Altogic Designer.
 
 ![Redirect URL](./github/redirect.png)
 
-### iOS
+#### iOS
 
 Add your deep link configuration to `ìnfo.plist`
 
-In the example below our custom url scheme is ``altogic`` and our host is `com.flutter-auth`
-So URLs like ``altogic://com.flutter-auth/<path>`` opens with application.
+In the example below, our custom URL scheme is ``altogic``, and our host is `com.flutter-auth`. So URLs
+like ``altogic://com.flutter-auth/<path>`` opens the application.
 
 ````xml
+
 <dict>
     <key>FlutterDeepLinkingEnabled</key>
     <true/>
@@ -348,11 +402,12 @@ So URLs like ``altogic://com.flutter-auth/<path>`` opens with application.
 </dict>
 ````
 
-### Android
+#### Android
 
-Add your deep link configuration to your AndroidManifest.xml in activity
+Add your deep link configuration to your `<activity>` in AndroidManifest.xml
 
 ````xml
+
 <activity
         android:name=".MainActivity"
 >
@@ -369,13 +424,13 @@ Add your deep link configuration to your AndroidManifest.xml in activity
 </activity>
 ````
 
-## Handling DeepLink
+### Handling DeepLink
 
-If you use the ``AltogicState`` in root of the application, the state will be mounted if the application lifecyle is
-resumed. So when application resumed or opened with deep link, we can handle the link.
+If you use the ``AltogicState`` in the root of the application, the `State` will be mounted while the application
+lifecycle is resumed. So when the application is resumed or opened with the deep link, we can handle the link.
 
-When the application is opened with a deeplink, ``AltogicState`` cannot synchronously inform you with which link the
-application was opened. Instead, you can override methods to be called when the application is opened with a deep link.
+When the application opens by a deep link, ``AltogicState`` cannot synchronously inform you with which link the
+application was opened. Instead, you can override methods to be called when a deep link opens the application.
 
 Available methods to override: `onEmailVerificationLink`, `onMagicLink`, `onOauthProviderLink`, `onEmailChangeLink`
 , `onPasswordResetLink`.
@@ -404,7 +459,7 @@ class _AltogicAuthExampleAppState extends AltogicState<AltogicAuthExampleApp> {
 
 ### Email Verification
 
-When the application is opened with an email verification link, the ``onEmailVerificationLink`` method is called.
+When the application is opened by an email verification link, the ``onEmailVerificationLink`` method is called.
 
 ````dart
 @override
@@ -412,26 +467,23 @@ void onEmailVerificationLink(BuildContext? context, EmailVerificationRedirect re
   // When the application is opened with an email verification link,
   // We can navigate to the email verification page.
   if (context != null) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (c) =>
-                EmailVerificationRedirectPage(redirect: redirect)));
+    navigateTo((c) => EmailVerificationRedirectPage(redirect: redirect));
+    // or use your own navigation method
   }
 }
 ````
 
-> In this example, the context will not be null because the navigatorObserver is used.
+> The context will not be null in this example below because we used the `navigatorObserver`.
 
-### EmailVerificationRedirectPage
+#### EmailVerificationRedirectPage
 
-Email verification redirect link contains `action`, `status`, `access_token` parameters. Also `error` if any.
+The "email verification redirect URL" contains `action`, `status`, and `access_token` parameters. Also, `error` if any.
 
-If there is no error, the ``access_token`` parameter will not be null and an auth session and user information can be
-obtained with it.
+If there is no error, the ``access_token`` parameter will not be null, and an auth "session" and "user" can be gotten
+with `getAuthGrant`.
 
 `````dart
-Future<void> getAuthSession(BuildContext context) async {
+Future<void> getAuthSession() async {
   if (redirect.error == null) {
     // HANDLE ERROR CASE
   }
@@ -439,12 +491,12 @@ Future<void> getAuthSession(BuildContext context) async {
 }
 `````
 
-On our redirect page, we can get auth grant with ``redirect.token`` or handle errors.
-There are 3 possible states on this page (excluding pending auth grant).
+On our redirect page, we can get auth grant with ``redirect.token`` or handle errors. This page has three possible
+states (excluding pending auth grant).
 
-- Redirect link status is error: User deleted etc.
-- Redirect Link Success, getting auth grant return error: Token expired etc.
-- Everything success. User logged in.
+- Redirect link status is an error: User deleted etc.
+- Redirect link valid, getting auth grant return error: Token expired, etc.
+- Everything success. The user logged in.
 
 ````dart
 class EmailVerificationRedirectPage extends StatefulWidget {
@@ -463,19 +515,24 @@ class _EmailRedirectPageState extends State<EmailVerificationRedirectPage> {
 
   @override
   void initState() {
-    if (widget.redirect.error == null) {
-      altogic.auth.getAuthGrant(widget.redirect.token).then((value) {
-        setState(() {
-          userState = value;
-        });
-      });
-      if (value.user != null && value.session != null) {
-        Timer(const Duration(seconds: 3), () {
-          Navigator.pushNamed(context, '/home');
-        });
-      }
-    }
+    getAuthSession();
     super.initState();
+  }
+
+
+  Future<void> getAuthSession() async {
+    if (widget.redirect.error == null) {
+      // HANDLE ERROR CASE
+    }
+    var result = await altogic.getAuthSession(widget.redirect.token);
+    setState(() {
+      userState = result;
+    });
+    if (result.user != null && result.session != null) {
+      Timer(const Duration(seconds: 3), () {
+        Navigator.pushNamed(context, '/profile');
+      });
+    }
   }
 
   @override
@@ -511,31 +568,70 @@ class _EmailRedirectPageState extends State<EmailVerificationRedirectPage> {
 
 **Now we can open our email verification link.**
 
-**User is now verified.**
+**The user is now verified.**
 
-We were automatically logged in during verification.
-Then the user can sign-in with e-mail and password.
+Altogic automatically signs in after verification. Then the user can log in with an email and password.
 
-## Sign In
+## Creating Sign-In Page
 
-On our sign-in page, there is a text field for email and password and a button for sign-in.
-Let's add a function to our button.
+```dart
+class SignInPage extends StatefulWidget {
+  const SignInPage({Key? key}) : super(key: key);
 
-`````dart
-Future<void> _signIn() async {
-  var res = await altogic.auth
-      .signInWithEmail(emailController.text, passwordController.text);
-  if (res.errors != null) {
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('An Error Occurred :\n${res.errors}')));
-    }
+  @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+
+class _SignInPageState extends State<SignInPage> {
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AltogicInput(hint: 'Email Address', editingController: emailController),
+              AltogicInput(hint: 'Password', editingController: passwordController),
+              AltogicButton(body: 'Sign In', onPressed: _signIn),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/sign-up');
+                },
+                child: const Text('Don\'t have an account?'),
+              )
+            ]
+        ));
   }
-  if (res.user != null) {
-    if (mounted) Navigator.pushReplacementNamed(context, '/home');
+
+  Future<void> _signIn() async {
+    // TODO: Implement sign in with altogic
   }
 }
-`````
+
+```
+
+#### Implement Sign-In
+
+```dart
+Future<void> _signIn() async {
+  var result = await altogic.signIn(emailController.text, passwordController.text);
+
+  if (result.errors != null) {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(
+        SnackBar(content: Text(result.errors.toJson().toString()))
+    );
+  } else {
+    // Navigate to Home page.
+    Navigator.pushNamed(context, '/profile');
+  }
+}
+```
 
 **Our user is ready.**
 
@@ -546,12 +642,223 @@ We can sign out with ``altogic.auth.signOut()``.
 `````dart
 Future<void> _signOut() async {
   await altogic.auth.signOut();
-  Navigator.pushReplacementNamed(context, '/login');
+  Navigator.pushReplacementNamed(context, '/sign-in');
 }
 `````
 
+## Profile Page
+
+Now let's make a profile page where our users' names and profile pictures appear.
+
+`````dart
+
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({Key? key}) : super(key: key);
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  late TextEditingController nameController;
+
+  @override
+  void initState() {
+    nameController = TextEditingController(
+        text: altogic.auth.currentState.user?.name
+    );
+    super.initState();
+  }
+
+  Future<void> setUserName() async {
+    // TODO: Implement set user name
+  }
+
+  User get user => altogic.auth.currentState.user!;
+
+  Future<void> updateProfilePhoto() async {
+    // TODO: Implement update profile photo
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: SingleChildScrollView(
+          child: !altogic.auth.currentState.isLoggedIn
+              ? const Text("User Not Logged")
+              : Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 80,
+                backgroundImage: user.profilePicture != null
+                    ? NetworkImage(
+                  user.profilePicture!,
+                )
+                    : null,
+              ),
+              ValueListenableBuilder(
+                  valueListenable: nameController,
+                  builder: (context, value, child) {
+                    return TextField(
+                      controller: nameController,
+                      decoration: InputDecoration(
+                          border: const OutlineInputBorder(),
+                          label: const Text('Name'),
+                          suffixIcon: IconButton(
+                            icon: const Icon(Icons.save),
+                            onPressed: nameController.text !=
+                                altogic.auth.currentState
+                                    .user?.name
+                                ? setUserName
+                                : null,
+                          )),
+                    );
+                  })
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+`````
+
+#### Implement Set User Name
+
+`````dart
+  Future<void> setUserName() async {
+  var response = await altogic.db
+      .model('users')
+      .object(altogic.auth.currentState.user?.id)
+      .update({
+    'name': nameController.text,
+  });
+
+  if (response.errors == null) {
+    altogic.auth.setUser(User.fromJson(response.data!));
+    setState(() {});
+    if (mounted) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('User updated')));
+    }
+  } else {
+    if (mounted) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('Error')));
+    }
+  }
+}
+`````
+
+#### Implement Update Profile Photo
+
+We must define a method for our users to select and upload images.
+
+If an image is selected, we can upload the image later. Then if the operation is successful, we can update our
+user's `profilePicture`.
+
+`````dart
+  Future<void> updateProfilePhoto() async {
+  var pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+  if (pickedFile == null) {
+    return;
+  }
+
+  var imageBytes = await pickedFile.readAsBytes();
+
+  var upload = await altogic.storage.bucket("profile_pictures").upload(
+      '${user.id}.jpg',
+      imageBytes,
+      FileUploadOptions(
+          contentType: pickedFile.mimeType ?? "image/jpeg",
+          isPublic: true,
+          onProgress: (uploaded, total, percent) {
+            progress.value = percent;
+          }));
+
+  if (upload.errors != null) {
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Error uploading image')));
+    }
+    return;
+  }
+  var res = await altogic.db
+      .model('users')
+      .object(altogic.auth.currentState.user?.id)
+      .update({
+    'profilePicture': upload.data!['publicPath'],
+  });
+
+  if (res.errors == null) {
+    altogic.auth.setUser(User.fromJson(res.data!));
+    setState(() {});
+  }
+}
+`````
+
+### Listen to Auth State Changes
+
+We can listen to auth state changes with ``altogic.auth.onAuthStateChanged``.
+
+`````dart
+  @override
+  void initState() {
+    // ...
+    altogic.auth.onAuthStateChanged.listen((event) {
+      if (!event.isLoggedIn && mounted) {
+        Navigator.pushReplacementNamed(context, '/sign-in');
+      } else {
+        if (mounted) {
+          setState(() {});
+        }
+      }
+    });
+    super.initState();
+  }
+`````
+
+
 ## Conclusion
+
 Congratulations!✨
 
->You had completed the most critical part of the Authentication flow, which includes sign-up, sign-in, and sign-out operations.
->If you have any questions about Altogic or want to share what you have built, please post a message in our Community Forum or Discord Channel.
+> You have completed the most critical part of the Authentication flow, which includes sign-up, sign-in, and sign-out operations. If you have questions about Altogic or want to share what you have built, please post a message in our Community Forum or Discord Channel.
+
+## Getting source code
+
+You can get the all examples with
+````shell
+git clone https://github.com/altogic/altogic.git
+````
+
+Or you can get all dart examples with
+````shell
+git clone \
+  --depth 1  \
+  --filter=blob:none  \
+  --sparse \
+  https://github.com/altogic/altogic \
+;
+cd altogic
+git sparse-checkout set dart_examples
+cd dart_examples
+````
+
+Or you can get only this example
+
+`````shell
+git clone \
+  --depth 2  \
+  --filter=blob:none  \
+  --sparse \
+  https://github.com/altogic/altogic \
+;
+cd altogic
+git sparse-checkout set dart_examples/flutter_auth_example
+cd dart_examples
+cd flutter_auth_example
+`````

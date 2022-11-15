@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_auth_example/widgets/button.dart';
 import 'package:flutter_auth_example/widgets/input.dart';
@@ -58,28 +57,12 @@ class _SignInPageState extends State<SignInPage> {
               }
             }),
         verticalSpace,
-        WithMaxWidth(
-            child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              child: TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/sign-up');
-                },
-                child: const Text('Forgot Password?'),
-              ),
-            ),
-            Expanded(
-              child: TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/sign-up');
-                },
-                child: const Text('Don\'t have an account?'),
-              ),
-            ),
-          ],
-        )),
+        TextButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/sign-up');
+          },
+          child: const Text('Don\'t have an account?'),
+        )
       ],
     );
 
@@ -105,7 +88,7 @@ class _SignInPageState extends State<SignInPage> {
       }
     }
     if (res.user != null) {
-      if (mounted) Navigator.pushReplacementNamed(context, '/home');
+      if (mounted) Navigator.pushReplacementNamed(context, '/profile');
     }
   }
 }

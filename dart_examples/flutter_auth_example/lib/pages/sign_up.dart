@@ -20,6 +20,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -40,37 +41,24 @@ class _SignUpPageState extends State<SignUpPage> {
         verticalSpace,
         AltogicInput(hint: 'Password', editingController: passwordController),
         verticalSpace,
+        AltogicInput(hint: 'Name', editingController: nameController),
+        verticalSpace,
         AltogicButton(
             body: 'Sign Up',
             onPressed: _signUp,
             enabled: () =>
                 emailController.text.isNotEmpty &&
-                passwordController.text.isNotEmpty,
-            listenable:
-                Listenable.merge([emailController, passwordController])),
+                passwordController.text.isNotEmpty &&
+                nameController.text.isNotEmpty,
+            listenable: Listenable.merge(
+                [emailController, passwordController, nameController])),
         verticalSpace,
-        WithMaxWidth(
-            child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              child: TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/sign-up');
-                },
-                child: const Text('Forgot Password?'),
-              ),
-            ),
-            Expanded(
-              child: TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/sign-in');
-                },
-                child: const Text('Already have an account?'),
-              ),
-            ),
-          ],
-        )),
+        TextButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/sign-in');
+          },
+          child: const Text('Already have an account?'),
+        ),
       ],
     );
 
@@ -87,8 +75,8 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   Future<void> _signUp() async {
-    var userResult = await altogic.auth
-        .signUpWithEmail(emailController.text, passwordController.text);
+    var userResult = await altogic.auth.signUpWithEmail(
+        emailController.text, passwordController.text, nameController.text);
     if (userResult.errors != null) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -108,7 +96,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 children: [
                   SimpleDialogOption(
                       child: Text(
-                          "User created successfully.\n\nTo sign in verify your email!")),
+                          "User created successfully.\n\nTo sign in, check your mail box!")),
                 ],
               );
             });

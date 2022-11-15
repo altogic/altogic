@@ -1,7 +1,7 @@
 import 'package:altogic/altogic.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_auth_example/pages/home_page.dart';
 import 'package:flutter_auth_example/pages/magic_link.dart';
+import 'package:flutter_auth_example/pages/profile_page.dart';
 
 import 'altogic.dart';
 import 'pages/sign_in.dart';
@@ -46,19 +46,19 @@ class _AltogicAuthExampleAppState extends AltogicState<AltogicAuthExampleApp> {
       navigatorObservers: [navigatorObserver],
       routes: {
         '/': (c) => const SplashScreen(),
-        '/homepage': (c) => const HomePage(),
+        '/profile': (c) => const ProfilePage(),
         '/sign-in': (c) => const SignInPage(),
         '/sign-up': (c) => const SignUpPage(),
       },
       onGenerateInitialRoutes: (String initialRoute) {
         var uri = Uri.parse(initialRoute);
 
-        if (uri.path == "/homepage") {
+        if (uri.path == "/profile") {
           if (altogic.auth.currentState.isLoggedIn) {
             return [
               MaterialPageRoute(
-                  builder: (c) => const HomePage(),
-                  settings: const RouteSettings(name: "/homepage"))
+                  builder: (c) => const ProfilePage(),
+                  settings: const RouteSettings(name: "/profile"))
             ];
           } else {
             return [

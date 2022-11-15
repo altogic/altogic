@@ -1,4 +1,3 @@
-
 import 'package:altogic/altogic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth_example/widgets/with_max_width.dart';
@@ -6,14 +5,14 @@ import 'package:image_picker/image_picker.dart';
 
 import '../altogic.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _ProfilePageState extends State<ProfilePage> {
   late TextEditingController nameController;
 
   _listen(AuthState sta) {
@@ -30,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> setUserName() async {
-    var res = await altogic.db
+    var response = await altogic.db
         .model('users')
         .object(
           altogic.auth.currentState.user?.id,
@@ -39,14 +38,18 @@ class _HomePageState extends State<HomePage> {
       'name': nameController.text,
     });
 
-    if (res.errors == null) {
-      altogic.auth.setUser(User.fromJson(res.data!));
+    if (response.errors == null) {
+      altogic.auth.setUser(User.fromJson(response.data!));
       setState(() {});
-    }
-
-    if (mounted) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text('User updated')));
+      if (mounted) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text('User updated')));
+      }
+    } else {
+      if (mounted) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text('Error')));
+      }
     }
   }
 
@@ -79,9 +82,7 @@ class _HomePageState extends State<HomePage> {
     }
     var res = await altogic.db
         .model('users')
-        .object(
-          altogic.auth.currentState.user?.id,
-        )
+        .object(altogic.auth.currentState.user?.id)
         .update({
       'profilePicture': upload.data!['publicPath'],
     });
@@ -164,24 +165,25 @@ class _HomePageState extends State<HomePage> {
                                   child: Container(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 20),
-                                child: TextField(
-                                  controller: nameController,
-                                  onChanged: (value) {
-                                    setState(() {});
-                                  },
-                                  decoration: const InputDecoration(
-                                    border: OutlineInputBorder(),
-                                    label: Text('Name'),
-                                  ),
-                                ),
+                                child: ValueListenableBuilder(
+                                    valueListenable: nameController,
+                                    builder: (context, value, child) {
+                                      return TextField(
+                                        controller: nameController,
+                                        decoration: InputDecoration(
+                                            border: const OutlineInputBorder(),
+                                            label: const Text('Name'),
+                                            suffixIcon: IconButton(
+                                              icon: const Icon(Icons.save),
+                                              onPressed: nameController.text !=
+                                                      altogic.auth.currentState
+                                                          .user?.name
+                                                  ? setUserName
+                                                  : null,
+                                            )),
+                                      );
+                                    }),
                               )),
-                              IconButton(
-                                icon: const Icon(Icons.save),
-                                onPressed: nameController.text !=
-                                        altogic.auth.currentState.user?.name
-                                    ? setUserName
-                                    : null,
-                              )
                             ],
                           ),
                         ],
