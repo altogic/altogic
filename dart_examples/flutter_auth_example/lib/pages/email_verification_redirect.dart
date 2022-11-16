@@ -47,7 +47,6 @@ class _EmailRedirectPageState extends State<EmailVerificationRedirectPage> {
     } else if (userState!.errors != null) {
       body = SingleChildScrollView(child: Text(userState!.errors!.toString()));
     } else if (userState!.user != null) {
-
       body =
           Text("Routing home...\n\nYour Data:\n\n${userState!.user!.toJson()}");
     } else {

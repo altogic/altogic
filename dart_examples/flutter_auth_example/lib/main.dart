@@ -1,6 +1,5 @@
 import 'package:altogic/altogic.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_auth_example/pages/magic_link.dart';
 import 'package:flutter_auth_example/pages/profile_page.dart';
 
 import 'altogic.dart';
@@ -27,13 +26,14 @@ class AltogicAuthExampleApp extends StatefulWidget {
 
 class _AltogicAuthExampleAppState extends AltogicState<AltogicAuthExampleApp> {
   @override
-  void onMagicLink(BuildContext? context, MagicLinkRedirect redirect) async {
+  void onMagicLink(BuildContext? ctx, MagicLinkRedirect redirect) async {
     var authGrant = await altogic.auth.getAuthGrant();
     if (authGrant.errors != null) {
       // Show a snackbar with the error
     } else {
-      if (context != null) {
-        Navigator.of(context).pushNamed('/profile');
+      if (ctx != null) {
+        // ignore: use_build_context_synchronously , because we dont use the this.context
+        Navigator.of(ctx).pushNamed('/profile');
       }
     }
   }

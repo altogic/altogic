@@ -123,7 +123,8 @@ class BucketService extends ServiceBase {
   Future<void> makePublic(bool includeFiles) async {
     response.loading();
     var res = await altogic.storage.bucket(bucket).makePublic(includeFiles);
-    response.response(res);    bucketInfo.value = res.data;
+    response.response(res);
+    bucketInfo.value = res.data;
   }
 
   Future<void> makePrivate(bool includeFiles) async {

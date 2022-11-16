@@ -24,53 +24,65 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    Widget widget = Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const SizedBox(width: double.infinity),
-        const AltogicLogo(),
-        verticalSpace,
-        const WithMaxWidth(
-            child: Text(
-          'Sign Up',
-          style: TextStyle(fontSize: 22),
-        )),
-        verticalSpace,
-        AltogicInput(hint: 'Email Address', editingController: emailController),
-        verticalSpace,
-        AltogicInput(hint: 'Password', editingController: passwordController),
-        verticalSpace,
-        AltogicInput(hint: 'Name', editingController: nameController),
-        verticalSpace,
-        AltogicButton(
-            body: 'Sign Up',
-            onPressed: _signUp,
-            enabled: () =>
-                emailController.text.isNotEmpty &&
-                passwordController.text.isNotEmpty &&
-                nameController.text.isNotEmpty,
-            listenable: Listenable.merge(
-                [emailController, passwordController, nameController])),
-        verticalSpace,
-        TextButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/sign-in');
-          },
-          child: const Text('Already have an account?'),
-        ),
-      ],
-    );
-
-    if (MediaQuery.of(context).size.height < 500) {
-      widget = SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(vertical: 50),
-        child: widget,
-      );
-    }
-
     return Scaffold(
-      body: widget,
+      body: Center(
+        child: SingleChildScrollView(
+          child: Form(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(width: double.infinity),
+                const AltogicLogo(),
+                verticalSpace,
+                const WithMaxWidth(
+                    child: Text(
+                  'Sign Up',
+                  style: TextStyle(fontSize: 22),
+                )),
+                verticalSpace,
+                AltogicInput(
+                  hint: 'Email Address',
+                  editingController: emailController,
+                  autofillHints: AutofillHints.email,
+                  inputType: TextInputType.emailAddress,
+                ),
+                verticalSpace,
+                AltogicInput(
+                  hint: 'Password',
+                  editingController: passwordController,
+                  autofillHints: AutofillHints.password,
+                  inputType: TextInputType.visiblePassword,
+                ),
+                verticalSpace,
+                AltogicInput(
+                  hint: 'Name',
+                  editingController: nameController,
+                  autofillHints: AutofillHints.name,
+                  inputType: TextInputType.name,
+                ),
+                verticalSpace,
+                AltogicButton(
+                    body: 'Sign Up',
+                    onPressed: _signUp,
+                    enabled: () =>
+                        emailController.text.isNotEmpty &&
+                        passwordController.text.isNotEmpty &&
+                        nameController.text.isNotEmpty,
+                    listenable: Listenable.merge(
+                        [emailController, passwordController, nameController])),
+                verticalSpace,
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/sign-in');
+                  },
+                  child: const Text('Already have an account?'),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 

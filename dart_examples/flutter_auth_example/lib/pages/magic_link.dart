@@ -34,7 +34,7 @@ class _MagicLinkRedirectState extends State<MagicLinkRedirectPage> {
       });
       Timer(const Duration(seconds: 3), () {
         if (mounted) {
-          Navigator.pushNamed(context, '/homepage');
+          Navigator.pushNamed(context, '/profile');
         }
       });
     }

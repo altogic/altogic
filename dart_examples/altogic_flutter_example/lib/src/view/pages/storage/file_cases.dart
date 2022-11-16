@@ -1190,7 +1190,7 @@ class UpdateInfoFileManager extends MethodWrap {
               await FileManagerService.of(context).updateInfo(
                 tags: tagging,
                 isPublic: isPublic.value,
-                newName:  newName.text,
+                newName: newName.text,
               );
               tagsController.clear();
               newName.clear();

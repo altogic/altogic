@@ -90,7 +90,8 @@ class SetCacheMethod extends MethodWrap {
     return [
       AltogicInput(hint: "Key", editingController: keyController),
       AltogicInput(hint: "Value (integer)", editingController: valueController),
-      AltogicInput(hint: "TTL in seconds (optional)", editingController: ttlController),
+      AltogicInput(
+          hint: "TTL in seconds (optional)", editingController: ttlController),
       AltogicButton(
         body: "Set Cache",
         onPressed: () {

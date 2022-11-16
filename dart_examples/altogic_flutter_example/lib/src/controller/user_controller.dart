@@ -1,4 +1,3 @@
-
 import 'package:altogic/altogic.dart';
 import 'package:altogic_flutter_example/src/models/altogic_user.dart';
 import 'package:altogic_flutter_example/src/models/market.dart';

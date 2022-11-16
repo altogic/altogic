@@ -1,4 +1,3 @@
-
 import 'package:altogic/altogic.dart';
 import 'package:altogic_flutter_example/src/service/auth_service.dart';
 import 'package:altogic_flutter_example/src/service/service_base.dart';
@@ -7,7 +6,6 @@ import 'package:altogic_flutter_example/src/view/widgets/documentation/base.dart
 import 'package:altogic_flutter_example/src/view/widgets/documentation/code.dart';
 import 'package:altogic_flutter_example/src/view/widgets/documentation/texts.dart';
 import 'package:flutter/material.dart';
-
 
 class ChangeMailRedirectPage extends StatefulWidget {
   const ChangeMailRedirectPage({Key? key, required this.redirect})

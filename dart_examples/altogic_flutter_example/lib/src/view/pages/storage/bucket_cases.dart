@@ -100,7 +100,8 @@ class GetBucketInfo extends MethodWrap {
           body: "Get Bucket Info",
           onPressed: () {
             asyncWrapper(() async {
-              await BucketService.of(context).getBucketInfo(detailed.value,true);
+              await BucketService.of(context)
+                  .getBucketInfo(detailed.value, true);
             });
           })
     ];
@@ -1382,7 +1383,7 @@ class UpdateInfoBucketManager extends MethodWrap {
                 tags: tagging,
                 includeFiles: includeFiles.value,
                 isPublic: isPublic.value,
-                newName:  newName.text,
+                newName: newName.text,
               );
               tagsController.clear();
               newName.clear();

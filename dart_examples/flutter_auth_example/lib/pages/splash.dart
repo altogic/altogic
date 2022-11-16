@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     if (user != null) {
       if (mounted) {
-        Navigator.pushReplacementNamed(context, '/homepage');
+        Navigator.pushReplacementNamed(context, '/profile');
       }
     } else {
       if (mounted) Navigator.pushReplacementNamed(context, '/sign-in');
@@ -33,7 +33,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       init();
     });
@@ -42,7 +41,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     return const Scaffold(
       body: Center(
         child: CircularProgressIndicator(),

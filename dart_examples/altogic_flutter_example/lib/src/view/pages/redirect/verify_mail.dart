@@ -1,4 +1,3 @@
-
 import 'package:altogic/altogic.dart';
 import 'package:altogic_flutter_example/src/view/widgets/button.dart';
 import 'package:flutter/material.dart';

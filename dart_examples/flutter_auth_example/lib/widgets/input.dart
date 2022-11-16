@@ -6,12 +6,16 @@ class AltogicInput extends StatefulWidget {
       {Key? key,
       required this.hint,
       required this.editingController,
-      this.suffixIcon})
+      this.suffixIcon,
+      required this.autofillHints,
+      required this.inputType})
       : super(key: key);
 
   final String hint;
   final TextEditingController editingController;
   final WidgetBuilder? suffixIcon;
+  final String autofillHints;
+  final TextInputType inputType;
 
   @override
   State<AltogicInput> createState() => _AltogicInputState();
@@ -30,8 +34,9 @@ class _AltogicInputState extends State<AltogicInput> {
                   setState(() {});
                 }
               : null,
+          autofillHints: [widget.autofillHints],
           controller: widget.editingController,
-          keyboardType: TextInputType.multiline,
+          keyboardType: widget.inputType,
           decoration: InputDecoration(
             label: Text(widget.hint),
             suffixIcon: widget.suffixIcon?.call(context),

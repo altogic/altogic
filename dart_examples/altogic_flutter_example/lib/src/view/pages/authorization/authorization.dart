@@ -18,7 +18,6 @@ class AuthorizationPage extends StatefulWidget {
 class _AuthorizationPageState extends State<AuthorizationPage> {
   AuthService authService = AuthService();
 
-
   List<MethodState Function()> list = [
     SignUpWithEmailMethod.new,
     SignUpWithPhoneMethod.new,

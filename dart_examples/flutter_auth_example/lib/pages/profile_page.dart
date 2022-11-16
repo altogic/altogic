@@ -22,7 +22,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     altogic.auth.authStateChanges.listen(_listen);
-
+    refresh();
     nameController =
         TextEditingController(text: altogic.auth.currentState.user?.name);
     super.initState();
@@ -95,6 +95,16 @@ class _ProfilePageState extends State<ProfilePage> {
 
   ValueNotifier<double> progress = ValueNotifier(0);
 
+  List<Session> sessions = [];
+
+  Future<void> refresh() async {
+    var response = await altogic.auth.getAllSessions();
+    if (response.errors == null) {
+      sessions = (response.sessions ?? []).reversed.toList();
+    }
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,88 +121,132 @@ class _ProfilePageState extends State<ProfilePage> {
           )
         ],
       ),
-      body: Center(
-        child: SingleChildScrollView(
-          child: !altogic.auth.currentState.isLoggedIn
-              ? const Text("User Not Logged")
-              : Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    WithMaxWidth(
-                      maxWidth: 500,
-                      child: Column(
-                        children: [
-                          CircleAvatar(
-                            radius: 80,
-                            backgroundImage: user.profilePicture != null
-                                ? NetworkImage(
-                                    user.profilePicture!,
-                                  )
-                                : null,
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          TextButton(
-                              onPressed: updateProfilePhoto,
-                              child: const Text("Edit Profile Photo")),
-                          ValueListenableBuilder(
-                              valueListenable: progress,
-                              builder: (c, v, w) {
-                                if (progress.value == 0 ||
-                                    progress.value == 100) {
-                                  return const SizedBox();
-                                }
-                                return WithMaxWidth(
-                                    maxWidth: 500,
-                                    child: Column(
-                                      children: [
-                                        LinearProgressIndicator(
-                                          value: progress.value,
-                                          color: Colors.blue,
-                                          backgroundColor: Colors.grey,
-                                        ),
-                                        Text("Progress: ${progress.value}"),
-                                      ],
-                                    ));
-                              }),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                  child: Container(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 20),
-                                child: ValueListenableBuilder(
-                                    valueListenable: nameController,
-                                    builder: (context, value, child) {
-                                      return TextField(
-                                        controller: nameController,
-                                        decoration: InputDecoration(
-                                            border: const OutlineInputBorder(),
-                                            label: const Text('Name'),
-                                            suffixIcon: IconButton(
-                                              icon: const Icon(Icons.save),
-                                              onPressed: nameController.text !=
-                                                      altogic.auth.currentState
-                                                          .user?.name
-                                                  ? setUserName
-                                                  : null,
-                                            )),
-                                      );
-                                    }),
-                              )),
-                            ],
-                          ),
-                        ],
-                      ),
+      body: !altogic.auth.currentState.isLoggedIn
+          ? const Text("User Not Logged")
+          : RefreshIndicator(
+              onRefresh: refresh,
+              child: ListView(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                children: [
+                  WithMaxWidth(
+                    maxWidth: 500,
+                    child: Column(
+                      children: [
+                        CircleAvatar(
+                          radius: 80,
+                          backgroundImage: user.profilePicture != null
+                              ? NetworkImage(
+                                  user.profilePicture!,
+                                )
+                              : null,
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        TextButton(
+                            onPressed: updateProfilePhoto,
+                            child: const Text("Edit Profile Photo")),
+                        ValueListenableBuilder(
+                            valueListenable: progress,
+                            builder: (c, v, w) {
+                              if (progress.value == 0 ||
+                                  progress.value == 100) {
+                                return const SizedBox();
+                              }
+                              return WithMaxWidth(
+                                  maxWidth: 500,
+                                  child: Column(
+                                    children: [
+                                      LinearProgressIndicator(
+                                        value: progress.value,
+                                        color: Colors.blue,
+                                        backgroundColor: Colors.grey,
+                                      ),
+                                      Text("Progress: ${progress.value}"),
+                                    ],
+                                  ));
+                            }),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                                child: Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
+                              child: ValueListenableBuilder(
+                                  valueListenable: nameController,
+                                  builder: (context, value, child) {
+                                    return TextField(
+                                      controller: nameController,
+                                      decoration: InputDecoration(
+                                          border: const OutlineInputBorder(),
+                                          label: const Text('Name'),
+                                          suffixIcon: IconButton(
+                                            icon: const Icon(Icons.save),
+                                            onPressed: nameController.text !=
+                                                    altogic.auth.currentState
+                                                        .user?.name
+                                                ? setUserName
+                                                : null,
+                                          )),
+                                    );
+                                  }),
+                            )),
+                          ],
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-        ),
-      ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  if (sessions.isNotEmpty)
+                    WithMaxWidth(
+                        child: Table(
+                      border: TableBorder.all(color: Colors.grey, width: 1),
+                      children: [
+                        const TableRow(children: [
+                          TableCell(
+                              child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text("Device"),
+                          )),
+                          TableCell(
+                              child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text("Creation Date"),
+                          )),
+                          TableCell(
+                              child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text("OS"),
+                          ))
+                        ]),
+                        ...sessions.map((e) => TableRow(children: [
+                              TableCell(
+                                  child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(e.userAgent.device.family),
+                              )),
+                              TableCell(
+                                  child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(e.creationDtm),
+                              )),
+                              TableCell(
+                                  child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(e.userAgent.os.family),
+                              ))
+                            ]))
+                      ].toList(),
+                    )),
+                ],
+              ),
+            ),
     );
   }
 }

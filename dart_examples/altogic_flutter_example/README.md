@@ -32,18 +32,18 @@ Just click on the "info" icon to see how it's done.
 
 #### Process
 
-| Manager         | Description                       |
-|-----------------|-----------------------------------|
-| AuthManager     | ✅                                 |
-| DatabaseManager | ✅                                 |
-| ObjectManager   | ✅                                 |
-| EndpointManager | ✅                                 |
-| CacheManager    | ✅                                 |
-| TaskManager     | ✅                                 |
-| QueueManager    | ✅                                 |
-| StorageManager  | Methods Done - Will be documented |
-| BucketManager   | Methods Done - Will be documented |
-| FileManager     | Methods Done - Will be documented |
-| RealtimeManager | Methods Done - Will be documented |
-| Clear code      | ❌                                 |
+| Manager         | Description |
+|-----------------|-------------|
+| AuthManager     | ✅           |
+| DatabaseManager | ✅           |
+| ObjectManager   | ✅           |
+| EndpointManager | ✅           |
+| CacheManager    | ✅           |
+| TaskManager     | ✅           |
+| QueueManager    | ✅           |
+| StorageManager  | ✅           |
+| BucketManager   | ✅           |
+| FileManager     | ✅           |
+| RealtimeManager | ✅           |
+| Clear code      | ✅           |
 

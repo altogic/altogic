@@ -28,7 +28,7 @@ String createProductCategory() {
   return _selectRandom();
 }
 
-List<String> createProductProperties(){
+List<String> createProductProperties() {
   var length = Random().nextInt(5) + 2;
   var result = <String>[];
   for (var i = 0; i < length; i++) {
