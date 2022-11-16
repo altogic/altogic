@@ -1,5 +1,6 @@
 import 'package:altogic/altogic.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_auth_example/widgets/input.dart';
 import 'package:flutter_auth_example/widgets/with_max_width.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -15,7 +16,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   late TextEditingController nameController;
 
-  _listen(AuthState sta) {
+  _listen(AuthState state) {
     setState(() {});
   }
 
@@ -63,7 +64,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
     var imageBytes = await pickedFile.readAsBytes();
 
-    var upload = await altogic.storage.bucket("profile_pictures").upload(
+    var upload = await altogic.storage.bucket("root").upload(
         '${user.id}.jpg',
         imageBytes,
         FileUploadOptions(
@@ -149,7 +150,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             child: const Text("Edit Profile Photo")),
                         ValueListenableBuilder(
                             valueListenable: progress,
-                            builder: (c, v, w) {
+                            builder: (context, value, child) {
                               if (progress.value == 0 ||
                                   progress.value == 100) {
                                 return const SizedBox();
@@ -205,45 +206,23 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   if (sessions.isNotEmpty)
                     WithMaxWidth(
-                        child: Table(
-                      border: TableBorder.all(color: Colors.grey, width: 1),
-                      children: [
-                        const TableRow(children: [
-                          TableCell(
-                              child: Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text("Device"),
-                          )),
-                          TableCell(
-                              child: Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text("Creation Date"),
-                          )),
-                          TableCell(
-                              child: Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text("OS"),
-                          ))
-                        ]),
-                        ...sessions.map((e) => TableRow(children: [
-                              TableCell(
-                                  child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(e.userAgent.device.family),
-                              )),
-                              TableCell(
-                                  child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(e.creationDtm),
-                              )),
-                              TableCell(
-                                  child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(e.userAgent.os.family),
-                              ))
-                            ]))
-                      ].toList(),
-                    )),
+                        child: Column(children: [
+                      for (var session in sessions)
+ListTile(
+  title: Text(session.userAgent.os.family ?? ""),
+  subtitle: Text(session.creationDtm ?? ""),
+  trailing: IconButton(
+    icon: const Icon(Icons.delete),
+    onPressed: () async {
+      var response =
+          await altogic.auth.signOut(session.token);
+      if (response == null) {
+        refresh();
+      }
+    },
+  ),
+)
+                    ])),
                 ],
               ),
             ),

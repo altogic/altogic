@@ -15,8 +15,8 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   Future<void> init() async {
     if (mounted) {
-      var openedRedirect = await AltogicState.applicationInitialRedirect;
-      if (openedRedirect != null) {
+      var launchedRedirect = await AltogicState.applicationInitialRedirect;
+      if (launchedRedirect != null) {
         return;
       }
     }

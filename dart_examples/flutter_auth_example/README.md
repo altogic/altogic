@@ -27,7 +27,7 @@ By default, when you create an app in Altogic, email-based authentication is ena
 
 ![Authentication Flow](./github/auth-flow.png)
 
-If email verification is disabled, then after step 2, Altogic immediately returns a new session to the user, meaning that steps after step #2 in the above flow are not executed. You can easily configure email-based authentication settings from the **App Settings > Authentication** in Altogic Designer. One critical parameter you need to specify is the Redirect URL, you can customize this parameter from **App Settings > Authentication**. Finally, you can customize the email message template from the **App Settings > Authentication > Messaget Templates**.
+If email verification is disabled, then after step 2, Altogic immediately returns a new session to the user, meaning that steps after step #2 in the above flow are not executed. You can easily configure email-based authentication settings from the **App Settings > Authentication** in Altogic Designer. One critical parameter you need to specify is the Redirect URL, you can customize this parameter from **App Settings > Authentication**. Finally, you can customize the email message template from the **App Settings > Authentication > Message Templates**.
 
 ## Prerequisites
 To complete this tutorial, make sure you have installed the following tools and utilities on your local development environment.
@@ -426,7 +426,7 @@ Add your deep link configuration to your `<activity>` in AndroidManifest.xml
 
 ### Handling DeepLink
 
-If you use "AltogicState" at the root of the application, the "AltogicState" will be "mounted" throughout the application lifecycle. Thus, we can listen to the deep links when the application is resumed or opened with a deep link.
+If you use "AltogicState" at the root of the application, the "AltogicState" will be "mounted" throughout the application lifecycle. Thus, we can listen to the deep links when the application is resumed or launched with a deep link.
 
 When the application opens by a deep link, ``AltogicState`` cannot synchronously inform you about the deep link. Instead, you can override methods to be called when a deep link opens the application.
 
@@ -439,7 +439,7 @@ class _AltogicAuthExampleAppState extends AltogicState<AltogicAuthExampleApp> {
 
   @override
   void onEmailVerificationLink(BuildContext? context, EmailVerificationRedirect redirect) {
-    // WHEN THE APPLICATION IS OPENED WITH EMAIL VERIFICATION LINK
+    // WHEN THE APPLICATION IS LAUNCHED WITH EMAIL VERIFICATION LINK
   }
 
   @override
@@ -454,7 +454,7 @@ class _AltogicAuthExampleAppState extends AltogicState<AltogicAuthExampleApp> {
 
 ### Email Verification
 
-When the application is opened by an email verification link, the ``onEmailVerificationLink`` method is called.
+When the application is launched by an email verification link, the ``onEmailVerificationLink`` method is called.
 
 ````dart
 @override
@@ -856,6 +856,61 @@ We can listen to auth state changes with ``altogic.auth.onAuthStateChanged``.
     super.initState();
   }
 `````
+
+## Sessions Component for listing user's sessions
+
+In the ProfilePage, we will use Altogic's altogic.auth.getAllSessions() to get the user's sessions and delete them.
+
+````dart
+List<Session> sessions = [];
+
+Future<void> refresh() async {
+  var response = await altogic.auth.getAllSessions();
+  if (response.errors == null) {
+    sessions = (response.sessions ?? []).toList();
+  }
+  setState(() {});
+}
+````
+
+Add refresh to initState
+
+````dart
+  @override
+  void initState() {
+    // ...
+    refresh();
+    super.initState();
+  }
+````
+
+Wrap scrollable content with RefreshIndicator
+
+````dart
+RefreshIndicator(
+  onRefresh: refresh,
+  child: ListView(...)
+)
+````
+
+Show sessions in a list:
+
+````dart
+ListTile(
+    title: Text(session.userAgent.os.family ?? ""),
+    subtitle: Text(session.creationDtm ?? ""),
+    trailing: IconButton(
+        icon: const Icon(Icons.delete),
+        onPressed: () async {
+          var response =
+              await altogic.auth.signOut(session.token);
+          if (response == null) {
+            refresh();
+          }
+        },
+    ),
+)
+````
 
 ## Conclusion
 
