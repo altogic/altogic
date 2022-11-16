@@ -47,6 +47,7 @@ class _RealtimePageState extends State<RealtimePage> {
     BroadcastMethod.new,
     JoinChannel.new,
     LeaveChannel.new,
+    GetMembers.new,
     SendMethod.new,
     UpdateUserData.new,
   ];
@@ -609,39 +610,39 @@ altogic.realtime.leave("${channelNameController.text}");
   String get name => "Leave Channel";
 }
 
-// class GetMembers extends MethodWrap {
-//   TextEditingController channelNameController = TextEditingController();
-//
-//   @override
-//   List<Widget> children(BuildContext context) {
-//     return [
-//       AltogicInput(
-//           hint: 'Channel Name', editingController: channelNameController),
-//       AltogicButton(
-//           body: 'Get Members',
-//           listenable: channelNameController,
-//           enabled: () => channelNameController.text.isNotEmpty,
-//           onPressed: () {
-//             asyncWrapper(() async {
-//               RealtimeService.of(context)
-//                   .getMembers(channelNameController.text);
-//             });
-//           })
-//     ];
-//   }
-//
-//   @override
-//   List<DocumentationObject> get description => [
-//         const Description('Get members of channel'),
-//       ];
-//
-//   @override
-//   List<DocumentationObject> Function(BuildContext context)?
-//       get documentationBuilder => null;
-//
-//   @override
-//   String get name => "Get Members";
-// }
+class GetMembers extends MethodWrap {
+  TextEditingController channelNameController = TextEditingController();
+
+  @override
+  List<Widget> children(BuildContext context) {
+    return [
+      AltogicInput(
+          hint: 'Channel Name', editingController: channelNameController),
+      AltogicButton(
+          body: 'Get Members',
+          listenable: channelNameController,
+          enabled: () => channelNameController.text.isNotEmpty,
+          onPressed: () {
+            asyncWrapper(() async {
+              RealtimeService.of(context)
+                  .getMembers(channelNameController.text);
+            });
+          })
+    ];
+  }
+
+  @override
+  List<DocumentationObject> get description => [
+        const Description('Get members of channel'),
+      ];
+
+  @override
+  List<DocumentationObject> Function(BuildContext context)?
+      get documentationBuilder => null;
+
+  @override
+  String get name => "Get Members";
+}
 
 class UpdateUserData extends MethodWrap {
   TextEditingController dataController = TextEditingController();

@@ -1,59 +1,47 @@
-# How to Authenticate Email and Password Using Flutter & Altogic
+# Email & Password Based Authentication Using Flutter & Altogic
 
-## What is Altogic in Short
 
-It is a BaaS platform that you can develop backend applications in minutes. Database, authentication, endpoints,
-storages and more.. You can easily manage them all and use them easily with highly functional client libraries.
-After creating an application, you can start using all these services on the front-end. In most cases, you can create
-endpoints without coding and use them easily with the cleint library.
 
-## Intro
+## Introduction
+[Altogic](https://www.altogic.com) is a Backend as a Service (BaaS) platform and provides a variety of services in modern web and mobile development. Most modern applications using Flutter or other libraries/frameworks require knowing the identity of a user. And this necessity allows an app to securely save user data and session in the cloud and provide more personalized functionalities and views to users.
 
-In this tutorial, we will implement email/password authentication with Flutter and take a look how as a Flutter
-developer we build applications and integrate with Altogic Authentication.
+Altogic has an authentication service that integrates and implements well in Flutter apps. It has a ready-to-use [altogic client package](https://pub.dev/packages/altogic), and it supports many authentication providers such as email/password, phone number, magic link, and OAuth providers like Google, Facebook, Twitter, Github, Apple etc.,
 
-After completion of this tutorial, you will learn:
+In this tutorial, we will implement email/password authentication with Flutter and take a look at how as a Flutter developer, we build applications and integrate with Altogic Authentication.
+
+After completion of this tutorial, you will learn the following:
 
 - How to create sample screens to display forms like login and signup.
-- How to create a home screen and authorize only logged in users.
-- How to create an authentication flow by conditionally rendering between these pages whether a user is logged-in or
-  not.
-- How to authenticate users using magic link
+- How to create a home screen and authorize only logged-in users.
+- How to create an authentication flow by conditionally rendering between these pages whether a user is logged in.
+- How to authenticate users using the magic link
 - How to update user profile info and upload a profile picture
-- How to manage active sessions of a user
 - And we will integrate Altogic authentication with the email/password method.
 
-If you are new to Flutter, this tutorial is definitely for you to understand the basics and even advanced concepts.
+If you are new to Flutter applications, this tutorial is definitely for you to understand the basics and even advanced concepts.
 
-## Prerequisites
 
-To complete this tutorial, make sure you have installed following tools and utilities on your local development
-environment.
 
-- [Flutter SDK](https://docs.flutter.dev/get-started/install)
-- [Flutter Project](https://codelabs.developers.google.com/codelabs/first-flutter-app-pt)
-- You also need an [Altogic Account](https://designer.altogic.com/). If you have not one yet, you can create an account
-  by signin up to Altogic.
-
-## How email based sign-up works in Altogic
-
-Here are Login and Signup components to collect information from the user.
+## How email-based sign-up works in Altogic
+By default, when you create an app in Altogic, email-based authentication is enabled. In addition, during email-based authentication, the email address of the user is also verified. Below you can find the flow of email and password-based sign-up process.
 
 ![Authentication Flow](./github/auth-flow.png)
 
-Once the user created successfully a verification email will be sent to the user’s email address. When the user clicks
-the link in the mail, the user will navigate to the redirect page to grant authentication rights. After successfully
-creating a session on the Redirect page, users will be redirected to the Home page.
+If email verification is disabled, then after step 2, Altogic immediately returns a new session to the user, meaning that steps after step #2 in the above flow are not executed. You can easily configure email-based authentication settings from the **App Settings > Authentication** in Altogic Designer. One critical parameter you need to specify is the Redirect URL, you can customize this parameter from **App Settings > Authentication**. Finally, you can customize the email message template from the **App Settings > Authentication > Messaget Templates**.
 
-# Get Started
+## Prerequisites
+To complete this tutorial, make sure you have installed the following tools and utilities on your local development environment.
+- [Flutter SDK](https://docs.flutter.dev/get-started/install)
+- [Flutter Project](https://codelabs.developers.google.com/codelabs/first-flutter-app-pt)
+- You also need an Altogic Account. If you do not have one, you can create an account by [signin up for Altogic](https://designer.altogic.com/).
+
 
 ## Creating an Altogic App
 
-We will use Altogic as a backend service platform, so let’s visit [Altogic Designer](https://designer.altogic.com/).
+We will use Altogic as a backend service platform, so let’s visit [Altogic Designer](https://designer.altogic.com/) and create an account.
+![Application](github/1-applications.png)
 
 After creating an account, you will see the workspace where you can access your apps.
-
-![Application](./github/1-applications.png)
 
 Click + New app and follow the instructions;
 
@@ -64,28 +52,24 @@ Click + New app and follow the instructions;
 
 ![Create App](./github/create_app.png)
 
-Then click Next and select Basic Authentication template. This template is creates a default user model for your app
-which is required by [Altogic Client Library](https://github.com/altogic/altogic-js) to store user data and manage
-authentication.
+Then, click Next and select Basic template. This template creates a default user data model for your app which is required by [**Altogic Client Library**](https://www.altogic.com/client/) to store user data and manage authentication. You can add additional user fields to this data model (e.g., name, surname, gender, birthdate) and when calling the `signUpWithEmail` method of the client library you can pass these additional data.
+![Choose Template](github/select_template.png)
+> **Tip**: If you do not select the basic template, instead selected the blank app template the user data model will not be created for your app. In order to use the Altogic Client Library's authentication methods you need a user data model to store the user data. You can easily create a new data model manually and from the App Settings > Authentication mark this new data model as your user data model.
 
-Then click Next and select Basic Authentication template. This template is based on session authentication and highly
-recommended to secure your apps.
+Then, click Next to confirm and create an app.
 
-![Choose Template](./github/select_template.png)
+Awesome! We have created our application; now click/tap on the **newly created app to launch the Designer.** In order to access the app and use the Altogic client library, we should get `envUrl` and `clientKey` of this app. You can use any one of the API base URLs specified for your app environment as your envUrl.
 
-Then click Next to confirm and create an app.
+Click the **Home** icon at the left sidebar to copy the `envUrl` and `clientKey`.
 
-Awesome! We have created our application; now click/tap on the <strong>newly created app to launch the
-Designer.</strong>
+![Client Keys](github/4-client-keys.png)
 
-> This is the only configuration we need to do in Altogic Designer. In order to access the app and use the Altogic
-> client library, we should get envUrl and clientKey of this app.
+Once the user is created successfully, a verification email will be sent to the user’s email address. When the user clicks the link in the mail, the user will navigate to the redirect URL to grant authentication rights. Deep linking is used to open the application with this redirect URL. After successfully opening the application and creating a session with the redirect URL, users will be redirected to the Home page.
+> If you want, you can deactivate or customize the mail verification from App Settings -> Authentication in Altogic Designer.
 
-Click the <strong>Home</strong> icon at the left sidebar to copy the envUrl and clientKey.
+![Mail Verification](github/redirect.png)
 
-![Client Keys](./github/4-client-keys.png)
-
-## Integrating with Altogic
+## Create a Flutter project
 
 Our backend is now ready and running on the server. ✨
 
@@ -95,8 +79,36 @@ Now, we can install the Altogic client library to our Flutter project to connect
 flutter create altogic_auth
 
 cd altogic_auth
+```
 
+Open the project in your favorite editor or :
+`````shell
+code .
+`````
+
+## Integrating with Altogic
+
+Add the altogic package to your pubspec.yaml file.
+
+```shell
 flutter pub add altogic
+```
+
+Or manually:
+
+Add altogic to your pubspec.yaml file.
+
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  altogic: latest
+```
+
+Then, run the following command to install the package.
+
+```sh
+flutter pub get
 ```
 
 Let’s create a altogic.dart file inside of the lib/ directory.
@@ -109,21 +121,19 @@ Open altogic.dart and paste below code block to create global `AltogicClient` in
 import 'package:altogic_flutter/altogic_flutter.dart';
 
 // This `envUrl` and `clientKey` is sample you need to create your own.
-const String envUrl = 'https://c4-na.altogic.com/e:.......2900095';
-const String clientKey = '5b05db.....85c262e8';
+const String envUrl = '<your-env-url>';
+const String clientKey = '<your-client-key>';
 
 AltogicClient altogic = createClient(envUrl, clientKey);
 ```
 
-> Replace envUrl and clientKey which is shown in the <strong>Home</strong> view
-> of [Altogic Designer](https://designer.altogic.com/).
+> Replace ``envUrl`` and `clientKey` which is shown in the <strong>Home</strong> view of [Altogic Designer](https://designer.altogic.com/).
 
-### Create an Application
+### Create an Application Widget
 
-We should use a stateful widget and `AltogicState` when creating the application to take advantage of the various
-conveniences Altogic provides.
+We should use a `StatefulWidget` and `AltogicState` when creating the application to take advantage of the various features Altogic provides.
 
-`AltogicState` listens deep links and provides deep linking actions with methods that can be override.
+`AltogicState` listens to deep links and provides deep linking actions with methods that can be overridden.
 
 ```dart
 
@@ -134,6 +144,7 @@ class AltogicAuthExampleApp extends StatefulWidget {
   State<AltogicAuthExampleApp> createState() => _AltogicAuthExampleAppState();
 }
 
+// AltogicState
 class _AltogicAuthExampleAppState extends AltogicState<AltogicAuthExampleApp> {
 
 
@@ -150,7 +161,7 @@ class _AltogicAuthExampleAppState extends AltogicState<AltogicAuthExampleApp> {
 
 ### Creating Splash Screen
 
-When the application is opened, we can direct our user knowing whether there is an auth session.
+When the application opens, we can use the splash screen to find out if there is an auth session locally.
 
 `````dart
 
@@ -212,10 +223,7 @@ class _SplashScreenState extends State<SplashScreen> {
 }
 `````
 
-> If you don't want to show splash screen when if your user is logged in, getting `context` throws an error in this
-> case.
-> Because the ``context`` not available before the first build. You can ensure that the context is available by using
-> ``WidgetsBinding.instance.addPostFrameCallback((_) {})``.
+> If you don't want to show a splash screen when your user is logged in, getting `context` throws an error in this case. Because the ``context``was not available before the first build. You can ensure that the context is available by using ``WidgetsBinding.instance.addPostFrameCallback((_) {})``.
 
 ### Creating Sign-Up Page
 
@@ -298,11 +306,7 @@ Future<void> _signUp() async {
 }
 ```
 
-> If "Confirm email addresses" is turned on in Altogic designer's
-> Authentication settings, ``result.user``  will not be null,
-> but ``result.session`` will be null. In other words, our user is not yet
-> ready to perform operations that require an auth session.
-> For this, the email verification process must be successful.
+> If "Confirm email addresses" is turned on in Altogic designer's Authentication settings, ``result.user``  will not be null, but ``result.session`` will be null. In other words, our user is not yet ready to perform operations that require an auth session. For this, the email verification process must be successful.
 
 ### Add routes to the application
 
@@ -329,8 +333,7 @@ Widget build(BuildContext context) {
 
 ### Running Application
 
-If the session is held in the local (the user is logged in before), you need to restore the auth session from the local
-to check this:
+If the session is held in local storage (the user is logged in before), altogic restores the session. To check this:
 
 ```dart
 Future<void> main() async {
@@ -353,7 +356,7 @@ flutter run
 
 ## Deep Linking
 
-Altogic redirects the user to the **redirect url** in many authentication flow.
+Altogic redirects the user to the **redirect url** in many authentications flows.
 
 For example, when the user clicks the "Verify Email" in the mail, Altogic redirects the user to the **redirect url**.
 
@@ -363,13 +366,11 @@ We can handle the redirection in the application by using deep linking.
 
 #### Define redirect URL
 
-We need to define a redirect URL in Altogic Designer. Altogic will redirect the user to the URL after the open email
-verification link.
+We need to define a redirect URL in Altogic Designer. Altogic will redirect the user to the URL after the open email verification link.
 
 Your links should have a custom schema for the deep link used to open the application with Android and iOS.
 
-For example, if you want to use `altogic://` as your schema, you should define `altogic://host/path` as your redirect
-URL in Altogic Designer.
+For example, if you want to use `altogic://` as your schema, you should define `altogic://host/path` as your redirect URL in Altogic Designer.
 
 ![Redirect URL](./github/redirect.png)
 
@@ -377,8 +378,7 @@ URL in Altogic Designer.
 
 Add your deep link configuration to `ìnfo.plist`
 
-In the example below, our custom URL scheme is ``altogic``, and our host is `com.flutter-auth`. So URLs
-like ``altogic://com.flutter-auth/<path>`` opens the application.
+In the example below, our custom URL scheme is ``altogic``, and our host is `com.flutter-auth`. So URLs like ``altogic://com.flutter-auth/<path>`` opens the application.
 
 ````xml
 
@@ -426,14 +426,13 @@ Add your deep link configuration to your `<activity>` in AndroidManifest.xml
 
 ### Handling DeepLink
 
-If you use the ``AltogicState`` in the root of the application, the `State` will be mounted while the application
-lifecycle is resumed. So when the application is resumed or opened with the deep link, we can handle the link.
+If you use "AltogicState" at the root of the application, the "AltogicState" will be "mounted" throughout the application lifecycle. Thus, we can listen to the deep links when the application is resumed or opened with a deep link.
 
-When the application opens by a deep link, ``AltogicState`` cannot synchronously inform you with which link the
-application was opened. Instead, you can override methods to be called when a deep link opens the application.
+When the application opens by a deep link, ``AltogicState`` cannot synchronously inform you about the deep link. Instead, you can override methods to be called when a deep link opens the application.
 
-Available methods to override: `onEmailVerificationLink`, `onMagicLink`, `onOauthProviderLink`, `onEmailChangeLink`
-, `onPasswordResetLink`.
+Available methods to override: `onEmailVerificationLink`, `onMagicLink`, `onOauthProviderLink`, `onEmailChangeLink`, `onPasswordResetLink`.
+
+AltogicState provides a getter named ``navigatorObserver`` to observe navigation events. You can use `BuildContext` as the parameter for deep linking methods. If you use navigatorObserver, e.g., ``onMagicLink`` called with context; otherwise, `BuildContext` will be null for these methods.
 
 `````dart
 class _AltogicAuthExampleAppState extends AltogicState<AltogicAuthExampleApp> {
@@ -446,10 +445,6 @@ class _AltogicAuthExampleAppState extends AltogicState<AltogicAuthExampleApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
-      // Using for deep linking methods BuildContext parameter.
-      // If you use e.g onEmailVerificationLink called with context,
-      // otherwise BuildContext will be null on the method.
       navigatorObservers: [navigatorObserver],
       // ...
     );
@@ -464,7 +459,6 @@ When the application is opened by an email verification link, the ``onEmailVerif
 ````dart
 @override
 void onEmailVerificationLink(BuildContext? context, EmailVerificationRedirect redirect) {
-  // When the application is opened with an email verification link,
   // We can navigate to the email verification page.
   if (context != null) {
     navigateTo((c) => EmailVerificationRedirectPage(redirect: redirect));
@@ -479,8 +473,7 @@ void onEmailVerificationLink(BuildContext? context, EmailVerificationRedirect re
 
 The "email verification redirect URL" contains `action`, `status`, and `access_token` parameters. Also, `error` if any.
 
-If there is no error, the ``access_token`` parameter will not be null, and an auth "session" and "user" can be gotten
-with `getAuthGrant`.
+If there is no error, the ``access_token`` parameter will not be null, and an auth "session" and "user" can be gotten with `getAuthGrant`.
 
 `````dart
 Future<void> getAuthSession() async {
@@ -491,8 +484,7 @@ Future<void> getAuthSession() async {
 }
 `````
 
-On our redirect page, we can get auth grant with ``redirect.token`` or handle errors. This page has three possible
-states (excluding pending auth grant).
+On our redirect page, we can get auth grant with ``redirect.token`` or handle errors. This page has three possible states (excluding pending auth grant).
 
 - Redirect link status is an error: User deleted etc.
 - Redirect link valid, getting auth grant return error: Token expired, etc.
@@ -568,7 +560,7 @@ class _EmailRedirectPageState extends State<EmailVerificationRedirectPage> {
 
 **Now we can open our email verification link.**
 
-**The user is now verified.**
+**After opening the application via deep link, the user is now verified.**
 
 Altogic automatically signs in after verification. Then the user can log in with an email and password.
 
@@ -645,6 +637,51 @@ Future<void> _signOut() async {
   Navigator.pushReplacementNamed(context, '/sign-in');
 }
 `````
+
+## Sign In With Magic Link
+
+We can add a button to ``SignInPage`` to send a magic link to the user's email address.
+
+```dart
+AltogicButton(body: 'Sign In With Magic Link', onPressed: _signInWithMagicLink),
+```
+
+````dart
+void _signInWithMagicLink() async {
+  var result = await altogic.signInWithMagicLink(emailController.text);
+
+  if (result.errors != null) {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(
+        SnackBar(content: Text(result.errors.toJson().toString()))
+    );
+  } else {
+    ScaffoldMessenger.of(context)
+            .showSnackBar(
+            SnackBar(content: Text("Check Your E-Mail Box !"))
+    );
+  }
+}
+````
+
+## Handling Magic Link
+
+Add ``onMagicLink`` handler to AltogicState : 
+
+`````dart
+@override
+void onMagicLink(BuildContext? context, MagicLinkRedirect redirect) async {
+  var authGrant = await altogic.auth.getAuthGrant();
+  if (authGrant.errors != null) {
+    // Show a snackbar with the error
+  } else {
+    if (context != null) {
+      Navigator.of(context).pushNamed('/profile');
+    }
+  }
+}
+`````
+
 
 ## Profile Page
 
@@ -757,8 +794,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
 We must define a method for our users to select and upload images.
 
-If an image is selected, we can upload the image later. Then if the operation is successful, we can update our
-user's `profilePicture`.
+If an image is selected, we can upload the image later. Then if the operation is successful, we can update our user's `profilePicture`.
 
 `````dart
   Future<void> updateProfilePhoto() async {
@@ -820,7 +856,6 @@ We can listen to auth state changes with ``altogic.auth.onAuthStateChanged``.
     super.initState();
   }
 `````
-
 
 ## Conclusion
 

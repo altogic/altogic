@@ -118,14 +118,14 @@ class FileManagerService extends ServiceBase {
   }
 
   Future<void> updateInfo(
-      {String? newName,
+      {required String newName,
       required bool isPublic,
       required List<String> tags}) async {
     response.loading();
     var res =
         await file.updateInfo(newName: newName, isPublic: isPublic, tags: tags);
     response.response(res);
-    fileNameOrId = newName ?? fileNameOrId;
+    fileNameOrId = newName;
     fileInfo.value = res.data;
   }
 

@@ -1382,7 +1382,7 @@ class UpdateInfoBucketManager extends MethodWrap {
                 tags: tagging,
                 includeFiles: includeFiles.value,
                 isPublic: isPublic.value,
-                newName: newName.text.isEmpty ? null : newName.text,
+                newName:  newName.text,
               );
               tagsController.clear();
               newName.clear();

@@ -185,7 +185,7 @@ class BucketService extends ServiceBase {
   Future<void> updateInfo(
       {required bool isPublic,
       required bool includeFiles,
-      String? newName,
+      required String newName,
       required List<String> tags}) async {
     response.loading();
     var res = await altogic.storage.bucket(bucket).updateInfo(
@@ -194,7 +194,7 @@ class BucketService extends ServiceBase {
         newName: newName,
         tags: tags);
     response.response(res);
-    bucket = newName ?? bucket;
+    bucket = newName;
     bucketInfo.value = res.data;
   }
 }

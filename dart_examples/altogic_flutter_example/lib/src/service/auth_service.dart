@@ -121,7 +121,7 @@ class AuthService extends ServiceBase {
 
   Future<void> signOut([String? token]) async {
     response.loading();
-    var errors = await altogic.auth.signOut(sessionToken: token);
+    var errors = await altogic.auth.signOut(token);
     if (errors != null) {
       response.error(errors);
       return;

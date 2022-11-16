@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:altogic/altogic.dart';
 import 'package:altogic_flutter_example/src/controller/user_controller.dart';
 import 'package:altogic_flutter_example/src/view/pages/authorization/authorization.dart';
@@ -30,7 +28,6 @@ void main() async {
   }
 
   await CurrentUserController().setUser();
-  //CurrentUserController().listenUser();
   runApp(const MyApp());
 }
 

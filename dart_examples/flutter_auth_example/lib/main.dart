@@ -25,14 +25,16 @@ class AltogicAuthExampleApp extends StatefulWidget {
   State<AltogicAuthExampleApp> createState() => _AltogicAuthExampleAppState();
 }
 
-
 class _AltogicAuthExampleAppState extends AltogicState<AltogicAuthExampleApp> {
   @override
-  void onMagicLink(BuildContext? context, MagicLinkRedirect redirect) {
-
-    if (context != null) {
-      Navigator.of(context).push(MaterialPageRoute(
-          builder: (c) => MagicLinkRedirectPage(redirect: redirect)));
+  void onMagicLink(BuildContext? context, MagicLinkRedirect redirect) async {
+    var authGrant = await altogic.auth.getAuthGrant();
+    if (authGrant.errors != null) {
+      // Show a snackbar with the error
+    } else {
+      if (context != null) {
+        Navigator.of(context).pushNamed('/profile');
+      }
     }
   }
 

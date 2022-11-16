@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:altogic/altogic.dart';
 import 'package:altogic_flutter_example/main.dart';
 import 'package:altogic_flutter_example/src/service/service_base.dart';
@@ -49,10 +51,15 @@ class RealtimeService extends ServiceBase {
     response.message("Left $room");
   }
 
-  // void getMembers(String room) async {
-  //   var res = await realtime.getMembers(room);
-  //   response.message("Members of $room : \n$res");
-  // }
+  void getMembers(String room) async {
+    var res = await realtime.getMembers(room);
+    var resJson = {
+      "errors": res.errors,
+      'data': res.data,
+    };
+    response.message(
+        "Members of $room : \n${const JsonEncoder.withIndent("    ").convert(resJson)}");
+  }
 
   void updateUserData(String data) async {
     realtime.updateProfile(MemberData(

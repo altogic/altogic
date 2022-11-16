@@ -9,7 +9,7 @@ class CacheService extends ServiceBase {
 
   Future<void> setCache(String key, dynamic value, int? ttl) async {
     response.loading();
-    var res = await altogic.cache.set(key, value,ttl);
+    var res = await altogic.cache.set(key, value, ttl);
     response.error(res);
   }
 
@@ -51,7 +51,7 @@ class CacheService extends ServiceBase {
 
   Future<void> listKeys(String? expression, String? next) async {
     response.loading();
-    var res = await altogic.cache.listKeys(expression, next);
+    var res = await altogic.cache.listKeys(pattern: expression, next: next);
     response.response(APIResponse(
         data: {'data': res.data, 'next': res.next}, errors: res.errors));
   }
