@@ -1,0 +1,29 @@
+<section class="flex flex-col items-center justify-center h-96 gap-4">
+	<form (ngSubmit)="submitHandler()" [formGroup]="registerForm" class="flex flex-col gap-2 w-full md:w-96">
+		<h1 class="self-start text-3xl font-bold">Create an account</h1>
+
+		<div *ngIf="isNeedToVerify" class="bg-green-500 text-white p-2">
+			Your account has been created. Please check your email to verify your account.
+		</div>
+
+		<ng-container *ngIf="errors">
+			<div *ngFor="let error of errors.items" class="bg-red-600 text-white text-[13px] p-2">
+				<p>{{ error.message }}</p>
+			</div>
+		</ng-container>
+
+		<input formControlName="email" type="email" placeholder="Type your email" required />
+		<input formControlName="name" type="text" placeholder="Type your name" required />
+		<input formControlName="password" type="password" placeholder="Type your password" required />
+		<div class="flex justify-between gap-4">
+			<a class="text-indigo-600" routerLink="/login">Already have an account?</a>
+			<button
+				[disabled]="!registerForm.valid || loading"
+				type="submit"
+				class="border py-2 px-3 border-gray-500 hover:bg-gray-500 hover:text-white transition shrink-0"
+			>
+				Register
+			</button>
+		</div>
+	</form>
+</section>

@@ -1,0 +1,22 @@
+<section class="flex flex-col items-center justify-center h-96 gap-4">
+	<form (ngSubmit)="submitHandler()" [formGroup]="loginForm" class="flex flex-col gap-2 w-full md:w-96">
+		<h1 class="self-start text-3xl font-bold">Login to your account</h1>
+		<ng-container *ngIf="errors">
+			<div *ngFor="let error of errors.items" class="bg-red-600 text-white text-[13px] p-2">
+				<p>{{ error.message }}</p>
+			</div>
+		</ng-container>
+		<input formControlName="email" type="email" placeholder="Type your email" required />
+		<input formControlName="password" type="password" placeholder="Type your password" required />
+		<div class="flex justify-between gap-4 items-start">
+			<a class="text-indigo-600" routerLink="/register">Don't have an account? Register now</a>
+			<button
+				type="submit"
+				[disabled]="!loginForm.valid || loading"
+				class="border py-2 px-3 border-gray-500 hover:bg-gray-500 hover:text-white transition shrink-0"
+			>
+				Login
+			</button>
+		</div>
+	</form>
+</section>

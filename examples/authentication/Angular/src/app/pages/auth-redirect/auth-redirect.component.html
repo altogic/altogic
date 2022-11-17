@@ -1,0 +1,16 @@
+<section class="h-screen flex flex-col gap-4 justify-center items-center">
+	<div *ngIf="noToken; else hasTokenBlock" class="text-center text-red-500 text-6xl">No token provided</div>
+	<ng-template #hasTokenBlock>
+		<ng-container *ngIf="errors; else waitBlock">
+			<div *ngFor="let error of errors.items" class="text-center text-red-500 text-3xl">
+				<p>{{ error.message }}</p>
+			</div>
+		</ng-container>
+		<ng-template #waitBlock>
+			<div class="text-center">
+				<p class="text-6xl">Please wait</p>
+				<p class="text-3xl">You're redirecting to your profile...</p>
+			</div>
+		</ng-template>
+	</ng-template>
+</section>

@@ -1,0 +1,30 @@
+<div class="border p-4 space-y-4">
+	<p class="text-3xl">All Sessions</p>
+	<ul class="flex flex-col gap-2">
+		<ng-container *ngIf="errors">
+			<div *ngFor="let error of errors.items" class="bg-red-600 text-white text-[13px] p-2">
+				<p>{{ error.message }}</p>
+			</div>
+		</ng-container>
+		<ng-container *ngIf="!errors">
+			<li class="flex justify-between gap-12" *ngFor="let session of sessions">
+				<div>
+					<span *ngIf="session?.isCurrent"> Current Session </span>
+					<span *ngIf="!session?.isCurrent">
+						<strong>Device name: </strong>{{ session?.userAgent?.device?.family }}</span
+					>
+				</div>
+				<div class="flex items-center gap-2">
+					<span>{{ session.creationDtm }}</span>
+					<button
+						*ngIf="!session?.isCurrent"
+						(click)="logoutSession(session)"
+						class="border grid place-items-center p-2 h-8 w-8 aspect-square leading-none"
+					>
+						X
+					</button>
+				</div>
+			</li>
+		</ng-container>
+	</ul>
+</div>
