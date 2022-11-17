@@ -169,7 +169,7 @@ class _AltogicAppBarState extends State<AltogicAppBar> {
                   icon: const Icon(Icons.home))
               : null),
       title: Text(controller.isLogged
-          ? 'Hello ${controller.user.name ?? controller.user.mailOrPhone} !'
+          ? 'Hello ${controller.user.name ?? controller.user.email ?? controller.user.phone} !'
           : 'Welcome To Test App'),
       actions: [
         if (controller.isLogged)
@@ -179,7 +179,6 @@ class _AltogicAppBarState extends State<AltogicAppBar> {
               icon: const Icon(Icons.logout),
               onPressed: () async {
                 await altogic.auth.signOut();
-                CurrentUserController().user = null;
                 CurrentUserController().market = null;
                 if (mounted) Navigator.of(context).pushNamed('/');
               },

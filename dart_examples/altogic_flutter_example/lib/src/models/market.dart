@@ -1,5 +1,4 @@
 import 'package:altogic/altogic.dart';
-import 'package:altogic_flutter_example/src/models/altogic_user.dart';
 
 import 'contacts.dart';
 
@@ -18,7 +17,7 @@ class Market {
         name: map['name'],
         ownerId: map['user'] is String ? map['user'] : null,
         owner: map['user'] is Map
-            ? AltogicUser.fromUser(User.fromJson(map['user']))
+            ? User.fromJson(map['user'])
             : null,
         marketAddress: map['market_address'],
         contacts: map['contacts'] != null
@@ -42,7 +41,7 @@ class Market {
   final String name;
 
   String? ownerId;
-  AltogicUser? owner;
+  User? owner;
 
   final List<Contact> contacts;
 

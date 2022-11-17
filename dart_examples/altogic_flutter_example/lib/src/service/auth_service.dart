@@ -20,7 +20,7 @@ class AuthService extends ServiceBase {
     var res = await altogic.auth.signUpWithEmail(email, password, name);
     if (res.errors != null) {
       response.error(res.errors);
-      currentUserController.user = null;
+      
       return;
     }
 
@@ -29,9 +29,6 @@ class AuthService extends ServiceBase {
       'session': res.session?.toJson(),
     }));
 
-    if (res.session != null && res.user != null) {
-      await currentUserController.setUser();
-    }
   }
 
   Future<void> signUpWithPhone(
@@ -40,7 +37,6 @@ class AuthService extends ServiceBase {
     var res = await altogic.auth.signUpWithPhone(phone, password, name);
     if (res.errors != null) {
       response.error(res.errors);
-      currentUserController.user = null;
       return;
     }
 
@@ -49,9 +45,6 @@ class AuthService extends ServiceBase {
       'session': res.session?.toJson(),
     }));
 
-    if (res.session != null && res.user != null) {
-      await currentUserController.setUser();
-    }
   }
 
   Future<void> signInWithEmail(String email, String password) async {
@@ -59,7 +52,6 @@ class AuthService extends ServiceBase {
     var res = await altogic.auth.signInWithEmail(email, password);
     if (res.errors != null) {
       response.error(res.errors);
-      currentUserController.user = null;
       return;
     }
 
@@ -68,9 +60,6 @@ class AuthService extends ServiceBase {
       'session': res.session?.toJson(),
     }));
 
-    if (res.session != null && res.user != null) {
-      await currentUserController.setUser();
-    }
   }
 
   Future<void> signInWithPhone(String phone, String password) async {
@@ -78,7 +67,7 @@ class AuthService extends ServiceBase {
     var res = await altogic.auth.signInWithPhone(phone, password);
     if (res.errors != null) {
       response.error(res.errors);
-      currentUserController.user = null;
+      
       return;
     }
 
@@ -87,9 +76,6 @@ class AuthService extends ServiceBase {
       'session': res.session?.toJson(),
     }));
 
-    if (res.session != null && res.user != null) {
-      await currentUserController.setUser();
-    }
   }
 
   Future<void> signInWithCode(String phone, String code) async {
@@ -97,7 +83,7 @@ class AuthService extends ServiceBase {
     var res = await altogic.auth.signInWithCode(phone, code);
     if (res.errors != null) {
       response.error(res.errors);
-      currentUserController.user = null;
+      
       return;
     }
 
@@ -106,9 +92,6 @@ class AuthService extends ServiceBase {
       'session': res.session?.toJson(),
     }));
 
-    if (res.session != null && res.user != null) {
-      await currentUserController.setUser();
-    }
   }
 
   Future<void> signInWithProvider(String provider) async {
@@ -129,7 +112,7 @@ class AuthService extends ServiceBase {
 
     var user = await altogic.auth.getUser();
     if (user == null) {
-      currentUserController.user = null;
+      
       await altogic.auth.clearLocalData();
     }
 
@@ -143,7 +126,7 @@ class AuthService extends ServiceBase {
       response.error(errors);
       return;
     }
-    currentUserController.user = null;
+    
     await altogic.auth.clearLocalData();
     response.success();
   }
@@ -200,7 +183,7 @@ class AuthService extends ServiceBase {
     var res = await altogic.auth.getAuthGrant(token);
     if (res.errors != null) {
       response.error(res.errors);
-      currentUserController.user = null;
+      
       return;
     }
 
@@ -209,9 +192,6 @@ class AuthService extends ServiceBase {
       'session': res.session?.toJson(),
     }));
 
-    if (res.session != null && res.user != null) {
-      await currentUserController.setUser();
-    }
   }
 
   Future<void> resendVerificationEmail(String email) async {
@@ -333,7 +313,7 @@ class AuthService extends ServiceBase {
     var res = await altogic.auth.verifyPhone(phone, code);
     if (res.errors != null) {
       response.error(res.errors);
-      currentUserController.user = null;
+      
       return;
     }
 
@@ -342,8 +322,5 @@ class AuthService extends ServiceBase {
       'session': res.session?.toJson(),
     }));
 
-    if (res.session != null && res.user != null) {
-      await currentUserController.setUser();
-    }
   }
 }

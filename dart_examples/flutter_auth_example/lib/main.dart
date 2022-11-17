@@ -27,9 +27,19 @@ class AltogicAuthExampleApp extends StatefulWidget {
 class _AltogicAuthExampleAppState extends AltogicState<AltogicAuthExampleApp> {
   @override
   void onMagicLink(BuildContext? ctx, MagicLinkRedirect redirect) async {
+    if (redirect.error != null) {
+      // ignore: use_build_context_synchronously , because we dont use the this.context
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Magic link error: ${redirect.error}")));
+      return;
+    }
+
     var authGrant = await altogic.auth.getAuthGrant();
     if (authGrant.errors != null) {
-      // Show a snackbar with the error
+      // ignore: use_build_context_synchronously , because we dont use the this.context
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Getting grant error: ${authGrant.errors}")));
+      return;
     } else {
       if (ctx != null) {
         // ignore: use_build_context_synchronously , because we dont use the this.context

@@ -1,6 +1,5 @@
 import 'package:altogic/altogic.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_auth_example/widgets/input.dart';
 import 'package:flutter_auth_example/widgets/with_max_width.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -208,20 +207,20 @@ class _ProfilePageState extends State<ProfilePage> {
                     WithMaxWidth(
                         child: Column(children: [
                       for (var session in sessions)
-ListTile(
-  title: Text(session.userAgent.os.family ?? ""),
-  subtitle: Text(session.creationDtm ?? ""),
-  trailing: IconButton(
-    icon: const Icon(Icons.delete),
-    onPressed: () async {
-      var response =
-          await altogic.auth.signOut(session.token);
-      if (response == null) {
-        refresh();
-      }
-    },
-  ),
-)
+                        ListTile(
+                          title: Text(session.userAgent.os.family),
+                          subtitle: Text(session.creationDtm),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.delete),
+                            onPressed: () async {
+                              var response =
+                                  await altogic.auth.signOut(session.token);
+                              if (response == null) {
+                                refresh();
+                              }
+                            },
+                          ),
+                        )
                     ])),
                 ],
               ),

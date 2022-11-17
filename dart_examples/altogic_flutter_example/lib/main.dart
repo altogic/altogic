@@ -27,7 +27,8 @@ void main() async {
     setPathUrlStrategy();
   }
 
-  await CurrentUserController().setUser();
+  CurrentUserController().listenUser();
+  await altogic.restoreAuthSession();
   runApp(const MyApp());
 }
 

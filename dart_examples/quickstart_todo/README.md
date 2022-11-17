@@ -1,5 +1,3 @@
-
-
 This is a simple todo list application for [Altogic Flutter Quickstart](https://www.altogic.com/client/quick-start/quick-start-flutter).
 
 # Quickstart: Flutter

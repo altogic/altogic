@@ -54,22 +54,7 @@ class _SignInPageState extends State<SignInPage> {
               verticalSpace,
               AltogicButton(body: 'Sign In', onPressed: _signIn),
               verticalSpace,
-              AltogicButton(
-                  body: 'Send Magic Link',
-                  onPressed: () async {
-                    var res = await altogic.auth
-                        .sendMagicLinkEmail(emailController.text);
-                    String message;
-                    if (res == null) {
-                      message = "Sent Magic Link";
-                    } else {
-                      message = "Error: ${res.toJson()}";
-                    }
-                    if (mounted) {
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(SnackBar(content: Text(message)));
-                    }
-                  }),
+              AltogicButton(body: 'Send Magic Link', onPressed: _sendMagicLink),
               verticalSpace,
               TextButton(
                 onPressed: () {
@@ -84,7 +69,23 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
+  Future<void> _sendMagicLink() async {
+    FocusManager.instance.primaryFocus?.unfocus();
+    var res = await altogic.auth.sendMagicLinkEmail(emailController.text);
+    String message;
+    if (res == null) {
+      message = "Sent Magic Link";
+    } else {
+      message = "Error: ${res.toJson()}";
+    }
+    if (mounted) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(message)));
+    }
+  }
+
   Future<void> _signIn() async {
+    FocusManager.instance.primaryFocus?.unfocus();
     var res = await altogic.auth
         .signInWithEmail(emailController.text, passwordController.text);
     if (res.errors != null) {

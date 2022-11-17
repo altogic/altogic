@@ -56,7 +56,7 @@ class _MainPageState extends State<MainPage> {
             InkWell(
               onTap: () {
                 launchUrlString(
-                    'https://github.com/yazmehmet/altogic_flutter_example/issues');
+                    'https://github.com/altogic/altogic/tree/main/dart_examples/altogic_flutter_example');
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
