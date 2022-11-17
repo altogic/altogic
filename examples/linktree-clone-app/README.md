@@ -34,4 +34,4 @@ To learn more about Altogic and React.js, you can take a look at the following r
 
 ## Contribution
 
-Your feedback and contributions are welcome! Please open a pull request for contributions. If you need the backend for this app, you can contact us at [Discord Server](https://discord.gg/zDTnDPBxRz).
+Your feedback and contributions are welcome! Please open a pull request for contributions. If you need the backend for this app, you can contact us at [Discord Server](https://discord.gg/ERK2ssumh8).

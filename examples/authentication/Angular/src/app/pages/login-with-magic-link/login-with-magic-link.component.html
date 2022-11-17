@@ -1,0 +1,27 @@
+<section class="flex flex-col items-center justify-center h-96 gap-4">
+	<form (ngSubmit)="submitHandler()" [formGroup]="magicForm" class="flex flex-col gap-2 w-full md:w-96">
+		<h1 class="self-start text-3xl font-bold">Login with magic link</h1>
+
+		<div *ngIf="showMessage" class="bg-green-600 text-white text-[13px] p-2">
+			Your magic link has been sent to your email address.
+		</div>
+
+		<ng-container *ngIf="errors">
+			<div *ngFor="let error of errors.items" class="bg-red-600 text-white text-[13px] p-2">
+				<p>{{ error.message }}</p>
+			</div>
+		</ng-container>
+
+		<input formControlName="email" type="email" placeholder="Type your email" required />
+		<div class="flex justify-between gap-4 items-start">
+			<a class="text-indigo-600" routerLink="/register">Don't have an account? Register now</a>
+			<button
+				type="submit"
+				[disabled]="!magicForm.valid || loading"
+				class="border py-2 px-3 border-gray-500 hover:bg-gray-500 hover:text-white transition shrink-0"
+			>
+				Send magic link
+			</button>
+		</div>
+	</form>
+</section>
