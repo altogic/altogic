@@ -1,0 +1,11 @@
+<ion-content>
+  <section class='flex flex-col justify-center items-center gap-4 p-4'>
+    <app-avatar></app-avatar>
+    <app-user-info></app-user-info>
+    <app-sessions></app-sessions>
+    <button (click)="logout()" class="bg-white rounded py-2 px-3 text-black w-full">
+      {{ loading ? 'Processing...' : 'Logout' }}
+    </button>
+  </section>
+</ion-content>
+

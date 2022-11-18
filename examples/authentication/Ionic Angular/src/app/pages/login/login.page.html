@@ -1,0 +1,24 @@
+<ion-content>
+  <section class="container mx-auto px-4 flex flex-col items-center justify-center h-96 gap-4">
+    <form (ngSubmit)="submitHandler()" [formGroup]="loginForm" class="flex flex-col gap-2 w-full md:w-96">
+      <h1 class="self-start text-3xl font-bold">Login to your account</h1>
+      <ng-container *ngIf="errors">
+        <div *ngFor="let error of errors.items" class="bg-red-600 text-white text-[13px] p-2">
+          <p>{{ error.message }}</p>
+        </div>
+      </ng-container>
+      <input class='text-black' formControlName="email" type="email" placeholder="Type your email" required />
+      <input class='text-black' formControlName="password" type="password" placeholder="Type your password" required />
+      <div class="flex justify-between gap-4 items-start">
+        <a class="text-indigo-400" routerLink="/register">Don't have an account? Register now</a>
+        <button
+          type="submit"
+          [disabled]="!loginForm.valid || loading"
+          class="py-2 px-3 bg-white text-black shrink-0"
+        >
+          Login
+        </button>
+      </div>
+    </form>
+  </section>
+</ion-content>

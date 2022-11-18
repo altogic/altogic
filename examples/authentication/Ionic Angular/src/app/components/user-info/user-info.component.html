@@ -1,0 +1,16 @@
+<section class="border p-4 container w-full">
+  <div class="flex items-center justify-center" *ngIf="changeMode">
+    <input
+      (keydown.enter)="saveName()"
+      autofocus
+      [formControl]="name"
+      type="text"
+      class="border-none text-3xl text-center text-white bg-transparent border"
+    />
+  </div>
+  <div class="space-y-4 flex flex-col items-center" *ngIf="!changeMode">
+    <h1 class="text-3xl text-center">Hello, {{ getUserName() }}</h1>
+    <button (click)="changeMode = true" class="border p-2 bg-white text-black">Change name</button>
+  </div>
+  <div *ngIf="errors">{{ errors }}</div>
+</section>

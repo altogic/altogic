@@ -1,0 +1,7 @@
+{
+  "name": "altogic-auth-ionic-vue",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
