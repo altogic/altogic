@@ -72,7 +72,7 @@ Once the user created successfully, our Ionic React app will route the user to t
 
 We have changed the redirect URL to `http://localhost:3000/auth-redirect`
 
-## Create a Ionic React project
+## Create an Ionic React project
 ```bash
 npm install -g @ionic/cli
 ionic start myApp tabs --type react
