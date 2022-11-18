@@ -21,6 +21,8 @@ export default function ChatMessageBubble({ message, showAuthor, onClick }: Chat
 	const hasMedia = !!message.media?.url;
 	const isImage = hasMedia && message.media?.type.startsWith('image/');
 	const deleteMessage = () => MessageController.deleteMessage(message.group, message._id);
+	const findEmojiRegex = /\p{Extended_Pictographic}/ug
+	const isOnlyEmoji = !message.content.replace(findEmojiRegex, "").length;
 
 	useEffect(() => {
 		if (!messageRef.current) return;
@@ -81,7 +83,12 @@ export default function ChatMessageBubble({ message, showAuthor, onClick }: Chat
 						/>
 					</div>
 				)}
-				<div className="px-1 pr-4">{message.content}</div>
+				{
+					isOnlyEmoji
+						? <div className="text-4xl pr-4">{message.content}</div>
+						: <div className="px-1 pr-4">{message.content}</div>
+				}
+				
 			</div>
 			<time className="float-right m-1 w-fit text-[.6875rem] text-bubble-meta-light dark:text-bubble-meta-dark">
 				{isToday(_date) ? intlFormatDistance(_date, new Date()) : format(_date, 'PPpp')}
