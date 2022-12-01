@@ -39,8 +39,7 @@ export default function Navbar() {
                 </div>
               </Link>
 
-              <div className="flex lg:hidden"></div>
-              <div className="hidden lg:block lg:w-80">
+              <div className="block lg:w-80">
                 <div className="flex items-center justify-end">
                   {user ? (
                     <Menu as="div" className="ml-4 relative flex-shrink-0">
@@ -90,12 +89,12 @@ export default function Navbar() {
                   ) : (
                     <>
                       <Link to="/sign-in">
-                        <Button className="block w-full py-1 px-2 text-center bg-white border border-transparent rounded-md shadow-md text-base font-medium text-pink-700 hover:bg-gray-50 sm:inline-block sm:w-auto mr-2">
+                        <Button className="block w-full py-1 px-2 text-center bg-white border border-transparent rounded-md shadow-md text-base font-medium text-pink-700 hover:bg-gray-50 sm:inline-block sm:w-auto">
                           Login
                         </Button>
                       </Link>
                       <Link to="/create-an-account">
-                        <Button className="block w-full py-1 px-2 text-center bg-white border border-transparent rounded-md shadow-md text-base font-medium text-pink-700 hover:bg-gray-50 sm:inline-block sm:w-auto">
+                        <Button className="w-full py-1 px-2 text-center bg-white border border-transparent rounded-md shadow-md text-base font-medium text-pink-700 hover:bg-gray-50 sm:inline-block sm:w-auto ml-2 hidden sm:block">
                           Register
                         </Button>
                       </Link>

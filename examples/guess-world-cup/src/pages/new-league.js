@@ -37,13 +37,13 @@ export default function NewLeague() {
                         {user ? (
                           <>
                             <Button
-                              className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-pink-700 bg-white hover:bg-pink-50 sm:px-8"
+                              className="block w-full py-3 px-5 text-center bg-white border border-transparent rounded-md shadow-md text-base font-medium text-pink-700 hover:bg-gray-50 sm:inline-block sm:w-auto"
                               onClick={() => setOpen("create")}
                             >
                               Create League
                             </Button>
                             <Button
-                              className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-pink-500 bg-opacity-60 hover:bg-opacity-70 sm:px-8"
+                              className="block w-full py-3 px-5 text-center bg-white border border-transparent rounded-md shadow-md text-base font-medium text-pink-700 hover:bg-gray-50 sm:inline-block sm:w-auto md:ml-3"
                               onClick={() => setOpen("join")}
                             >
                               Join League
@@ -58,7 +58,7 @@ export default function NewLeague() {
                               Create League
                             </Link>
                             <Link
-                              className="block w-full py-3 px-5 text-center bg-white border border-transparent rounded-md shadow-md text-base font-medium text-pink-700 hover:bg-gray-50 sm:inline-block sm:w-auto ml-3"
+                              className="block w-full py-3 px-5 text-center bg-white border border-transparent rounded-md shadow-md text-base font-medium text-pink-700 hover:bg-gray-50 sm:inline-block sm:w-auto md:ml-3"
                               to="/sign-in"
                             >
                               Join League
