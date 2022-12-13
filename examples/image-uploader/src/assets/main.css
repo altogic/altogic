@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html,
+	body,
+	#app {
+		@apply h-full;
+	}
+	body {
+		font-family: 'Montserrat', sans-serif;
+	}
+	body:has(.modal) {
+		overflow: hidden;
+	}
+	#app {
+		@apply flex flex-col;
+	}
+}
