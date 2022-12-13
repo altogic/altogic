@@ -6,7 +6,7 @@ import { useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification';
 import { useHead } from '@vueuse/head';
 
-useHead({ title: 'Create an account' });
+useHead({ title: 'Create an account - IMAGEUPLOADER: The Best Open Source Image Uploader' });
 
 const auth = useAuthStore();
 const router = useRouter();
