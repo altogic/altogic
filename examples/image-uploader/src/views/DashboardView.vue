@@ -7,7 +7,7 @@ import Main from '@/components/dashboard/Main.vue';
 import { useFileStore } from '@/stores/file';
 import { useRoute, useRouter } from 'vue-router';
 
-useHead({ title: 'Dashboard - Image Uploader' });
+useHead({ title: 'Dashboard - IMAGEUPLOADER: The Best Open Source Image Uploader' });
 const auth = useAuthStore();
 const storage = useFileStore();
 const route = useRoute();

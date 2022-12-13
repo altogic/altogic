@@ -28,6 +28,6 @@ import { useHead } from '@vueuse/head';
 import WelcomeLogo from '@/components/WelcomeLogo.vue';
 const store = useAuthStore();
 useHead({
-	title: 'Home Page - Image Uploader',
+	title: 'IMAGEUPLOADER: The Best Open Source Image Uploader',
 });
 </script>

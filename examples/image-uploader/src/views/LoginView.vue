@@ -5,7 +5,7 @@ import { useAuthStore } from '@/stores/auth';
 import { useRouter } from 'vue-router';
 import { useHead } from '@vueuse/head';
 
-useHead({ title: 'Login to your account' });
+useHead({ title: 'Login to your account - IMAGEUPLOADER: The Best Open Source Image Uploader' });
 
 const auth = useAuthStore();
 const router = useRouter();
