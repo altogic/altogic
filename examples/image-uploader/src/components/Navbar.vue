@@ -5,7 +5,9 @@
 				<router-link
 					to="/"
 					class="text-white font-bold whitespace-nowrap md:text-lg xl:text-2xl"
-					>Image Uploader</router-link
+					>
+                    <Logo class="h-auto w-[200px]" />
+                </router-link
 				>
 			</div>
 			<div class="flex items-center lg:gap-1" v-if="!isAuthenticated">
@@ -29,6 +31,7 @@
 <script setup>
 import { useAuthStore } from '@/stores/auth';
 import { computed } from 'vue';
+import Logo from "@/components/Logo.vue";
 
 const store = useAuthStore();
 const isAuthenticated = computed(() => store.isAuthenticated);
