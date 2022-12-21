@@ -810,6 +810,8 @@ function Sessions({ sessions, setSessions }) {
 export default Sessions;
 ```
 
+> Important Note: `swcMinify:false` statement must be added to the `next.config.js` file to build in Next 13.
+
 ## Bonus: Upload Profile Photo
 Let's create an Avatar component to upload a profile photo. 
 
