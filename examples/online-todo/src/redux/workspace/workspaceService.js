@@ -21,10 +21,10 @@ const workspaceService = {
       .getSingle();
   },
   createWorkspace(body) {
-    return endpoint.put("/workspace", body);
+    return endpoint.post("/workspace", body);
   },
   updateWorkspace(body) {
-    return endpoint.post("/workspace", body);
+    return endpoint.put("/workspace", body);
   },
   deleteWorkspace(workspaceId) {
     return endpoint.delete("/workspace", { workspaceId });

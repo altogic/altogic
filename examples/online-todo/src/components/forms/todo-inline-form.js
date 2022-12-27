@@ -1,22 +1,16 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import classNames from "classnames";
 import _ from "lodash";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { toast } from "react-toastify";
 import * as yup from "yup";
 import useQuery from "../../helpers/useQuery";
 import { TodoStatusTypes } from "../../helpers/utils";
 import { todoActions } from "../../redux/todo/todoSlice";
 import Input from "../inputs/input";
 
-export default function TodoInlineForm({
-  create,
-  selectedTodo,
-  setSelectedTodo,
-}) {
+export default function TodoInlineForm({ selectedTodo, setSelectedTodo }) {
   const schema = new yup.ObjectSchema({
     title: yup
       .string()

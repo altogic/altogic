@@ -24,10 +24,7 @@ export default function useInivitationRealtime() {
   };
 
   const removeListen = () => {
-    realtimeService.removeListen(
-      InvitationEventType.INVITE_MEMBER,
-      inviteMember
-    );
+    realtimeService.removeListen(InvitationEventType.INVITE_MEMBER);
   };
 
   useEffect(() => {

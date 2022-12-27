@@ -1,12 +1,8 @@
-import _ from "lodash";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { listActions } from "../redux/list/listSlice";
 import realtimeService from "../redux/realtime/realtimeService";
 import { realtimeActions } from "../redux/realtime/realtimeSlice";
-import { todoActions } from "../redux/todo/todoSlice";
-import { workspaceActions } from "../redux/workspace/workspaceSlice";
 import { myRouter } from "./routes";
 import useQuery from "./useQuery";
 import { TodoStatusTypes } from "./utils";
@@ -146,23 +142,17 @@ export default function useListenRealtime() {
   };
 
   const removeListen = () => {
-    realtimeService.removeListen(
-      EventType.WORKSPACE_NAME_CHANGED,
-      workspaceNameChange
-    );
-    realtimeService.removeListen(EventType.WORKSPACE_DELETED, deletedWorkspace);
-    realtimeService.removeListen(EventType.JOINED_WORKSPACE, joinedWorkspace);
-    realtimeService.removeListen(EventType.LEAVED_WORKSPACE, leftWorkspace);
-    realtimeService.removeListen(EventType.NEW_LIST, newList);
-    realtimeService.removeListen(EventType.UPDATE_LIST, updateList);
-    realtimeService.removeListen(EventType.DELETE_LIST, deleteList);
-    realtimeService.removeListen(EventType.NEW_TODO, newTodo);
-    realtimeService.removeListen(EventType.UPDATE_TODO, updateTodo);
-    realtimeService.removeListen(
-      EventType.CHANGE_STATUS_TODO,
-      changeStatusTodo
-    );
-    realtimeService.removeListen(EventType.DELETE_TODO, deleteTodo);
+    realtimeService.removeListen(EventType.WORKSPACE_NAME_CHANGED);
+    realtimeService.removeListen(EventType.WORKSPACE_DELETED);
+    realtimeService.removeListen(EventType.JOINED_WORKSPACE);
+    realtimeService.removeListen(EventType.LEAVED_WORKSPACE);
+    realtimeService.removeListen(EventType.NEW_LIST);
+    realtimeService.removeListen(EventType.UPDATE_LIST);
+    realtimeService.removeListen(EventType.DELETE_LIST);
+    realtimeService.removeListen(EventType.NEW_TODO);
+    realtimeService.removeListen(EventType.UPDATE_TODO);
+    realtimeService.removeListen(EventType.CHANGE_STATUS_TODO);
+    realtimeService.removeListen(EventType.DELETE_TODO);
   };
 
   useEffect(() => {
