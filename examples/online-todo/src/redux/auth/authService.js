@@ -45,10 +45,10 @@ const authService = {
     return auth.resetPwdWithToken(accessToken, newPassword);
   },
   updateName(name) {
-    return endpoint.post("/user/name", { name });
+    return endpoint.put("/user/name", { name });
   },
   updateProfilePicture(photoPublicPath) {
-    return endpoint.post("/user/profilePicture", { photoPublicPath });
+    return endpoint.put("/user/profilePicture", { photoPublicPath });
   },
   isEmailExist(email) {
     return db.model("users").filter(`email == ${email}`).getSingle();

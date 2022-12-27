@@ -17,16 +17,16 @@ const todoService = {
     });
   },
   createTodo(body) {
-    return endpoint.put("/todo", body);
+    return endpoint.post("/todo", body);
   },
   updateFieldsTodo(todoId, field) {
     return db.model("todos").object(todoId).updateFields(field);
   },
   changeStatusTodo(todoId, newStatus) {
-    return endpoint.post("/todo/changeStatus", { todoId, newStatus });
+    return endpoint.put("/todo/changeStatus", { todoId, newStatus });
   },
   updateTodo(body) {
-    return endpoint.post("/todo", body);
+    return endpoint.put("/todo", body);
   },
   deleteTodo(todoId) {
     return endpoint.delete("/todo", { todoId });

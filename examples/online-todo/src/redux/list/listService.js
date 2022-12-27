@@ -8,13 +8,13 @@ const listService = {
     return endpoint.get("/lists/slug", { listSlug, userId });
   },
   createList(body) {
-    return endpoint.put("/lists", body);
+    return endpoint.post("/lists", body);
   },
   deleteList(listId) {
     return endpoint.delete("/lists", { listId });
   },
   updateList(body) {
-    return endpoint.post("/lists", body);
+    return endpoint.put("/lists", body);
   },
   updateListFields(listId, fields) {
     return db.model("lists").updateFields(fields);

@@ -1,11 +1,9 @@
-import DeleteModal from "../modals/delete-modal";
-import useInivitationRealtime from "../../helpers/useInivitationRealtime";
-import JoinModal from "../modals/join-team-modal";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import useInivitationRealtime from "../../helpers/useInivitationRealtime";
 import { invitationActions } from "../../redux/invitation/invitationSlice";
-import { myRouter } from "../../helpers/routes";
-import { useState } from "react";
+import JoinModal from "../modals/join-team-modal";
 
 export default function WrapApp({ children }) {
   const [invitation, setInvitation] = useInivitationRealtime();
