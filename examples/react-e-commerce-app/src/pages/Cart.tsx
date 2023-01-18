@@ -139,8 +139,15 @@ export default function ShoppingCart() {
 									</small>
 								)}
 							</div>
+							<div className="mt-2 bg-blue-50 rounded-md py-2 px-4">
+								<p>For demo purposes you can use following Stripe card</p>
+								<p><strong>Card No: </strong><span>4242 4242 4242 4242</span> </p>
+								<p><strong>Date:</strong> <span>12/34</span></p>
+								<p><strong>CVV:</strong> <span>123</span></p>
+							</div>
 						</section>
 					) : undefined}
+
 				</form>
 			</div>
 		</div>
