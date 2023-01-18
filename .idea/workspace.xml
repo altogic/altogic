@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f1bf01ec-5a43-44f3-ad7e-b1d094d72a56" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/image-uploader/src/components/Uploader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/examples/image-uploader/src/components/Uploader.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/image-uploader/src/libs/altogic.js" beforeDir="false" afterPath="$PROJECT_DIR$/examples/image-uploader/src/libs/altogic.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/react-e-commerce-app/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/examples/react-e-commerce-app/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +28,9 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "TODO_SCOPE": "All Places",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/altogic/Desktop/altogic/examples/image-uploader",
+    "last_opened_file_path": "/Users/altogic/Desktop/altogic/examples/react-e-commerce-app/public",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -41,6 +41,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/examples/react-e-commerce-app/public" />
       <recent name="$PROJECT_DIR$/examples/image-uploader" />
       <recent name="$PROJECT_DIR$/examples" />
     </key>
@@ -54,7 +55,8 @@
       <option name="presentableId" value="Default" />
       <updated>1670932225019</updated>
       <workItem from="1670932226331" duration="306000" />
-      <workItem from="1674042058705" duration="460000" />
+      <workItem from="1674042058705" duration="804000" />
+      <workItem from="1674044467363" duration="686000" />
     </task>
     <servers />
   </component>
