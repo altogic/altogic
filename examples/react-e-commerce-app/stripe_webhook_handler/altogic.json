@@ -1,0 +1,7 @@
+{
+  "appId": "639999217534bd2115c2f7d6",
+  "functionId": "63a57bf7add9c115b44a0484",
+  "name": "stripe_webhook_handler",
+  "runtime": "node.js-18.0",
+  "entrypoint": "src/index.js"
+}

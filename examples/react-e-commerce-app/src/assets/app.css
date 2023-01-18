@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html,
+	body,
+	#root {
+		height: 100%;
+	}
+	html {
+		font-family: 'Roboto', sans-serif;
+	}
+	select:has(> option:nth-child(1):checked) {
+		@apply text-transparent;
+	}
+	.font-barlow {
+		font-family: 'Barlow', sans-serif;
+	}
+}
+@layer components {
+	.no-spinner {
+		-moz-appearance: textfield;
+	}
+
+	.no-spinner::-webkit-outer-spin-button,
+	.no-spinner::-webkit-inner-spin-button {
+		margin: 0;
+		-webkit-appearance: none;
+	}
+}
+
+@layer components {
+	.pl,
+	.pl__worm {
+		-webkit-animation-duration: 4s;
+		animation-duration: 4s;
+		-webkit-animation-iteration-count: infinite;
+		animation-iteration-count: infinite;
+	}
+
+	.pl {
+		-webkit-animation-name: bump5;
+		animation-name: bump5;
+		-webkit-animation-timing-function: linear;
+		animation-timing-function: linear;
+		width: 5em;
+		height: 5em;
+	}
+
+	.pl__ring {
+		stroke: hsla(var(--hue), 10%, 10%, 0.1);
+		-webkit-transition: stroke 0.3s;
+		transition: stroke 0.3s;
+	}
+
+	.pl__worm {
+		-webkit-animation-name: worm5;
+		animation-name: worm5;
+		-webkit-animation-timing-function: cubic-bezier(0.42, 0.17, 0.75, 0.83);
+		animation-timing-function: cubic-bezier(0.42, 0.17, 0.75, 0.83);
+	}
+
+	/* Animations */
+	@-webkit-keyframes bump5 {
+		from,
+		42%,
+		46%,
+		51%,
+		55%,
+		59%,
+		63%,
+		67%,
+		71%,
+		74%,
+		78%,
+		81%,
+		85%,
+		88%,
+		92%,
+		to {
+			-webkit-transform: translate(0, 0);
+			transform: translate(0, 0);
+		}
+
+		44% {
+			-webkit-transform: translate(1.33%, 6.75%);
+			transform: translate(1.33%, 6.75%);
+		}
+
+		53% {
+			-webkit-transform: translate(-16.67%, -0.54%);
+			transform: translate(-16.67%, -0.54%);
+		}
+
+		61% {
+			-webkit-transform: translate(3.66%, -2.46%);
+			transform: translate(3.66%, -2.46%);
+		}
+
+		69% {
+			-webkit-transform: translate(-0.59%, 15.27%);
+			transform: translate(-0.59%, 15.27%);
+		}
+
+		76% {
+			-webkit-transform: translate(-1.92%, -4.68%);
+			transform: translate(-1.92%, -4.68%);
+		}
+
+		83% {
+			-webkit-transform: translate(9.38%, 0.96%);
+			transform: translate(9.38%, 0.96%);
+		}
+
+		90% {
+			-webkit-transform: translate(-4.55%, 1.98%);
+			transform: translate(-4.55%, 1.98%);
+		}
+	}
+	@keyframes bump5 {
+		from,
+		42%,
+		46%,
+		51%,
+		55%,
+		59%,
+		63%,
+		67%,
+		71%,
+		74%,
+		78%,
+		81%,
+		85%,
+		88%,
+		92%,
+		to {
+			-webkit-transform: translate(0, 0);
+			transform: translate(0, 0);
+		}
+
+		44% {
+			-webkit-transform: translate(1.33%, 6.75%);
+			transform: translate(1.33%, 6.75%);
+		}
+
+		53% {
+			-webkit-transform: translate(-16.67%, -0.54%);
+			transform: translate(-16.67%, -0.54%);
+		}
+
+		61% {
+			-webkit-transform: translate(3.66%, -2.46%);
+			transform: translate(3.66%, -2.46%);
+		}
+
+		69% {
+			-webkit-transform: translate(-0.59%, 15.27%);
+			transform: translate(-0.59%, 15.27%);
+		}
+
+		76% {
+			-webkit-transform: translate(-1.92%, -4.68%);
+			transform: translate(-1.92%, -4.68%);
+		}
+
+		83% {
+			-webkit-transform: translate(9.38%, 0.96%);
+			transform: translate(9.38%, 0.96%);
+		}
+
+		90% {
+			-webkit-transform: translate(-4.55%, 1.98%);
+			transform: translate(-4.55%, 1.98%);
+		}
+	}
+
+	@-webkit-keyframes worm5 {
+		from {
+			stroke-dashoffset: 10;
+		}
+
+		25% {
+			stroke-dashoffset: 295;
+		}
+
+		to {
+			stroke-dashoffset: 1165;
+		}
+	}
+
+	@keyframes worm5 {
+		from {
+			stroke-dashoffset: 10;
+		}
+
+		25% {
+			stroke-dashoffset: 295;
+		}
+
+		to {
+			stroke-dashoffset: 1165;
+		}
+	}
+}
