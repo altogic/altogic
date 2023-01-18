@@ -46,6 +46,11 @@ export default function Login() {
 		<div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
 			<div className="mx-auto max-w-lg space-y-4">
 				<h1 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">Get started today</h1>
+				<div className="bg-blue-50 rounded-md py-2 px-4">
+					<p>For demo purposes, you can use the following credentials:</p>
+					<p><strong>email: </strong><span>demo@altogic.com</span> </p>
+					<p><strong>password:</strong> <span>altogic123</span></p>
+				</div>
 				<ShowApiError errors={errors} />
 				<form onSubmit={submitHandler} className="mb-0 space-y-4 rounded-lg p-8 shadow-2xl">
 					<p className="text-2xl font-medium">Sign in to your account</p>
