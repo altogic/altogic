@@ -7,9 +7,15 @@ const altogic = createClient(ENV_URL, CLIENT_KEY, {
 	signInRedirect: '/login',
 });
 
+// for unauthorized requests
 const _altogic = createClient(ENV_URL, '9e7f21cd4f264c6da52113ba3c0e55b3');
+
 export const uploadFile = (bucketName, fileName, file, options) => {
-	return _altogic.storage.bucket(bucketName).upload(fileName, file, options);
+	return _altogic.storage.bucket(bucketName).upload(fileName, file, {
+		isPublic: true,
+		createBucket: true,
+		...options,
+	});
 };
 export const createBucket = bucketName => {
 	return _altogic.storage.createBucket(bucketName);

@@ -1,0 +1,7 @@
+{
+  "appId": "63885accae6ab961e979d735",
+  "functionId": "63c55a74ff0335b3f8ac2ede",
+  "name": "deleteFile",
+  "runtime": "node.js-18.0",
+  "entrypoint": "src/index.js"
+}
