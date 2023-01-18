@@ -5,7 +5,7 @@ import useAuthStore from '../store/auth';
 export default class CartService {
 	static async getCart() {
 		const user = useAuthStore.getState().user;
-		if (!user) return null;
+		if (!user) return [];
 
 		const { data, errors } = await altogic.db
 			.model('cart')
