@@ -18,11 +18,7 @@ const pixelService = {
     return endpoint.get("/pixel/role", { pixelSlug });
   },
   draw(slug, pallette) {
-    return db.model("pixel_arts").filter(`slug == "${slug}"`).updateFields({
-      field: "pallette",
-      updateType: "set",
-      value: pallette,
-    });
+    return endpoint.put("/pixel/draw", { pixelSlug: slug, pallette });
   },
   getUserArts({ userSlug, searchText, page = 1, limit = 12 }) {
     return db
