@@ -124,7 +124,7 @@ export default function Pixel({ pixel }) {
         />
         <meta
           name="og:image"
-          content={`https://pixel-art-next.vercel.app/api/og/${
+          content={`https://pixela-eta.vercel.app/api/og/${
             pixel?.slug
           }?date=${new Date().getTime()}`}
         />
@@ -142,14 +142,11 @@ export default function Pixel({ pixel }) {
           property="twitter:description"
           content="Real-time pixel art app allows you to create digital masterpieces in real-time, with a user-friendly interface. Experience the power of Altogic today!"
         />
-        <meta
-          property="twitter:url"
-          content="https://pixel-art-next.vercel.app"
-        />
+        <meta property="twitter:url" content="https://pixela-eta.vercel.app" />
         <meta property="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:image"
-          content={`https://pixel-art-next.vercel.app/api/og/${
+          content={`https://pixela-eta.vercel.app/api/og/${
             pixel?.slug
           }?date=${new Date().getTime()}`}
         />

@@ -30,10 +30,7 @@ export default function Document() {
           content="Real-Time Pixel Art Creator with Altogic - Suitable for All Skill Levels"
         />
         <meta property="twitter:description" content="Altogic" />
-        <meta
-          property="twitter:url"
-          content="https://pixel-art-next.vercel.app"
-        />
+        <meta property="twitter:url" content="https://pixela-eta.vercel.app" />
         <meta property="twitter:card" content="summary_large_image" />
       </Head>
       <body>
