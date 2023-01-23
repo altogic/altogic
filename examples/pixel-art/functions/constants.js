@@ -1,0 +1,6 @@
+export const ArtEventType = {
+  DRAW: "DRAW",
+  DELETED: "DELETED",
+  UPDATED_NAME: "UPDATED_NAME",
+  REMOVE_MEMBER: "REMOVE_MEMBER",
+};
