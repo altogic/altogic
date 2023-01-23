@@ -732,13 +732,13 @@ Let's give the api link we created to the meta tags.
 ```bash
 				<meta
           property="twitter:image"
-          content={`https://pixel-art-next.vercel.app/api/og-image?link=${
+          content={`https://pixela-eta.vercel.app/api/og-image?link=${
             pixel?.picture
           }&name=${pixel?.name}&time=${new Date().getTime()}`}
         />
         <meta
           property="og:image"
-          content={`https://pixel-art-next.vercel.app/api/og-image?link=${
+          content={`https://pixela-eta.vercel.app/api/og-image?link=${
             pixel?.picture
           }&name=${pixel?.name}&time=${new Date().getTime()}`}
         />
