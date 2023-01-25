@@ -1,162 +1,155 @@
-import { useEffect, useState } from "react";
-import { altogic } from "../helpers/altogic";
+import altogic from "@/configs/altogic";
+import { useState } from "react";
 
-export default function Home() {
-  const [todos, setTodos] = useState([]);
-  /*
-  Inside your useEffect() hook, send a get request to Altogic using altogic.db.model(modelName).get() function of Altogic Client Library. 
-  Then, set the data you fetched inside the todos state.
-  */
+export async function getServerSideProps() {
+  try {
+    const { data: todosFromDb, errors } = await altogic.db
+      .model("todo")
+      .sort("isCompleted", "asc")
+      .page(1)
+      .limit(100)
+      .get();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data, errors } = await altogic.db.model("todo").limit(100).get();
-      if (data) {
-        setTodos(data);
-      } else {
-        console.log(errors);
-      }
-    };
-    fetchData();
-  }, []);
+    if (errors) throw errors;
 
-  // Inputted todo name
-  const [todoName, setTodoName] = useState("");
+    return { props: { todosFromDb } };
+  } catch (errorList) {
+    return { errorCode: errorList?.status || 404 };
+  }
+}
 
-  /* 
-    This function creates a todo instance on the database with the help of the Altogic Client Lİbrary db.model().create() function.
-    After creating an instance on the database, append the created object to the todos state
-  */
-  const handleAddTodo = async (todoName) => {
+export default function Home({ todosFromDb }) {
+  const [todos, setTodos] = useState(todosFromDb);
+  const [todoInput, setTodoInput] = useState("");
+
+  const sortedTodos = todos.sort(({ isCompleted }) => (isCompleted ? 1 : -1));
+
+  const handleAddTodo = async (e) => {
+    e.preventDefault();
+
     try {
       const { data, errors } = await altogic.db.model("todo").create({
-        name: todoName,
+        name: todoInput,
       });
-      if (data) {
-        setTodoName("");
-        setTodos([...todos, data]);
-      } else {
-        console.log(errors);
-      }
-    } catch (error) {
-      console.log(error);
+
+      if (errors) throw errors;
+
+      setTodoInput("");
+      setTodos([data, ...todos]);
+    } catch (errorList) {
+      alert(errorList?.items[0].message);
     }
   };
 
-  /*
-  We need to be able to update the status of our todos. We will implement a function called toggleTodo to send an update request to Altogic 
-  for updating objects using altogic.db.model(modelName).object(objectId).update({}) function of Altogic Client Library. 
-  Then, we will update the todo in the todos state by iterating the array.
-  */
-  const toggleTodo = async (todo) => {
+  const handleChangeStatus = async (todoId, newStatus) => {
     try {
-      const { data, errors } = await altogic.db
+      const { data: updatedTodo, errors } = await altogic.db
         .model("todo")
-        .object(todo._id)
+        .object(todoId)
         .update({
-          status: !todo.status,
+          isCompleted: newStatus,
         });
-      if (data) {
-        setTodos(
-          todos.map((element) => {
-            if (element._id === todo._id) {
-              element = data;
-            }
-            return element;
-          })
-        );
-      } else {
-        console.log(errors);
-      }
-    } catch (error) {
-      console.log(error);
+
+      if (errors) throw errors;
+
+      setTodos(todos.map((todo) => (todo._id === todoId ? updatedTodo : todo)));
+    } catch (errorList) {
+      alert(errorList?.items[0].message);
     }
   };
 
-  /*
-  We might also want to delete our todos. We will implement a function called handleDeleteTodo to send a delete request
-   to Altogic for deleting objects using altogic.db.model(modelName).object(objectId).delete() function of Altogic Client Library. 
-   Then, we will delete the todo in the todos state by filtering the array.
-    */
-  const handleDeleteTodo = async (todo) => {
+  const handleDeleteTodo = async (todoId) => {
     try {
-      const { data, errors } = await altogic.db
-        .model("todo")
-        .object(todo._id)
-        .delete();
-      if (errors) {
-        console.log(errors);
-      } else {
-        setTodos(todos.filter((element) => element._id !== todo._id));
-      }
-    } catch (error) {
-      console.log(error);
+      const { errors } = await altogic.db.model("todo").object(todoId).delete();
+
+      if (errors) throw errors;
+
+      setTodos(todos.filter((todo) => todo._id !== todoId));
+    } catch (errorList) {
+      alert(errorList?.items[0].message);
     }
   };
 
   return (
-    <div className="bg-slate-100 h-screen flex flex-col items-center justify-center">
-      <div>
-        <form>
-          <label>Add a new todo: </label>
+    <div className="max-w-2xl mx-auto py-8 px-4 sm:py-12 sm:px-6 lg:max-w-7xl lg:px-8">
+      <form onSubmit={handleAddTodo}>
+        <div className="relative">
           <input
-            className="border-2"
-            type="text"
-            value={todoName}
-            onChange={(e) => setTodoName(e.target.value)}
-          ></input>
-          <button
-            disabled={todoName === ""}
-            className="rounded bg-blue-600 ml-2 px-2 py-1 text-white"
-            onClick={(event) => {
-              event.preventDefault();
-              handleAddTodo(todoName);
-            }}
-          >
-            Submit
-          </button>
-        </form>
-      </div>
-      <div>
-        <ul>
-          {todos.map((todo) => {
-            return (
-              <li className="flex items-center mt-1" key={todo._id}>
-                <div className="flex items-center mr-2">
-                  <input
-                    type="checkbox"
-                    checked={todo.status}
-                    onChange={(event) => {
-                      event.preventDefault();
-                      toggleTodo(todo);
-                    }}
-                  ></input>
-                  <h2
-                    className={`${
-                      todo.status ? "line-through text-gray-400" : null
-                    } ml-2 font-bold`}
-                  >
-                    {todo.name}
-                  </h2>
-                </div>
-                <time
-                  className={`${
-                    todo.status ? "line-through text-gray-400" : null
-                  } ml-2 font-bold`}
-                >
-                  {todo.dateTime}
-                </time>
-                <button
-                  className="rounded bg-red-600 ml-2 px-2 py-1 text-white"
-                  onClick={() => handleDeleteTodo(todo)}
-                >
-                  Delete
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+            placeholder="Add Todo"
+            className="w-full rounded-md border-gray-200 py-2.5 pr-10 pl-2 shadow-sm sm:text-sm border-2 border-dashed"
+            onChange={(e) => setTodoInput(e.target.value)}
+            value={todoInput}
+          />
+
+          <span className="absolute inset-y-0 right-0 grid w-10 place-content-center">
+            <button type="submit">
+              <span className="sr-only">Submit</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                aria-hidden="true"
+                id="send-icon"
+                className="w-7 h-7 text-gray-500"
+              >
+                <path
+                  strokeLinecap="round"
+                  stroke-strokelinejoin="round"
+                  d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </button>
+          </span>
+        </div>
+      </form>
+
+      {sortedTodos?.map((todo) => (
+        <div key={todo._id} className="flex items-center justify-between mt-2">
+          <div className="relative flex items-center">
+            <div className="flex items-center h-5">
+              <input
+                type="checkbox"
+                className="focus:ring-indigo-500 h-6 w-6 text-indigo-600 border-gray-300 rounded cursor-pointer"
+                onChange={() => handleChangeStatus(todo._id, !todo.isCompleted)}
+                checked={todo.isCompleted}
+              />
+            </div>
+            <div
+              className="ml-3 text-sm w-full p-2 cursor-pointer"
+              onClick={() => handleChangeStatus(todo._id, !todo.isCompleted)}
+            >
+              <label
+                className={`font-medium text-gray-700 cursor-pointer ${
+                  todo.isCompleted && "line-through"
+                }`}
+              >
+                {todo.name}
+              </label>
+            </div>
+          </div>
+          <div className="flex items-center px-2 py-2 text-sm font-medium rounded-md">
+            <button onClick={() => handleDeleteTodo(todo._id)}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                aria-hidden="true"
+                className="lex-shrink-0 h-5 w-5"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
