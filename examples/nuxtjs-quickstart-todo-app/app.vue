@@ -2,19 +2,21 @@
 import altogic from "~/configs/altogic";
 
 const { data, errors } = await useAsyncData(() =>
-  altogic.db.model("todo").sort("isCompleted", "asc").page(1).limit(100).get()
+  altogic.db
+    .model("todo")
+    .sort("updatedAt", "desc")
+    .sort("isCompleted", "asc")
+    .page(1)
+    .limit(100)
+    .get()
 );
 
 const todos = ref(data.value.data);
-const sortedTodos = computed(() => {
-  const completedTodo = todos.value
-    .filter((todo) => todo.isCompleted)
-    .sort((a, b) => (a.updatedAt > b.updatedAt ? -1 : 1));
-  const uncompletedTodo = todos.value
-    .filter((todo) => !todo.isCompleted)
-    .sort((a, b) => (a.updatedAt > b.updatedAt ? -1 : 1));
-  return [...uncompletedTodo, ...completedTodo];
-});
+const sortedTodos = computed(() =>
+  todos.value.sort((a, b) =>
+    a.isCompleted === b.isCompleted ? 0 : a.isCompleted ? 1 : -1
+  )
+);
 const todoInput = ref("");
 
 const handleAddTodo = async () => {

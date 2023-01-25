@@ -459,7 +459,12 @@ We created our model, ”todo.” We have to define the model properties' name 
         
         ```jsx
         const { data, errors } = await useAsyncData(() =>
-          altogic.db.model("todo").sort("isCompleted", "asc").page(1).limit(100).get()
+          altogic.db.model("todo")
+            .sort("updatedAt", "desc")
+            .sort("isCompleted", "asc")
+            .page(1)
+            .limit(100)
+            .get()
         );
         ```
         
@@ -467,16 +472,12 @@ We created our model, ”todo.” We have to define the model properties' name 
         
         We have added the line-through class to cross out completed todos.
         
-        ```jsx
-        const sortedTodos = computed(() => {
-          const completedTodo = todos.value
-            .filter((todo) => todo.isCompleted)
-            .sort((a, b) => (a.updatedAt > b.updatedAt ? -1 : 1));
-          const uncompletedTodo = todos.value
-            .filter((todo) => !todo.isCompleted)
-            .sort((a, b) => (a.updatedAt > b.updatedAt ? -1 : 1));
-          return [...uncompletedTodo, ...completedTodo];
-        });
+        ```js
+        const sortedTodos = computed(() =>
+          todos.value.sort((a, b) =>
+            a.isCompleted === b.isCompleted ? 0 : a.isCompleted ? 1 : -1
+          )
+        );
         ```
         
         ```html

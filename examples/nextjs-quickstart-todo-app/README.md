@@ -268,13 +268,12 @@ We created our model, ”todo.” We have to define the model properties' name 
         > Replace envUrl and clientKey which are shown in the **Home** view of [Altogic Designer](https://designer.altogic.com/).
         > 
         
-        ## Adding states
+        ## Adding state
         
-        We have added our states to show the todo list and enter a new todo.
+        We have added our state to show the todo list.
         
         ```jsx
         const [todos, setTodos] = useState([]);
-        const [todoInput, setTodoInput] = useState("");
         ```
         
         ## Fetching todo list
@@ -345,24 +344,25 @@ We created our model, ”todo.” We have to define the model properties' name 
               ))}
         ```
         
-        ## Creating  a todo
+        ## Creating a todo
         
         We have updated the state after adding todo to our database using altogic client library.
         
         Add `handleAddTodo` function with the following code:
         
-        ```
+        ```js
         const handleAddTodo = async (e) => {
             e.preventDefault();
-        
+            const [name] = e.target;
+
             try {
               const { data, errors } = await altogic.db.model("todo").create({
-                name: todoInput,
+                name: name.value,
               });
-        
+
               if (errors) throw errors;
-        
-              setTodoInput("");
+
+              name.value = "";
               setTodos([data, ...todos]);
             } catch (errorList) {
               alert(errorList?.items[0].message);
@@ -376,8 +376,6 @@ We created our model, ”todo.” We have to define the model properties' name 
              <input
                 placeholder="Add Todo"
                 className="w-full rounded-md border-gray-200 py-2.5 pr-10 pl-2 shadow-sm sm:text-sm border-2 border-dashed"
-                onChange={(e) => setTodoInput(e.target.value)}
-                value={todoInput}
              />
         
              <span className="absolute inset-y-0 right-0 grid w-10 place-content-center">
@@ -506,6 +504,7 @@ We created our model, ”todo.” We have to define the model properties' name 
         ```jsx
         const { data: todosFromDb, errors } = await altogic.db
               .model("todo")
+              .sort("updatedAt", "desc")
               .sort("isCompleted", "asc")
               .page(1)
               .limit(100)
@@ -517,7 +516,9 @@ We created our model, ”todo.” We have to define the model properties' name 
         We have added the line-through class to cross out completed todos.
         
         ```jsx
-        const sortedTodos = todos.sort(({ isCompleted }) => (isCompleted ? 1 : -1));
+        const sortedTodos = todos.sort((a, b) =>
+          a.isCompleted === b.isCompleted ? 0 : a.isCompleted ? 1 : -1
+        );
         ```
         
         ```jsx
