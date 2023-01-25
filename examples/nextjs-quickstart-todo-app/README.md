@@ -2,8 +2,6 @@
 
 This article will cover how to code simple CRUD operations in a to-do app using Next.js, and [Altogic](https://altogic.com/), a Backend-as-a-Service platform using its client library.
 
-// @TODO: link değiştirilecek
-
 You can check out the [demo.](https://altogic-react-todo-app-quickstart.vercel.app/)
 
 ## What is Altogic?
