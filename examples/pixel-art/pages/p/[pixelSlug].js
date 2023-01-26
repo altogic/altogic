@@ -37,12 +37,22 @@ export default function Pixel({ pixel }) {
 
   const members = useArraySelector((state) => state.pixel.members);
   const member = _.find(members, (mem) => mem.userId === user?._id);
-  const canDraw = member && ["owner", "editor"].includes(member?.role);
+
   const dispatch = useDispatch();
   const [leftPixel, setLeftPixel] = useState(null);
   const [addMembersShow, setAddMembersShow] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [canDraw, setCanDraw] = useState(false);
+
+  useEffect(() => {
+    if (pixelSlug)
+      pixelService
+        .getRole(pixelSlug)
+        .then(({ data }) =>
+          setCanDraw(["owner", "editor"].includes(data?.role))
+        );
+  }, [pixelSlug]);
 
   useEffect(() => {
     setLoading(true);
