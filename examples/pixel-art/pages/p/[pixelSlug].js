@@ -29,12 +29,6 @@ export default function Pixel({ pixel }) {
 
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    if (userState) {
-      setUser(userState);
-    }
-  }, [userState]);
-
   const members = useArraySelector((state) => state.pixel.members);
   const member = _.find(members, (mem) => mem.userId === user?._id);
 
@@ -46,13 +40,15 @@ export default function Pixel({ pixel }) {
   const [canDraw, setCanDraw] = useState(false);
 
   useEffect(() => {
-    if (pixelSlug)
+    if (userState) {
+      setUser(userState);
       pixelService
         .getRole(pixelSlug)
         .then(({ data }) =>
           setCanDraw(["owner", "editor"].includes(data?.role))
         );
-  }, [pixelSlug]);
+    }
+  }, [userState]);
 
   useEffect(() => {
     setLoading(true);
