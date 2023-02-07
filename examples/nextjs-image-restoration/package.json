@@ -1,0 +1,31 @@
+{
+  "name": "replicate-codeformer-sample-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@next/font": "13.1.6",
+    "@types/node": "18.11.19",
+    "@types/react": "18.0.27",
+    "@types/react-dom": "18.0.10",
+    "altogic": "^2.3.9",
+    "next": "13.1.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-dropzone": "^14.2.3",
+    "react-toastify": "^9.1.1",
+    "typescript": "4.9.5",
+    "zustand": "^4.3.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
+    "prettier": "^2.8.3",
+    "tailwindcss": "^3.2.4"
+  }
+}
