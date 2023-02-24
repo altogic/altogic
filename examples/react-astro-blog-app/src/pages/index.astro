@@ -1,0 +1,32 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import HeroSection from "../sections/HeroSection.astro";
+import BlogList from "../components/BlogList";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+
+    <HeroSection />
+    <div class="flex-col gap-10 px-10 text-center w-full flex justify-center items-center">
+      <h2 class="font-bold text-center text-[35px] w-full">From the blog</h2>
+      <p class="w-[60%] text-center py-5 text-gray-500">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </p>
+      <BlogList client:load />
+    </div>
+
+    <Footer />
+  </body>
+</html>

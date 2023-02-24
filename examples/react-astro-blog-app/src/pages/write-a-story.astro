@@ -1,0 +1,23 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import CreatePost from "../components/CreatePost";
+import Header from "../components/Header.astro";
+---
+
+<html lang="en">
+  <head>
+    <BaseHead
+      title={"Write a Story"}
+      description={"You can create a blog here"}
+    />
+  </head>
+  <body>
+    <Header />
+
+    <div
+      class="w-full h-[100h] flex flex-col items-center justify-center py-20"
+    >
+      <CreatePost client:load />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import BlogContent from "../../components/BlogContent";
+import Header from "../../components/Header.astro";
+
+const { slug } = Astro.params;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead
+      title={"Example Blog"}
+      description={"You can create a blog here"}
+    />
+  </head>
+  <body>
+    <Header />
+    <BlogContent slot={slug} client:load />
+  </body>
+</html>

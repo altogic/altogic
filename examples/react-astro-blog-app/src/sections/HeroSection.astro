@@ -1,0 +1,31 @@
+<div class="linear-wipe">Create Your Own Blog</div>
+
+<style>
+  .linear-wipe {
+    text-align: center;
+
+    background: linear-gradient(
+      to right,
+      rgba(0, 21, 255, 0.381) 40%,
+      #6c12ad 20%,
+      rgb(17, 106, 209) 60%,
+      #fff 80%
+    );
+    background-size: 200% auto;
+    font-size: 80px;
+    color: #000;
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: shine 4s linear infinite;
+   
+  }
+
+  @keyframes shine {
+      to {
+        background-position: 200% center;
+      }
+    }
+</style>
