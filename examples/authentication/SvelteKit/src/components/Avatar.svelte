@@ -1,6 +1,6 @@
 <script>
 	import { authStore } from '../store/auth.store';
-	import { altogic } from '../configs/altogic';
+	import altogic from '../libs/altogic.js';
 
 	let errors = null;
 	let loading = false;

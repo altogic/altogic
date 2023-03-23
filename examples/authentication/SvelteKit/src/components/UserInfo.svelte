@@ -1,9 +1,9 @@
 <script>
 	import { authStore } from '../store/auth.store';
-	import { altogic } from '../configs/altogic';
+	import altogic from '../libs/altogic.js';
 
 	let changeMode = false;
-	let name = $authStore.name || '';
+	let name = $authStore?.name || '';
 	let errors = null;
 
 	const handleNameChange = () => {

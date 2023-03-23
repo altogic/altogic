@@ -1,5 +1,5 @@
 <script>
-	import { altogic } from '../../configs/altogic';
+	import altogic from '../../libs/altogic.js';
 
 	let loading = false;
 	let success = '';

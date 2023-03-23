@@ -1,9 +1,6 @@
 <script>
-	import { sessionStore } from '../store/auth.store';
-	import { altogic } from '../configs/altogic';
-	import { onMount } from 'svelte';
-
-	let sessions = [];
+	import altogic from '../libs/altogic.js';
+	export let sessions;
 
 	const logoutSession = async (session) => {
 		const { errors } = await altogic.auth.signOut(session.token);
@@ -11,18 +8,6 @@
 			sessions = sessions.filter((s) => s.token !== session.token);
 		}
 	};
-
-	const getAllSessions = async () => {
-		const { sessions: sessionList } = await altogic.auth.getAllSessions();
-
-		sessions = sessionList.map((session) =>
-			session.token === $sessionStore.token ? { ...session, isCurrent: true } : session
-		);
-	};
-
-	onMount(() => {
-		getAllSessions();
-	});
 </script>
 
 <div class="border p-4 space-y-4">

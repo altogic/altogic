@@ -1,7 +1,6 @@
 <script>
 	import { authStore, sessionStore } from '../../store/auth.store';
-	import { altogic } from '../../configs/altogic';
-
+	import altogic from '../../libs/altogic.js';
 	let loading = false;
 	let errors = null;
 
@@ -11,21 +10,30 @@
 		try {
 			loading = true;
 
-			const {
-				user,
-				session,
-				errors: apiErrors
-			} = await altogic.auth.signInWithEmail(email.value, password.value);
+			const res = await fetch('/api/sign-in', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					email: email.value,
+					password: password.value
+				})
+			});
 
-			if (apiErrors) {
-				throw apiErrors;
-			}
+			const { user, session, errors } = await res.json();
+
+			if (errors) throw errors;
 
 			authStore.set(user);
 			sessionStore.set(session);
+
+			altogic.auth.setSession(session);
+			altogic.auth.setUser(user);
 			window.location.href = '/profile';
 		} catch (err) {
 			errors = err.items;
+		} finally {
 			loading = false;
 		}
 	};
