@@ -35,6 +35,11 @@ To learn more about Altogic and Next.js, you can take a look at the following re
 - [Altogic Docs](https://docs.altogic.com/) - learn about how to design your backend in Altogic
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 
+
+## Getting Started
+You can run this example rename `.env.example` to `.env` and enter your Client API Key and Environment URL in the `.env` file.
+
+
 ## Contribution
 
 Your feedback and contributions are welcome! Please open a pull request for contributions.

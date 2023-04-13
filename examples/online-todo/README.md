@@ -6,22 +6,22 @@ You can see the preview of the app here: [https://online-todo.vercel.app/](https
 
 ### Home
 
-![Workspace](github/workspace.png 'Preview image of the workspace')
+![Workspace](github/workspace.png "Preview image of the workspace")
 
-![Add Workspace](github/add-workspace.png 'Preview image of adding workspace')
+![Add Workspace](github/add-workspace.png "Preview image of adding workspace")
 
 ### Todo List
 
-![Todo List](github/todos.png 'Preview image of todo list')
+![Todo List](github/todos.png "Preview image of todo list")
 
 ### Invite People
 
-![Invite People](github/invite-people.png 'Preview image of invitation')
+![Invite People](github/invite-people.png "Preview image of invitation")
 
 ### Settings
 
-![Settings](github/settings.png 'Preview image of settings')
-![Workspace Settings](github/w-settings.png 'Preview image of settings')
+![Settings](github/settings.png "Preview image of settings")
+![Workspace Settings](github/w-settings.png "Preview image of settings")
 
 ## Introduction
 
@@ -29,7 +29,7 @@ This is a realtime todo app that builds [React.js](https://reactjs.org/) & [Alto
 
 ## Features
 
-1. Authentication  
+1. Authentication
 2. [Altogic Realtime](https://www.altogic.com/client/category/realtime)
 3. Create workspace
 4. Create list
@@ -40,14 +40,18 @@ This is a realtime todo app that builds [React.js](https://reactjs.org/) & [Alto
 9. User settings
 10. Workspace settings
 
+## Getting Started
+
+You can run this example rename `.env.example` to `.env` and enter your Client API Key and Environment URL in the `.env` file.
+
 ## Learn More
 
 To learn more about Altogic and React.js, you can take a look at the following resources:
 
--   [Altogic Client API Reference](https://clientapi.altogic.com/latest/modules.html) - learn about Altogic Client Library features
--   [Altogic Docs](https://www.altogic.com/docs/) - learn about how to design your backend in Altogic
--   [Altogic Client Library](https://www.altogic.com/client/) - learn about how to design your backend in Altogic
--   [React.js Documentation](https://reactjs.org/docs/getting-started.html) - learn about React.js features and API.
+- [Altogic Client API Reference](https://clientapi.altogic.com/latest/modules.html) - learn about Altogic Client Library features
+- [Altogic Docs](https://www.altogic.com/docs/) - learn about how to design your backend in Altogic
+- [Altogic Client Library](https://www.altogic.com/client/) - learn about how to design your backend in Altogic
+- [React.js Documentation](https://reactjs.org/docs/getting-started.html) - learn about React.js features and API.
 
 ## Contribution
 

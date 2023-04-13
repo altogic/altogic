@@ -4,16 +4,19 @@
 
 Pixel art is a form of digital art where images are created and edited at the pixel level. It typically features low resolution and a limited color palette and is often used to create retro-style graphics in video games and other digital media. The style is characterized by its blocky, pixelated appearance and is created using software tools designed explicitly for pixel art.
 
+## Getting Started
+
+You can run this example rename `.env.example` to `.env` and enter your Client API Key and Environment URL in the `.env` file.
+
 ## What is Altogic?
 
 Altogic backend as a service platform allows you to create and start running your backend apps in minutes. With your backend apps, you can **manage your application data** in a database, **cache your data in memory, execute database transactions to ensure data integrity**, **run complex business logic** through synchronous and asynchronous services, **manage user sessions**, **schedule jobs** to be executed at a specific time or interval, **send and receive real-time messages** through WebSockets and more.
 
 ### Creating an Altogic Application
 
-As you are aware, Altogic will be used in this project, so if you do not already have an account, you must create one from the [Altogic Designer.](https://designer.altogic.com/) 
+As you are aware, Altogic will be used in this project, so if you do not already have an account, you must create one from the [Altogic Designer.](https://designer.altogic.com/)
 
 > I advise you to review the [documentation](https://www.altogic.com/client/installation/) for more in-depth details.
-> 
 
 ## Setting up your development environment with Altogic and Next.js 13
 
@@ -80,7 +83,7 @@ Logic
 
 A "pixel_arts" object is created and saved in the database. Then a “pixel_user_connections” object is created, and The “pixel_arts” object is returned as a response.
 
-![create pixel art service (1).png](github/create_pixel_art_service_(1).png)
+![create pixel art service (1).png](<github/create_pixel_art_service_(1).png>)
 
 **Update Pixel Name Service**
 
@@ -114,11 +117,11 @@ The png file of the drawn pixel art is replaced with the one in the storage.
 
 **Update Pixel Picture Service**
 
-It’s used to update pixel pictures’ paths in pixel_arts and pixel_user_connections models. 
+It’s used to update pixel pictures’ paths in pixel_arts and pixel_user_connections models.
 
 Logic
 
-After saving the pixel picture to storage, this service is called. The "publicPath" in the body is saved in the picture field in the “pixel_arts” model. Then the “pixelPicture” in the “pixel_user_connections” model is updated. 
+After saving the pixel picture to storage, this service is called. The "publicPath" in the body is saved in the picture field in the “pixel_arts” model. Then the “pixelPicture” in the “pixel_user_connections” model is updated.
 
 ![Untitled](github/Untitled%201.png)
 
@@ -140,7 +143,7 @@ Logic
 
 **Delete Member Service**
 
-It’s used to remove members from pixel art. 
+It’s used to remove members from pixel art.
 
 Logic
 
@@ -162,7 +165,7 @@ It is the service where the user changes his profile photo.
 
 Logic
 
-After saving the user picture to storage, this service is called. The "publicPath" in the body is saved in the profilePicture field in the “users” model. Then the “userProfilePicture” in the “pixel_user_connections” model is updated. 
+After saving the user picture to storage, this service is called. The "publicPath" in the body is saved in the profilePicture field in the “users” model. Then the “userProfilePicture” in the “pixel_user_connections” model is updated.
 
 ![Untitled](github/Untitled%206.png)
 
@@ -360,20 +363,20 @@ A request for real-time connection is thrown when the page is loaded
 
 ```jsx
 useEffect(() => {
+  dispatch(
+    realtimeActions.joinRequest({
+      pixelSlug,
+    })
+  );
+
+  return () => {
     dispatch(
-      realtimeActions.joinRequest({
+      realtimeActions.leaveRequest({
         pixelSlug,
       })
     );
-
-    return () => {
-      dispatch(
-        realtimeActions.leaveRequest({
-          pixelSlug,
-        })
-      );
-    };
-  }, [pixelSlug]);
+  };
+}, [pixelSlug]);
 ```
 
 We wrap the realtime services we will use with the realtimeService object.
@@ -634,16 +637,16 @@ With the help of the html2canvas library, the selected element is converted to b
 
 ```jsx
 const download = () => {
-    html2canvas(document.querySelector("#pixel-table")).then((canvas) => {
-      canvas.toBlob(function (blob) {
-        saveCanvasToDisk(blob, "png");
-      });
+  html2canvas(document.querySelector("#pixel-table")).then((canvas) => {
+    canvas.toBlob(function (blob) {
+      saveCanvasToDisk(blob, "png");
     });
-  };
+  });
+};
 
-  const saveCanvasToDisk = (blob, fileExtension) => {
-    saveAs(blob, `${pixel?.name}.${fileExtension}`);
-  };
+const saveCanvasToDisk = (blob, fileExtension) => {
+  saveAs(blob, `${pixel?.name}.${fileExtension}`);
+};
 ```
 
 ## Adding Additional Functionality for Developing Pixel Art with Altogic and Next.js
@@ -709,22 +712,22 @@ After pressing the share button, we send a request to our replace picture servic
 
 ```jsx
 const beforeOnClick = () =>
-    new Promise((resolve) => {
-      setLoading(true);
-      dispatch(
-        pixelActions.replacePictureRequest({
-          pixelSlug,
-          onSuccess: () => {
-            setLoading(false);
-            resolve();
-          },
-          onFailure: () => {
-            setLoading(false);
-            resolve();
-          },
-        })
-      );
-    });
+  new Promise((resolve) => {
+    setLoading(true);
+    dispatch(
+      pixelActions.replacePictureRequest({
+        pixelSlug,
+        onSuccess: () => {
+          setLoading(false);
+          resolve();
+        },
+        onFailure: () => {
+          setLoading(false);
+          resolve();
+        },
+      })
+    );
+  });
 ```
 
 Let's give the api link we created to the meta tags.
@@ -750,25 +753,25 @@ It is not the right approach to send a request after each frame is drawn. We sho
 
 ```jsx
 const draw = (x, y) => {
-    if (!canDraw || !data[y] || !data[y][x] || data[y][x].color === drawColor) {
-      return;
-    }
+  if (!canDraw || !data[y] || !data[y][x] || data[y][x].color === drawColor) {
+    return;
+  }
 
-    dispatch(pixelActions.drawPixel({ x, y, drawColor }));
-    dispatch(
-      realtimeActions.drawRequest({
-        pixelSlug,
-        x,
-        y,
-        drawColor,
-      })
-    );
-    dispatch(
-      pixelActions.savePixelRequest({
-        slug: pixelSlug,
-      })
-    );
-  };
+  dispatch(pixelActions.drawPixel({ x, y, drawColor }));
+  dispatch(
+    realtimeActions.drawRequest({
+      pixelSlug,
+      x,
+      y,
+      drawColor,
+    })
+  );
+  dispatch(
+    pixelActions.savePixelRequest({
+      slug: pixelSlug,
+    })
+  );
+};
 ```
 
 “savePixelRequest” is handled in redux-saga with debounce.
