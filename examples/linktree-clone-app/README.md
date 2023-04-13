@@ -2,6 +2,10 @@
 
 You can see the preview of the app here: [https://linktree-app-zeta.vercel.app/](https://linktree-app-zeta.vercel.app/)
 
+## Getting Started
+You can run this example rename `.env.example` to `.env` and enter your Client API Key and Environment URL in the `.env` file.
+
+
 ## Previews
 ![picture alt](public/github/preview.png 'Preview image of the app')
 

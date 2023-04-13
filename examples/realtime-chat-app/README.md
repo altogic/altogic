@@ -20,6 +20,10 @@ You can see the preview of the app here: [https://realtime-chat-bay.vercel.app](
 
 ![picture alt](public/images/preview-group-details.png 'Preview image of group details')
 
+## Getting Started
+You can run this example rename `.env.example` to `.env` and enter your Client API Key and Environment URL in the `.env` file.
+
+
 ## Introduction
 
 This is a [React.js](https://reactjs.org/) chat application [Altogic](https://www.altogic.com), backend-as-a-service platform as the backend using its client library.

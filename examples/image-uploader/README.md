@@ -5,6 +5,7 @@ This repository contains an example of an image uploader built using the Altogic
 ![Preview](public/img/screen1.png)
 
 ## Getting Started
+You can run this example rename `.env.example` to `.env` and enter your Client API Key and Environment URL in the `.env` file.
 
 1. Clone the repository by running the following command:
 

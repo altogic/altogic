@@ -1,10 +1,14 @@
 # Ecommerce Store With Altogic & React
 
+
 ## Previews
 
 You can see the preview of the app here: [https://recommerce-chi.vercel.app/](https://recommerce-chi.vercel.app/)
 
 ![Home Screen](./public/home.jpeg)
+
+## Getting Started
+You can run this example rename `.env.example` to `.env` and enter your Client API Key and Environment URL in the `.env` file.
 
 
 ## Introduction
