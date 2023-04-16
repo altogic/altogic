@@ -8,6 +8,10 @@ In this part of the tutorial, we will build the front end with React and develop
 
 You can access the live demo of [React Saas starter app](https://altogic-stripe-payment.vercel.app).
 
+### Getting started
+
+You can run this example rename .env.example to .env and enter your Client Key, API Key and Environment URL to the .env file.
+
 ### Prerequisite
 
 Before starting this tutorial, please ensure you have completed the [Altogic + React Authentication starter course](https://www.altogic.com/blog/how-to-integrate-altogic-authentication-with-react-app-part-1) to understand authentication, routing, session, etc.
